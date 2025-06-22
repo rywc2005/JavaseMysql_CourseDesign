@@ -1,0 +1,2 @@
+# JavaseMysql_CourseDesign
+一个基于Java Swing和Mysql开发的个人财务管理系统，作为在校大二下的课设
