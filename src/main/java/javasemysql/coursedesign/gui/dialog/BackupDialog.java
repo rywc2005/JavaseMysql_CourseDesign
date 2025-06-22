@@ -359,7 +359,6 @@ public class BackupDialog extends JDialog {
         for (Backup backup : backups) {
             Vector<Object> row = new Vector<>();
             row.add(backup.getId());
-            row.add(backup.getDescription());
             row.add(backup.getFilePath());
             row.add(backup.getCreatedAt());
 

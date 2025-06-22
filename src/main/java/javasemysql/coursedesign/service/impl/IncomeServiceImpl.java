@@ -35,8 +35,8 @@ public class IncomeServiceImpl implements IncomeService {
 
     private static final Logger logger = Logger.getLogger(IncomeServiceImpl.class.getName());
 
-    private IncomeDao incomeDao;
-    private AccountService accountService;
+    private final IncomeDao incomeDao;
+    private final AccountService accountService;
 
     /**
      * 构造函数
@@ -96,9 +96,6 @@ public class IncomeServiceImpl implements IncomeService {
                     LogUtils.error("添加收入失败，账户不存在: " + income.getAccountId());
                     return false;
                 }
-
-                // 设置账户名称
-                income.setAccountName(account.getName());
 
                 // 更新账户余额
                 boolean balanceUpdated = accountService.updateAccountBalance(income.getAccountId(), income.getAmount());
@@ -176,9 +173,6 @@ public class IncomeServiceImpl implements IncomeService {
                         LogUtils.error("更新收入失败，账户不存在: " + income.getAccountId());
                         return false;
                     }
-
-                    // 更新账户名称
-                    income.setAccountName(account.getName());
 
                     // 更新新账户余额
                     boolean newBalanceUpdated = accountService.updateAccountBalance(

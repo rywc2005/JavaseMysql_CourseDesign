@@ -464,9 +464,7 @@ public class AccountPanel extends JPanel {
             Vector<Object> row = new Vector<>();
             row.add(account.getId());
             row.add(account.getName());
-            row.add(account.getType());
             row.add(account.getBalance());
-            row.add(account.getDescription());
             tableModel.addRow(row);
         }
     }

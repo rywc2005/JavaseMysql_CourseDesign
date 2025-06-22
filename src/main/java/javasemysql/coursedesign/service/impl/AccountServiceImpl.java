@@ -26,7 +26,7 @@ public class AccountServiceImpl implements AccountService {
 
     private static final Logger logger = Logger.getLogger(AccountServiceImpl.class.getName());
 
-    private AccountDao accountDao;
+    private final AccountDao accountDao;
 
     /**
      * 构造函数

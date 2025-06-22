@@ -253,7 +253,6 @@ public class BillDialog extends JDialog {
                 }
             }
 
-            categoryField.setText(bill.getCategory());
             amountField.setText(String.valueOf(bill.getAmount()));
             dueDateField.setText(DateUtils.formatDate(bill.getDueDate()));
 
@@ -264,7 +263,6 @@ public class BillDialog extends JDialog {
                 statusComboBox.setSelectedIndex(0); // 待付款
             }
 
-            descriptionArea.setText(bill.getDescription());
         } else {
             // 新增账单，设置默认值
             statusComboBox.setSelectedIndex(0); // 默认待付款
@@ -335,11 +333,8 @@ public class BillDialog extends JDialog {
                 Bill newBill = new Bill();
                 newBill.setUserId(userId);
                 newBill.setAccountId(accounts.get(selectedAccountIndex).getId());
-                newBill.setCategory(category);
                 newBill.setAmount(amount);
-                newBill.setDueDate(dueDate);
                 newBill.setStatus(isPaid ? "paid" : "unpaid");
-                newBill.setDescription(description);
 
                 boolean success = billService.addBill(newBill);
                 if (success) {
@@ -351,11 +346,9 @@ public class BillDialog extends JDialog {
             } else {
                 // 更新账单
                 bill.setAccountId(accounts.get(selectedAccountIndex).getId());
-                bill.setCategory(category);
                 bill.setAmount(amount);
-                bill.setDueDate(dueDate);
+                bill.setDueDate((java.sql.Date) dueDate);
                 bill.setStatus(isPaid ? "paid" : "unpaid");
-                bill.setDescription(description);
 
                 boolean success = billService.updateBill(bill);
                 if (success) {

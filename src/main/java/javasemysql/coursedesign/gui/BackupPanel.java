@@ -629,7 +629,6 @@ public class BackupPanel extends JPanel {
 
             row.add(fileName);
             row.add(backup.getCreatedAt());
-            row.add(backup.getDescription());
             row.add(filePath);
 
             tableModel.addRow(row);

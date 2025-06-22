@@ -312,10 +312,9 @@ public class IncomeDialog extends JDialog {
                 Income newIncome = new Income();
                 newIncome.setUserId(userId);
                 newIncome.setAccountId(accounts.get(selectedAccountIndex).getId());
-                newIncome.setAccountName(accounts.get(selectedAccountIndex).getName());
                 newIncome.setCategory(category);
                 newIncome.setAmount(amount);
-                newIncome.setDate(date);
+                newIncome.setDate((java.sql.Date) date);
                 newIncome.setDescription(description);
 
                 boolean success = incomeService.addIncome(newIncome);
@@ -328,10 +327,9 @@ public class IncomeDialog extends JDialog {
             } else {
                 // 更新收入
                 income.setAccountId(accounts.get(selectedAccountIndex).getId());
-                income.setAccountName(accounts.get(selectedAccountIndex).getName());
                 income.setCategory(category);
                 income.setAmount(amount);
-                income.setDate(date);
+                income.setDate((java.sql.Date) date);
                 income.setDescription(description);
 
                 boolean success = incomeService.updateIncome(income);

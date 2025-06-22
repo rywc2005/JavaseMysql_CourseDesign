@@ -320,11 +320,9 @@ public class RegisterDialog extends JDialog {
 
         // 创建用户对象
         User user = new User();
-        user.setUsername(username);
         user.setPassword(password);
         user.setEmail(email);
-        user.setPhone(phone);
-        user.setCreateTime(new Date());
+
 
         try {
             // 检查用户名是否已存在
@@ -423,6 +421,6 @@ public class RegisterDialog extends JDialog {
     }
 
     public String getRegisteredUsername() {
-        return registeredUser != null ? registeredUser.getUsername() : null;
+        return registeredUser != null ? registeredUser.getName() : null;
     }
 }

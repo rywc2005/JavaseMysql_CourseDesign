@@ -312,23 +312,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean updateLastLogin(int userId) {
-        String sql = "UPDATE user SET last_login = NOW() WHERE id = ?";
-        Connection conn = null;
-        PreparedStatement ps = null;
-
-        try {
-            conn = DBUtils.getConnection();
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, userId);
-
-            int result = ps.executeUpdate();
-            return result > 0;
-        } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Error updating last login", e);
-            return false;
-        } finally {
-            DBUtils.closeResources(conn, ps, null);
-        }
+        return false;
     }
 
     /**
@@ -346,7 +330,6 @@ public class UserDaoImpl implements UserDao {
         user.setEmail(rs.getString("email"));
         user.setRole(rs.getString("role"));
         user.setCreatedAt(rs.getTimestamp("created_at"));
-        user.setLastLogin(rs.getTimestamp("last_login"));
         return user;
     }
 }

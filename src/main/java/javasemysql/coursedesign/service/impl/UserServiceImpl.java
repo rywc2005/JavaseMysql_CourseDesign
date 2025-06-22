@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class UserServiceImpl implements UserService {
 
     private static final Logger logger = Logger.getLogger(UserServiceImpl.class.getName());
-    private UserDao userDao;
+    private final UserDao userDao;
 
     public UserServiceImpl() {
         userDao = new UserDaoImpl();

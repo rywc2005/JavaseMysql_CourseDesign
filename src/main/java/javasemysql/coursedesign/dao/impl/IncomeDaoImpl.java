@@ -154,15 +154,14 @@ public class IncomeDaoImpl implements IncomeDao {
         PreparedStatement pstmt = null;
 
         try {
-            String sql = "INSERT INTO income (user_id, account_id, account_name, category, amount, date, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO income (user_id, account_id, category, amount, date, description) VALUES ( ?, ?, ?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setInt(1, income.getUserId());
             pstmt.setInt(2, income.getAccountId());
-            pstmt.setString(3, income.getAccountName());
-            pstmt.setString(4, income.getCategory());
-            pstmt.setDouble(5, income.getAmount());
-            pstmt.setTimestamp(6, new Timestamp(income.getDate().getTime()));
-            pstmt.setString(7, income.getDescription());
+            pstmt.setString(3, income.getCategory());
+            pstmt.setDouble(4, income.getAmount());
+            pstmt.setTimestamp(5, new Timestamp(income.getDate().getTime()));
+            pstmt.setString(6, income.getDescription());
 
             int rows = pstmt.executeUpdate();
 
@@ -186,15 +185,14 @@ public class IncomeDaoImpl implements IncomeDao {
         PreparedStatement pstmt = null;
 
         try {
-            String sql = "UPDATE income SET account_id = ?, account_name = ?, category = ?, amount = ?, date = ?, description = ? WHERE id = ?";
+            String sql = "UPDATE income SET account_id = ?,  category = ?, amount = ?, date = ?, description = ? WHERE id = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, income.getAccountId());
-            pstmt.setString(2, income.getAccountName());
-            pstmt.setString(3, income.getCategory());
-            pstmt.setDouble(4, income.getAmount());
-            pstmt.setTimestamp(5, new Timestamp(income.getDate().getTime()));
-            pstmt.setString(6, income.getDescription());
-            pstmt.setInt(7, income.getId());
+            pstmt.setString(2, income.getCategory());
+            pstmt.setDouble(3, income.getAmount());
+            pstmt.setTimestamp(4, new Timestamp(income.getDate().getTime()));
+            pstmt.setString(5, income.getDescription());
+            pstmt.setInt(6, income.getId());
 
             int rows = pstmt.executeUpdate();
             return rows > 0;
@@ -772,10 +770,8 @@ public class IncomeDaoImpl implements IncomeDao {
         income.setId(rs.getInt("id"));
         income.setUserId(rs.getInt("user_id"));
         income.setAccountId(rs.getInt("account_id"));
-        income.setAccountName(rs.getString("account_name"));
         income.setCategory(rs.getString("category"));
         income.setAmount(rs.getDouble("amount"));
-        income.setDate(rs.getTimestamp("date"));
         income.setDescription(rs.getString("description"));
         return income;
     }

@@ -127,12 +127,11 @@ public class BackupDaoImpl implements BackupDao {
         PreparedStatement pstmt = null;
 
         try {
-            String sql = "INSERT INTO backup (user_id, file_path, description, created_at) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO backup (user_id, file_path, created_at) VALUES ( ?, ?, ?)";
             pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setInt(1, backup.getUserId());
             pstmt.setString(2, backup.getFilePath());
-            pstmt.setString(3, backup.getDescription());
-            pstmt.setTimestamp(4, new Timestamp(backup.getCreatedAt().getTime()));
+            pstmt.setTimestamp(3, new Timestamp(backup.getCreatedAt().getTime()));
 
             int rows = pstmt.executeUpdate();
 
@@ -156,12 +155,11 @@ public class BackupDaoImpl implements BackupDao {
         PreparedStatement pstmt = null;
 
         try {
-            String sql = "UPDATE backup SET file_path = ?, description = ?, created_at = ? WHERE id = ?";
+            String sql = "UPDATE backup SET file_path = ?, created_at = ? WHERE id = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, backup.getFilePath());
-            pstmt.setString(2, backup.getDescription());
-            pstmt.setTimestamp(3, new Timestamp(backup.getCreatedAt().getTime()));
-            pstmt.setInt(4, backup.getId());
+            pstmt.setTimestamp(2, new Timestamp(backup.getCreatedAt().getTime()));
+            pstmt.setInt(3, backup.getId());
 
             int rows = pstmt.executeUpdate();
             return rows > 0;
@@ -198,7 +196,6 @@ public class BackupDaoImpl implements BackupDao {
         backup.setId(rs.getInt("id"));
         backup.setUserId(rs.getInt("user_id"));
         backup.setFilePath(rs.getString("file_path"));
-        backup.setDescription(rs.getString("description"));
         backup.setCreatedAt(rs.getTimestamp("created_at"));
         return backup;
     }

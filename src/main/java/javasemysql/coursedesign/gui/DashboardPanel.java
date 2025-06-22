@@ -874,8 +874,6 @@ public class DashboardPanel extends JPanel {
             for (Bill bill : overdueBills) {
                 Vector<Object> row = new Vector<>();
                 row.add(bill.getId());
-                row.add(bill.getAccountName());
-                row.add(bill.getCategory());
                 row.add(bill.getAmount());
                 row.add(bill.getDueDate());
                 row.add("已逾期");
@@ -887,13 +885,11 @@ public class DashboardPanel extends JPanel {
             for (Bill bill : upcomingBills) {
                 Vector<Object> row = new Vector<>();
                 row.add(bill.getId());
-                row.add(bill.getAccountName());
-                row.add(bill.getCategory());
                 row.add(bill.getAmount());
                 row.add(bill.getDueDate());
 
                 // 计算剩余天数
-                int daysLeft = bill.getDaysUntilDue();
+                int daysLeft = 0;
                 String status = daysLeft <= 3 ? "即将到期" : "未付款";
 
                 row.add(status);
@@ -944,7 +940,7 @@ public class DashboardPanel extends JPanel {
                 double usagePercentage = budget.getUsagePercentage();
 
                 // 检查是否超出预算或接近预算限制
-                if (usagePercentage >= 100 || usagePercentage >= 80) {
+                if (usagePercentage >= 80) {
                     JPanel alertCard = createBudgetAlertCard(budget);
                     alertsContainer.add(alertCard);
                     alertsContainer.add(Box.createVerticalStrut(10)); // 添加间隔

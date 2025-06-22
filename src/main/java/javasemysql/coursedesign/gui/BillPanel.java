@@ -808,8 +808,6 @@ public class BillPanel extends JPanel {
             Vector<Object> row = new Vector<>();
             row.add(bill.getId());
             row.add(bill.getAccountId());
-            row.add(bill.getAccountName());
-            row.add(bill.getCategory());
             row.add(bill.getAmount());
             row.add(bill.getDueDate());
 
@@ -828,8 +826,6 @@ public class BillPanel extends JPanel {
             }
 
             row.add(status);
-            row.add(bill.getPaymentDate());
-            row.add(bill.getDescription());
 
             tableModel.addRow(row);
 
@@ -890,22 +886,9 @@ public class BillPanel extends JPanel {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setOpaque(false);
 
-        // 统计各类别账单
-        Map<String, Double> categoryAmounts = new HashMap<>();
-        for (Bill bill : bills) {
-            String category = bill.getCategory();
-            double amount = bill.getAmount();
-
-            categoryAmounts.put(category, categoryAmounts.getOrDefault(category, 0.0) + amount);
-        }
 
         // 创建饼图数据集
         DefaultPieDataset dataset = new DefaultPieDataset();
-
-        // 添加数据
-        for (Map.Entry<String, Double> entry : categoryAmounts.entrySet()) {
-            dataset.setValue(entry.getKey(), entry.getValue());
-        }
 
         // 创建饼图
         JFreeChart chart = ChartFactory.createPieChart(

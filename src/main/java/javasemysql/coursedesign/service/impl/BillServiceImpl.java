@@ -32,8 +32,8 @@ public class BillServiceImpl implements BillService {
 
     private static final Logger logger = Logger.getLogger(BillServiceImpl.class.getName());
 
-    private BillDao billDao;
-    private AccountService accountService;
+    private final BillDao billDao;
+    private final AccountService accountService;
 
     /**
      * 构造函数
@@ -94,8 +94,6 @@ public class BillServiceImpl implements BillService {
                     return false;
                 }
 
-                // 设置账户名称
-                bill.setAccountName(account.getName());
             }
 
             // 执行添加操作
@@ -156,8 +154,6 @@ public class BillServiceImpl implements BillService {
                     return false;
                 }
 
-                // 更新账户名称
-                bill.setAccountName(account.getName());
             }
 
             // 执行更新操作
@@ -330,8 +326,7 @@ public class BillServiceImpl implements BillService {
             }
 
             // 更新账单状态
-            bill.setPaid(true);
-            bill.setPaymentDate(paymentDate);
+            bill.setStatus(String.valueOf(true));
 
             // 如果账单关联了账户，则更新账户余额
             if (bill.getAccountId() > 0) {

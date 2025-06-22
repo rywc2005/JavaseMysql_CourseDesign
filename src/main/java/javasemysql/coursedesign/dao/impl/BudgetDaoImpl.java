@@ -223,14 +223,13 @@ public class BudgetDaoImpl implements BudgetDao {
         PreparedStatement pstmt = null;
 
         try {
-            String sql = "INSERT INTO budget (user_id, category, amount, start_date, end_date, description) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO budget (user_id, category, amount, start_date, end_date) VALUES (?, ?, ?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setInt(1, budget.getUserId());
             pstmt.setString(2, budget.getCategory());
             pstmt.setDouble(3, budget.getAmount());
             pstmt.setTimestamp(4, new Timestamp(budget.getStartDate().getTime()));
             pstmt.setTimestamp(5, new Timestamp(budget.getEndDate().getTime()));
-            pstmt.setString(6, budget.getDescription());
 
             int rows = pstmt.executeUpdate();
 
@@ -254,14 +253,13 @@ public class BudgetDaoImpl implements BudgetDao {
         PreparedStatement pstmt = null;
 
         try {
-            String sql = "UPDATE budget SET category = ?, amount = ?, start_date = ?, end_date = ?, description = ? WHERE id = ?";
+            String sql = "UPDATE budget SET category = ?, amount = ?, start_date = ?, end_date = ? WHERE id = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, budget.getCategory());
             pstmt.setDouble(2, budget.getAmount());
             pstmt.setTimestamp(3, new Timestamp(budget.getStartDate().getTime()));
             pstmt.setTimestamp(4, new Timestamp(budget.getEndDate().getTime()));
-            pstmt.setString(5, budget.getDescription());
-            pstmt.setInt(6, budget.getId());
+            pstmt.setInt(5, budget.getId());
 
             int rows = pstmt.executeUpdate();
             return rows > 0;
@@ -301,7 +299,6 @@ public class BudgetDaoImpl implements BudgetDao {
         budget.setAmount(rs.getDouble("amount"));
         budget.setStartDate(rs.getTimestamp("start_date"));
         budget.setEndDate(rs.getTimestamp("end_date"));
-        budget.setDescription(rs.getString("description"));
         return budget;
     }
 

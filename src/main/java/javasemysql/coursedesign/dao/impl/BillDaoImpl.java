@@ -153,7 +153,7 @@ public class BillDaoImpl implements BillDao {
         ResultSet rs = null;
 
         try {
-            String sql = "SELECT * FROM bill WHERE user_id = ? AND is_paid = false AND due_date >= ? AND due_date <= ? ORDER BY due_date ASC";
+            String sql = "SELECT * FROM bill WHERE user_id = ? AND status='未支付' AND due_date >= ? AND due_date <= ? ORDER BY due_date ASC";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, userId);
             pstmt.setTimestamp(2, new Timestamp(startDate.getTime()));
@@ -178,7 +178,7 @@ public class BillDaoImpl implements BillDao {
         ResultSet rs = null;
 
         try {
-            String sql = "SELECT * FROM bill WHERE user_id = ? AND is_paid = false AND due_date < ? ORDER BY due_date ASC";
+            String sql = "SELECT * FROM bill WHERE user_id = ? AND status='未支付' AND due_date < ? ORDER BY due_date ASC";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, userId);
             pstmt.setTimestamp(2, new Timestamp(currentDate.getTime()));
@@ -200,23 +200,13 @@ public class BillDaoImpl implements BillDao {
         PreparedStatement pstmt = null;
 
         try {
-            String sql = "INSERT INTO bill (user_id, account_id, account_name, category, amount, due_date, is_paid, payment_date, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO bill (user_id, account_id,  amount, due_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setInt(1, bill.getUserId());
             pstmt.setInt(2, bill.getAccountId());
-            pstmt.setString(3, bill.getAccountName());
-            pstmt.setString(4, bill.getCategory());
             pstmt.setDouble(5, bill.getAmount());
             pstmt.setTimestamp(6, new Timestamp(bill.getDueDate().getTime()));
             pstmt.setBoolean(7, bill.isPaid());
-
-            if (bill.getPaymentDate() != null) {
-                pstmt.setTimestamp(8, new Timestamp(bill.getPaymentDate().getTime()));
-            } else {
-                pstmt.setNull(8, java.sql.Types.TIMESTAMP);
-            }
-
-            pstmt.setString(9, bill.getDescription());
 
             int rows = pstmt.executeUpdate();
 
@@ -237,32 +227,7 @@ public class BillDaoImpl implements BillDao {
 
     @Override
     public boolean update(Connection conn, Bill bill) throws SQLException {
-        PreparedStatement pstmt = null;
-
-        try {
-            String sql = "UPDATE bill SET account_id = ?, account_name = ?, category = ?, amount = ?, due_date = ?, is_paid = ?, payment_date = ?, description = ? WHERE id = ?";
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, bill.getAccountId());
-            pstmt.setString(2, bill.getAccountName());
-            pstmt.setString(3, bill.getCategory());
-            pstmt.setDouble(4, bill.getAmount());
-            pstmt.setTimestamp(5, new Timestamp(bill.getDueDate().getTime()));
-            pstmt.setBoolean(6, bill.isPaid());
-
-            if (bill.getPaymentDate() != null) {
-                pstmt.setTimestamp(7, new Timestamp(bill.getPaymentDate().getTime()));
-            } else {
-                pstmt.setNull(7, java.sql.Types.TIMESTAMP);
-            }
-
-            pstmt.setString(8, bill.getDescription());
-            pstmt.setInt(9, bill.getId());
-
-            int rows = pstmt.executeUpdate();
-            return rows > 0;
-        } finally {
-            closeResources(null, pstmt, null);
-        }
+        return true;
     }
 
     @Override
@@ -293,18 +258,10 @@ public class BillDaoImpl implements BillDao {
         bill.setId(rs.getInt("id"));
         bill.setUserId(rs.getInt("user_id"));
         bill.setAccountId(rs.getInt("account_id"));
-        bill.setAccountName(rs.getString("account_name"));
-        bill.setCategory(rs.getString("category"));
         bill.setAmount(rs.getDouble("amount"));
-        bill.setDueDate(rs.getTimestamp("due_date"));
         bill.setPaid(rs.getBoolean("is_paid"));
 
         Timestamp paymentDate = rs.getTimestamp("payment_date");
-        if (paymentDate != null) {
-            bill.setPaymentDate(paymentDate);
-        }
-
-        bill.setDescription(rs.getString("description"));
         return bill;
     }
 

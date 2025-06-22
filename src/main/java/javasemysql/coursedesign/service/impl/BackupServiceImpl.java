@@ -21,6 +21,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,7 +42,7 @@ public class BackupServiceImpl implements BackupService {
 
     private static final Logger logger = Logger.getLogger(BackupServiceImpl.class.getName());
 
-    private BackupDao backupDao;
+    private final BackupDao backupDao;
 
     // MySQL数据库备份和恢复命令的路径
     private static final String MYSQL_DUMP_PATH = "mysqldump";
@@ -82,8 +83,7 @@ public class BackupServiceImpl implements BackupService {
             // 创建备份对象
             backup = new Backup();
             backup.setUserId(userId);
-            backup.setDescription(description);
-            backup.setCreatedAt(new Date());
+            backup.setCreatedAt((Timestamp) new Date());
 
             // 生成备份文件名
             String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());

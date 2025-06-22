@@ -147,11 +147,10 @@ public class ExpenseDaoImpl implements ExpenseDao {
         PreparedStatement pstmt = null;
 
         try {
-            String sql = "INSERT INTO expense (user_id, account_id, account_name, category, amount, date, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO expense (user_id, account_id, category, amount, date, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setInt(1, expense.getUserId());
             pstmt.setInt(2, expense.getAccountId());
-            pstmt.setString(3, expense.getAccountName());
             pstmt.setString(4, expense.getCategory());
             pstmt.setDouble(5, expense.getAmount());
             pstmt.setTimestamp(6, new Timestamp(expense.getDate().getTime()));
@@ -179,15 +178,13 @@ public class ExpenseDaoImpl implements ExpenseDao {
         PreparedStatement pstmt = null;
 
         try {
-            String sql = "UPDATE expense SET account_id = ?, account_name = ?, category = ?, amount = ?, date = ?, description = ? WHERE id = ?";
+            String sql = "UPDATE expense SET account_id = ?, category = ?, amount = ?, date = ? WHERE id = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, expense.getAccountId());
-            pstmt.setString(2, expense.getAccountName());
-            pstmt.setString(3, expense.getCategory());
-            pstmt.setDouble(4, expense.getAmount());
-            pstmt.setTimestamp(5, new Timestamp(expense.getDate().getTime()));
-            pstmt.setString(6, expense.getDescription());
-            pstmt.setInt(7, expense.getId());
+            pstmt.setString(2, expense.getCategory());
+            pstmt.setDouble(3, expense.getAmount());
+            pstmt.setTimestamp(4, new Timestamp(expense.getDate().getTime()));
+            pstmt.setInt(5, expense.getId());
 
             int rows = pstmt.executeUpdate();
             return rows > 0;
@@ -765,7 +762,6 @@ public class ExpenseDaoImpl implements ExpenseDao {
         expense.setId(rs.getInt("id"));
         expense.setUserId(rs.getInt("user_id"));
         expense.setAccountId(rs.getInt("account_id"));
-        expense.setAccountName(rs.getString("account_name"));
         expense.setCategory(rs.getString("category"));
         expense.setAmount(rs.getDouble("amount"));
         expense.setDate(rs.getTimestamp("date"));

@@ -1,0 +1,1476 @@
+6月 22, 2025 6:37:41 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 6:37:41 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+警告: 未找到配置文件，将使用默认配置
+java.io.FileNotFoundException: config.properties (系统找不到指定的文件。)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
+	at javasemysql.coursedesign.utils.ConfigUtils.loadConfig(ConfigUtils.java:35)
+	at javasemysql.coursedesign.Main.initConfig(Main.java:78)
+	at javasemysql.coursedesign.Main.main(Main.java:36)
+
+6月 22, 2025 6:37:41 上午 javasemysql.coursedesign.Main initConfig
+严重: 加载配置文件失败
+java.io.FileNotFoundException: config.properties (系统找不到指定的文件。)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
+	at javasemysql.coursedesign.utils.ConfigUtils.loadConfig(ConfigUtils.java:35)
+	at javasemysql.coursedesign.Main.initConfig(Main.java:78)
+	at javasemysql.coursedesign.Main.main(Main.java:36)
+
+6月 22, 2025 6:37:49 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 6:37:49 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 6:37:49 上午 javasemysql.coursedesign.Main testDatabaseConnection
+严重: 数据库连接失败
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at javasemysql.coursedesign.utils.DBUtils.getConnection(DBUtils.java:42)
+	at javasemysql.coursedesign.Main.testDatabaseConnection(Main.java:151)
+	at javasemysql.coursedesign.Main.main(Main.java:46)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:135)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:59)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:440)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:210)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1369)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 8 more
+
+6月 22, 2025 6:38:08 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 6:38:08 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+警告: 未找到配置文件，将使用默认配置
+java.io.FileNotFoundException: config.properties (系统找不到指定的文件。)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
+	at javasemysql.coursedesign.utils.ConfigUtils.loadConfig(ConfigUtils.java:35)
+	at javasemysql.coursedesign.Main.initConfig(Main.java:78)
+	at javasemysql.coursedesign.Main.main(Main.java:36)
+
+6月 22, 2025 6:38:08 上午 javasemysql.coursedesign.Main initConfig
+严重: 加载配置文件失败
+java.io.FileNotFoundException: config.properties (系统找不到指定的文件。)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
+	at javasemysql.coursedesign.utils.ConfigUtils.loadConfig(ConfigUtils.java:35)
+	at javasemysql.coursedesign.Main.initConfig(Main.java:78)
+	at javasemysql.coursedesign.Main.main(Main.java:36)
+
+6月 22, 2025 6:38:51 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 6:38:51 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+警告: 未找到配置文件，将使用默认配置
+java.io.FileNotFoundException: config.properties (系统找不到指定的文件。)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
+	at javasemysql.coursedesign.utils.ConfigUtils.loadConfig(ConfigUtils.java:35)
+	at javasemysql.coursedesign.Main.initConfig(Main.java:78)
+	at javasemysql.coursedesign.Main.main(Main.java:36)
+
+6月 22, 2025 6:38:51 上午 javasemysql.coursedesign.Main initConfig
+严重: 加载配置文件失败
+java.io.FileNotFoundException: config.properties (系统找不到指定的文件。)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
+	at javasemysql.coursedesign.utils.ConfigUtils.loadConfig(ConfigUtils.java:35)
+	at javasemysql.coursedesign.Main.initConfig(Main.java:78)
+	at javasemysql.coursedesign.Main.main(Main.java:36)
+
+6月 22, 2025 6:39:07 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 6:39:07 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 6:39:07 上午 javasemysql.coursedesign.Main testDatabaseConnection
+严重: 数据库连接失败
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at javasemysql.coursedesign.utils.DBUtils.getConnection(DBUtils.java:42)
+	at javasemysql.coursedesign.Main.testDatabaseConnection(Main.java:151)
+	at javasemysql.coursedesign.Main.main(Main.java:46)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:135)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:59)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:440)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:210)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1369)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 8 more
+
+6月 22, 2025 6:52:48 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 6:52:48 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 6:52:48 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 6:52:48 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 6:52:48 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 6:52:48 上午 javasemysql.coursedesign.Main testDatabaseConnection
+严重: 数据库连接失败
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at javasemysql.coursedesign.utils.DBUtils.getConnection(DBUtils.java:42)
+	at javasemysql.coursedesign.Main.testDatabaseConnection(Main.java:151)
+	at javasemysql.coursedesign.Main.main(Main.java:46)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:135)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:59)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:440)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:210)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1369)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 8 more
+
+6月 22, 2025 6:54:38 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 6:54:38 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 6:54:38 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 6:54:38 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 6:54:38 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 6:54:38 上午 javasemysql.coursedesign.Main testDatabaseConnection
+严重: 数据库连接失败
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at javasemysql.coursedesign.utils.DBUtils.getConnection(DBUtils.java:42)
+	at javasemysql.coursedesign.Main.testDatabaseConnection(Main.java:151)
+	at javasemysql.coursedesign.Main.main(Main.java:46)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:135)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:59)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:440)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:210)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1369)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 8 more
+
+6月 22, 2025 6:55:00 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 6:55:00 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 6:55:00 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 6:55:00 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 6:55:00 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 6:55:01 上午 javasemysql.coursedesign.Main testDatabaseConnection
+严重: 数据库连接失败
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at javasemysql.coursedesign.utils.DBUtils.getConnection(DBUtils.java:42)
+	at javasemysql.coursedesign.Main.testDatabaseConnection(Main.java:151)
+	at javasemysql.coursedesign.Main.main(Main.java:46)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:135)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:59)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:440)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:210)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1369)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 8 more
+
+6月 22, 2025 6:55:30 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 6:55:30 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 6:55:30 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 6:55:30 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 6:55:30 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 6:55:31 上午 javasemysql.coursedesign.Main testDatabaseConnection
+严重: 数据库连接失败
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at javasemysql.coursedesign.utils.DBUtils.getConnection(DBUtils.java:42)
+	at javasemysql.coursedesign.Main.testDatabaseConnection(Main.java:151)
+	at javasemysql.coursedesign.Main.main(Main.java:46)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:135)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:59)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:440)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:210)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1369)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 8 more
+
+6月 22, 2025 6:57:33 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 6:57:33 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 6:57:33 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 6:57:34 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 6:57:34 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 6:57:34 上午 javasemysql.coursedesign.Main testDatabaseConnection
+严重: 数据库连接失败
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at javasemysql.coursedesign.utils.DBUtils.getConnection(DBUtils.java:42)
+	at javasemysql.coursedesign.Main.testDatabaseConnection(Main.java:151)
+	at javasemysql.coursedesign.Main.main(Main.java:46)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:135)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:59)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:440)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:210)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1369)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 8 more
+
+6月 22, 2025 7:01:39 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:01:39 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:01:39 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:01:40 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:01:40 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:01:40 上午 javasemysql.coursedesign.Main testDatabaseConnection
+严重: 数据库连接失败
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at javasemysql.coursedesign.utils.DBUtils.getConnection(DBUtils.java:42)
+	at javasemysql.coursedesign.Main.testDatabaseConnection(Main.java:151)
+	at javasemysql.coursedesign.Main.main(Main.java:46)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:135)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:59)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:440)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:210)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1369)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 8 more
+
+6月 22, 2025 7:01:57 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:01:57 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:01:57 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:01:58 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:01:58 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:01:58 上午 javasemysql.coursedesign.Main testDatabaseConnection
+严重: 数据库连接失败
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at javasemysql.coursedesign.utils.DBUtils.getConnection(DBUtils.java:42)
+	at javasemysql.coursedesign.Main.testDatabaseConnection(Main.java:151)
+	at javasemysql.coursedesign.Main.main(Main.java:46)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:135)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:59)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:440)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:210)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1369)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 8 more
+
+6月 22, 2025 7:02:11 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:02:11 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:02:11 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:02:11 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:02:11 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:02:11 上午 javasemysql.coursedesign.Main testDatabaseConnection
+严重: 数据库连接失败
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at javasemysql.coursedesign.utils.DBUtils.getConnection(DBUtils.java:42)
+	at javasemysql.coursedesign.Main.testDatabaseConnection(Main.java:151)
+	at javasemysql.coursedesign.Main.main(Main.java:46)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:135)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:59)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:440)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:210)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1369)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 8 more
+
+6月 22, 2025 7:04:39 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:04:39 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:04:39 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:04:40 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:04:40 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:04:40 上午 javasemysql.coursedesign.Main testDatabaseConnection
+严重: 数据库连接失败
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at javasemysql.coursedesign.utils.DBUtils.getConnection(DBUtils.java:42)
+	at javasemysql.coursedesign.Main.testDatabaseConnection(Main.java:151)
+	at javasemysql.coursedesign.Main.main(Main.java:46)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:135)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:59)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:440)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:210)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1369)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 8 more
+
+6月 22, 2025 7:05:33 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:05:33 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:05:33 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:05:33 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:05:33 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:05:34 上午 javasemysql.coursedesign.Main testDatabaseConnection
+严重: 数据库连接失败
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at javasemysql.coursedesign.utils.DBUtils.getConnection(DBUtils.java:42)
+	at javasemysql.coursedesign.Main.testDatabaseConnection(Main.java:151)
+	at javasemysql.coursedesign.Main.main(Main.java:46)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:135)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:59)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:440)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:210)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1369)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 8 more
+
+6月 22, 2025 7:06:51 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:06:51 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:06:51 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:06:51 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:06:51 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:06:52 上午 javasemysql.coursedesign.Main testDatabaseConnection
+严重: 数据库连接失败
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at javasemysql.coursedesign.utils.DBUtils.getConnection(DBUtils.java:42)
+	at javasemysql.coursedesign.Main.testDatabaseConnection(Main.java:151)
+	at javasemysql.coursedesign.Main.main(Main.java:46)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:135)
+	at com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin.nextAuthenticationStep(Sha256PasswordPlugin.java:59)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:440)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:210)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1369)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 8 more
+
+6月 22, 2025 7:09:07 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:09:07 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:09:07 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:09:07 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:09:07 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:09:08 上午 javasemysql.coursedesign.Main testDatabaseConnection
+严重: 数据库连接失败
+java.sql.SQLException: Access denied for user 'finance_user'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at javasemysql.coursedesign.utils.DBUtils.getConnection(DBUtils.java:42)
+	at javasemysql.coursedesign.Main.testDatabaseConnection(Main.java:151)
+	at javasemysql.coursedesign.Main.main(Main.java:46)
+
+6月 22, 2025 7:14:56 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:14:56 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:14:56 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:14:59 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:14:59 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:14:59 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 7:14:59 上午 javasemysql.coursedesign.gui.MainFrame initComponents
+警告: 无法加载应用图标
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:99)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:47)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:170)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:23:11 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:23:11 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:23:11 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:23:11 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:23:11 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:23:12 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 7:42:32 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:42:32 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:42:32 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:42:33 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:42:33 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:42:33 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 7:46:00 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:46:00 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:46:00 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:46:00 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:46:00 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:46:00 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 7:46:00 上午 javasemysql.coursedesign.gui.MainFrame initComponents
+警告: 无法加载应用图标
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:120)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:177)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:46:01 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+严重: 应用程序启动失败
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.AccountPanel.initComponents(AccountPanel.java:109)
+	at javasemysql.coursedesign.gui.AccountPanel.<init>(AccountPanel.java:63)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:143)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:177)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:50:36 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:50:36 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:50:36 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:50:37 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:50:37 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:50:37 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 7:50:37 上午 javasemysql.coursedesign.gui.MainFrame initComponents
+警告: 无法加载应用图标
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:120)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:177)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:50:37 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+严重: 应用程序启动失败
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.AccountPanel.initComponents(AccountPanel.java:109)
+	at javasemysql.coursedesign.gui.AccountPanel.<init>(AccountPanel.java:63)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:143)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:177)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:54:09 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:54:09 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:54:09 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:54:10 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:54:10 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:54:10 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 7:54:10 上午 javasemysql.coursedesign.gui.MainFrame initComponents
+警告: 无法加载应用图标
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:120)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:177)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:54:10 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+严重: 应用程序启动失败
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.AccountPanel.initComponents(AccountPanel.java:109)
+	at javasemysql.coursedesign.gui.AccountPanel.<init>(AccountPanel.java:63)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:143)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:177)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:55:13 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:55:13 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:55:13 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:55:13 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:55:13 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:55:13 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 7:55:13 上午 javasemysql.coursedesign.gui.MainFrame initComponents
+警告: 无法加载应用图标
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:120)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:177)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:55:13 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+严重: 应用程序启动失败
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.AccountPanel.initComponents(AccountPanel.java:109)
+	at javasemysql.coursedesign.gui.AccountPanel.<init>(AccountPanel.java:63)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:143)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:177)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:55:16 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:55:16 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:55:16 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:55:16 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:55:16 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:55:16 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 7:55:16 上午 javasemysql.coursedesign.gui.MainFrame initComponents
+警告: 无法加载应用图标
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:120)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:177)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:55:16 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+严重: 应用程序启动失败
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.AccountPanel.initComponents(AccountPanel.java:109)
+	at javasemysql.coursedesign.gui.AccountPanel.<init>(AccountPanel.java:63)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:143)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:177)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:58:39 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:58:39 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:58:39 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:58:39 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:58:39 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:58:39 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 7:58:39 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+信息: 服务初始化成功
+6月 22, 2025 7:58:39 上午 javasemysql.coursedesign.gui.MainFrame initComponents
+警告: 无法加载应用图标
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:120)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:58:40 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+严重: 应用程序启动失败
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.AccountPanel.initComponents(AccountPanel.java:109)
+	at javasemysql.coursedesign.gui.AccountPanel.<init>(AccountPanel.java:63)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:143)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 8:00:56 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 8:00:56 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 8:00:56 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 8:00:57 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 8:00:57 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 8:00:57 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 8:00:57 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+信息: 服务初始化成功
+6月 22, 2025 8:00:57 上午 javasemysql.coursedesign.gui.MainFrame initLookAndFeel
+信息: 系统外观设置成功
+6月 22, 2025 8:00:57 上午 javasemysql.coursedesign.gui.MainFrame initComponents
+警告: 无法加载应用图标
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:123)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 8:00:57 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+严重: 应用程序启动失败
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.AccountPanel.initComponents(AccountPanel.java:109)
+	at javasemysql.coursedesign.gui.AccountPanel.<init>(AccountPanel.java:63)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:146)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 8:01:45 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 8:01:45 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 8:01:45 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 8:01:46 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 8:01:46 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 8:01:46 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 8:01:46 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+信息: 服务初始化成功
+6月 22, 2025 8:01:46 上午 javasemysql.coursedesign.gui.MainFrame initLookAndFeel
+信息: 系统外观设置成功
+6月 22, 2025 8:01:46 上午 javasemysql.coursedesign.gui.MainFrame initComponents
+警告: 无法加载应用图标
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:123)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 8:01:46 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+严重: 应用程序启动失败
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.AccountPanel.initComponents(AccountPanel.java:109)
+	at javasemysql.coursedesign.gui.AccountPanel.<init>(AccountPanel.java:63)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:146)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 8:02:45 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 8:02:45 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 8:02:45 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 8:02:45 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 8:02:45 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 8:02:46 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 8:02:46 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+信息: 服务初始化成功
+6月 22, 2025 8:02:46 上午 javasemysql.coursedesign.gui.MainFrame initLookAndFeel
+信息: 系统外观设置成功
+6月 22, 2025 8:02:46 上午 javasemysql.coursedesign.gui.MainFrame initComponents
+警告: 无法加载应用图标
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:123)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 8:02:46 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+严重: 应用程序启动失败
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.AccountPanel.initComponents(AccountPanel.java:109)
+	at javasemysql.coursedesign.gui.AccountPanel.<init>(AccountPanel.java:63)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:146)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 8:04:16 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 8:04:16 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 8:04:16 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 8:04:16 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 8:04:16 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 8:04:16 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 8:04:16 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+信息: 服务初始化成功
+6月 22, 2025 8:04:16 上午 javasemysql.coursedesign.gui.MainFrame initLookAndFeel
+信息: 系统外观设置成功
+6月 22, 2025 8:04:16 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+严重: 应用程序启动失败
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:122)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 8:06:55 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 8:06:55 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 8:06:55 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 8:06:56 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 8:06:56 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 8:06:56 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 8:06:56 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+信息: 服务初始化成功
+6月 22, 2025 8:06:56 上午 javasemysql.coursedesign.gui.MainFrame initLookAndFeel
+信息: 系统外观设置成功
+6月 22, 2025 8:06:56 上午 javasemysql.coursedesign.gui.MainFrame initComponents
+警告: 无法加载应用图标
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:123)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 8:06:56 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+严重: 应用程序启动失败
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.AccountPanel.initComponents(AccountPanel.java:109)
+	at javasemysql.coursedesign.gui.AccountPanel.<init>(AccountPanel.java:63)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:146)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 8:14:02 上午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 8:14:02 上午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 8:14:02 上午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 8:14:02 上午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 8:14:02 上午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 8:14:02 上午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 8:14:02 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+信息: 服务初始化成功
+6月 22, 2025 8:14:02 上午 javasemysql.coursedesign.gui.MainFrame initLookAndFeel
+信息: 系统外观设置成功
+6月 22, 2025 8:14:02 上午 javasemysql.coursedesign.gui.MainFrame initComponents
+信息: 初始化主窗口组件
+6月 22, 2025 8:14:02 上午 javasemysql.coursedesign.gui.MainFrame initComponents
+警告: 无法加载应用图标
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:124)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 8:14:02 上午 javasemysql.coursedesign.Main lambda$startApplication$0
+严重: 应用程序启动失败
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.AccountPanel.initComponents(AccountPanel.java:109)
+	at javasemysql.coursedesign.gui.AccountPanel.<init>(AccountPanel.java:63)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:147)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:48:16 下午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:48:16 下午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:48:16 下午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:48:17 下午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:48:17 下午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:48:18 下午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 7:48:18 下午 javasemysql.coursedesign.Main lambda$startApplication$0
+信息: 服务初始化成功
+6月 22, 2025 7:48:18 下午 javasemysql.coursedesign.gui.MainFrame initLookAndFeel
+信息: 系统外观设置成功
+6月 22, 2025 7:48:18 下午 javasemysql.coursedesign.gui.MainFrame initComponents
+信息: 初始化主窗口组件
+6月 22, 2025 7:48:18 下午 javasemysql.coursedesign.gui.MainFrame initComponents
+警告: 无法加载应用图标
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:124)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:48:18 下午 javasemysql.coursedesign.Main lambda$startApplication$0
+严重: 应用程序启动失败
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.AccountPanel.initComponents(AccountPanel.java:109)
+	at javasemysql.coursedesign.gui.AccountPanel.<init>(AccountPanel.java:63)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:147)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:53:43 下午 javasemysql.coursedesign.Main initLogger
+信息: 日志系统初始化成功
+6月 22, 2025 7:53:43 下午 javasemysql.coursedesign.utils.ConfigUtils loadConfig
+信息: 配置文件加载成功
+6月 22, 2025 7:53:43 下午 javasemysql.coursedesign.Main initConfig
+信息: 配置加载成功
+6月 22, 2025 7:53:46 下午 javasemysql.coursedesign.Main setLookAndFeel
+信息: 设置应用程序外观成功
+6月 22, 2025 7:53:46 下午 javasemysql.coursedesign.utils.DBUtils <clinit>
+信息: MySQL JDBC Driver registered
+6月 22, 2025 7:53:47 下午 javasemysql.coursedesign.Main testDatabaseConnection
+信息: 数据库连接测试成功
+6月 22, 2025 7:53:47 下午 javasemysql.coursedesign.Main lambda$startApplication$0
+信息: 服务初始化成功
+6月 22, 2025 7:53:47 下午 javasemysql.coursedesign.gui.MainFrame initLookAndFeel
+信息: 系统外观设置成功
+6月 22, 2025 7:53:47 下午 javasemysql.coursedesign.gui.MainFrame initComponents
+信息: 初始化主窗口组件
+6月 22, 2025 7:53:47 下午 javasemysql.coursedesign.gui.MainFrame initComponents
+警告: 无法加载应用图标
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:124)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+6月 22, 2025 7:53:47 下午 javasemysql.coursedesign.Main lambda$startApplication$0
+严重: 应用程序启动失败
+java.lang.NullPointerException
+	at java.desktop/javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at javasemysql.coursedesign.gui.AccountPanel.initComponents(AccountPanel.java:109)
+	at javasemysql.coursedesign.gui.AccountPanel.<init>(AccountPanel.java:63)
+	at javasemysql.coursedesign.gui.MainFrame.initComponents(MainFrame.java:147)
+	at javasemysql.coursedesign.gui.MainFrame.<init>(MainFrame.java:55)
+	at javasemysql.coursedesign.Main.lambda$startApplication$0(Main.java:179)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+

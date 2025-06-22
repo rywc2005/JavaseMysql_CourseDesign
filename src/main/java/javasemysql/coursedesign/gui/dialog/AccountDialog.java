@@ -193,9 +193,7 @@ public class AccountDialog extends JDialog {
     private void populateFields() {
         if (account != null) {
             nameField.setText(account.getName());
-            typeComboBox.setSelectedItem(account.getType());
             balanceField.setText(String.valueOf(account.getBalance()));
-            descriptionArea.setText(account.getDescription());
         } else {
             // 新增账户，设置默认值
             typeComboBox.setSelectedItem("现金");
@@ -242,9 +240,7 @@ public class AccountDialog extends JDialog {
                 Account newAccount = new Account();
                 newAccount.setUserId(userId);
                 newAccount.setName(name);
-                newAccount.setType(type);
                 newAccount.setBalance(balance);
-                newAccount.setDescription(description);
 
                 boolean success = accountService.addAccount(newAccount);
                 if (success) {
@@ -256,9 +252,7 @@ public class AccountDialog extends JDialog {
             } else {
                 // 更新账户
                 account.setName(name);
-                account.setType(type);
                 account.setBalance(balance);
-                account.setDescription(description);
 
                 boolean success = accountService.updateAccount(account);
                 if (success) {

@@ -32,7 +32,7 @@ public class BudgetServiceImpl implements BudgetService {
 
     private static final Logger logger = Logger.getLogger(BudgetServiceImpl.class.getName());
 
-    private BudgetDao budgetDao;
+    private final BudgetDao budgetDao;
     private ExpenseService expenseService;
 
     /**

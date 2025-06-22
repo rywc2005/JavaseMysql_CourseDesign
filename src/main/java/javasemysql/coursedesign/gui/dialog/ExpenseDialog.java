@@ -17,6 +17,7 @@ import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -349,10 +350,9 @@ public class ExpenseDialog extends JDialog {
         }
 
         expense.setAccountId(selectedAccount.getId());
-        expense.setAccountName(selectedAccount.getName());
         expense.setCategory(category);
         expense.setAmount(amount);
-        expense.setDate(date);
+        expense.setDate((Timestamp) date);
         expense.setDescription(description);
 
         // 保存到数据库

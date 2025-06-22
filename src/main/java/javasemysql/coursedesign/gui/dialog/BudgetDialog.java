@@ -14,6 +14,7 @@ import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -352,8 +353,8 @@ public class BudgetDialog extends JDialog {
                 newBudget.setUserId(userId);
                 newBudget.setCategory(category);
                 newBudget.setAmount(amount);
-                newBudget.setStartDate(startDate);
-                newBudget.setEndDate(endDate);
+                newBudget.setStartDate((Timestamp) startDate);
+                newBudget.setEndDate((Timestamp) endDate);
                 newBudget.setUsedAmount(usedAmount);
 
                 boolean success = budgetService.addBudget(newBudget);
@@ -367,8 +368,8 @@ public class BudgetDialog extends JDialog {
                 // 更新预算
                 budget.setCategory(category);
                 budget.setAmount(amount);
-                budget.setStartDate(startDate);
-                budget.setEndDate(endDate);
+                budget.setStartDate((Timestamp) startDate);
+                budget.setEndDate((Timestamp) endDate);
                 budget.setUsedAmount(usedAmount);
 
                 boolean success = budgetService.updateBudget(budget);

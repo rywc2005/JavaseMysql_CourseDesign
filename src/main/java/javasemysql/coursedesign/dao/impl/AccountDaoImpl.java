@@ -121,13 +121,11 @@ public class AccountDaoImpl implements AccountDao {
         PreparedStatement pstmt = null;
 
         try {
-            String sql = "INSERT INTO account (user_id, name, type, balance, description) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO account (user_id, name,  balance) VALUES (?, ?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setInt(1, account.getUserId());
             pstmt.setString(2, account.getName());
-            pstmt.setString(3, account.getType());
-            pstmt.setDouble(4, account.getBalance());
-            pstmt.setString(5, account.getDescription());
+            pstmt.setDouble(3, account.getBalance());
 
             int rows = pstmt.executeUpdate();
 
@@ -151,13 +149,13 @@ public class AccountDaoImpl implements AccountDao {
         PreparedStatement pstmt = null;
 
         try {
-            String sql = "UPDATE account SET name = ?, type = ?, balance = ?, description = ? WHERE id = ?";
+            String sql = "UPDATE account SET name = ?, balance = ? WHERE id = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, account.getName());
-            pstmt.setString(2, account.getType());
-            pstmt.setDouble(3, account.getBalance());
-            pstmt.setString(4, account.getDescription());
-            pstmt.setInt(5, account.getId());
+
+            pstmt.setDouble(2, account.getBalance());
+
+            pstmt.setInt(3, account.getId());
 
             int rows = pstmt.executeUpdate();
             return rows > 0;
@@ -216,9 +214,7 @@ public class AccountDaoImpl implements AccountDao {
         account.setId(rs.getInt("id"));
         account.setUserId(rs.getInt("user_id"));
         account.setName(rs.getString("name"));
-        account.setType(rs.getString("type"));
         account.setBalance(rs.getDouble("balance"));
-        account.setDescription(rs.getString("description"));
         return account;
     }
 

@@ -664,7 +664,6 @@ public class IncomePanel extends JPanel {
             Vector<Object> row = new Vector<>();
             row.add(income.getId());
             row.add(income.getAccountId());
-            row.add(income.getAccountName());
             row.add(income.getCategory());
             row.add(income.getAmount());
             row.add(income.getDate());

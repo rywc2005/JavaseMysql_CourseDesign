@@ -664,7 +664,6 @@ public class ExpensePanel extends JPanel {
             Vector<Object> row = new Vector<>();
             row.add(expense.getId());
             row.add(expense.getAccountId());
-            row.add(expense.getAccountName());
             row.add(expense.getCategory());
             row.add(expense.getAmount());
             row.add(expense.getDate());

@@ -36,7 +36,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     private static final Logger logger = Logger.getLogger(ExpenseServiceImpl.class.getName());
 
-    private ExpenseDao expenseDao;
+    private final ExpenseDao expenseDao;
     private AccountService accountService;
     private BudgetService budgetService;
 
@@ -102,8 +102,6 @@ public class ExpenseServiceImpl implements ExpenseService {
                     return false;
                 }
 
-                // 设置账户名称
-                expense.setAccountName(account.getName());
 
                 // 检查余额是否足够
                 if (account.getBalance() < expense.getAmount()) {
@@ -193,9 +191,6 @@ public class ExpenseServiceImpl implements ExpenseService {
                         LogUtils.error("更新支出失败，账户不存在: " + expense.getAccountId());
                         return false;
                     }
-
-                    // 更新账户名称
-                    expense.setAccountName(account.getName());
 
                     // 检查余额是否足够
                     if (account.getBalance() < expense.getAmount()) {
