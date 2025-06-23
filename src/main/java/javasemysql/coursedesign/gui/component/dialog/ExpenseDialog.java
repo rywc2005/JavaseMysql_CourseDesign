@@ -1,33 +1,39 @@
-package javasemysql.coursedesign.gui.dialog;
+package javasemysql.coursedesign.gui.component.dialog;
 
 import javasemysql.coursedesign.model.Account;
-import javasemysql.coursedesign.model.Income;
-import javasemysql.coursedesign.service.IncomeService;
-import javasemysql.coursedesign.service.impl.IncomeServiceImpl;
+import javasemysql.coursedesign.model.Expense;
+import javasemysql.coursedesign.service.BudgetService;
+import javasemysql.coursedesign.service.ExpenseService;
+import javasemysql.coursedesign.service.impl.BudgetServiceImpl;
+import javasemysql.coursedesign.service.impl.ExpenseServiceImpl;
 import javasemysql.coursedesign.utils.DateUtils;
 import javasemysql.coursedesign.utils.LogUtils;
+import javasemysql.coursedesign.utils.StringUtils;
 import javasemysql.coursedesign.utils.ValidationUtils;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
- * 收入编辑对话框
+ * 支出编辑对话框
  *
  * @author rywc2005
  * @version 1.0
  * @date 2025-06-21
  */
-public class IncomeDialog extends JDialog {
+public class ExpenseDialog extends JDialog {
+
+    private static final Logger logger = Logger.getLogger(ExpenseDialog.class.getName());
 
     private JComboBox<String> accountComboBox;
     private JComboBox<String> categoryComboBox;
@@ -37,32 +43,34 @@ public class IncomeDialog extends JDialog {
     private JButton saveButton;
     private JButton cancelButton;
 
-    private Income income;
+    private Expense expense;
     private int userId;
     private List<Account> accounts;
-    private IncomeService incomeService;
-    private boolean incomeSaved = false;
+    private ExpenseService expenseService;
+    private BudgetService budgetService;
+    private boolean expenseSaved = false;
 
     /**
      * 构造函数
      *
      * @param parent 父窗口
-     * @param income 收入对象（为null表示新增）
+     * @param expense 支出对象（为null表示新增）
      * @param userId 用户ID
      * @param accounts 账户列表
      */
-    public IncomeDialog(JFrame parent, Income income, int userId, List<Account> accounts) {
-        super(parent, income == null ? "添加收入" : "编辑收入", true);
-        this.income = income;
+    public ExpenseDialog(JFrame parent, Expense expense, int userId, List<Account> accounts) {
+        super(parent, expense == null ? "添加支出" : "编辑支出", true);
+        this.expense = expense;
         this.userId = userId;
         this.accounts = accounts;
-        this.incomeService = new IncomeServiceImpl();
+        this.expenseService = new ExpenseServiceImpl();
+        this.budgetService = new BudgetServiceImpl();
 
         initComponents();
         setupListeners();
         populateFields();
 
-        setSize(450, 450);
+        setSize(450, 500);
         setLocationRelativeTo(parent);
         setResizable(false);
     }
@@ -110,7 +118,7 @@ public class IncomeDialog extends JDialog {
         formPanel.add(categoryLabel, gbc);
 
         // 创建类别下拉框
-        categoryComboBox = new JComboBox<>(new String[]{"工资", "奖金", "投资收益", "利息", "礼金", "兼职", "退款", "其他"});
+        categoryComboBox = new JComboBox<>(new String[]{"餐饮", "交通", "购物", "娱乐", "居家", "医疗", "教育", "旅行", "社交", "其他"});
         categoryComboBox.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         gbc.gridx = 1;
@@ -204,7 +212,7 @@ public class IncomeDialog extends JDialog {
      */
     private void setupListeners() {
         // 保存按钮点击事件
-        saveButton.addActionListener(e -> saveIncome());
+        saveButton.addActionListener(e -> saveExpense());
 
         // 取消按钮点击事件
         cancelButton.addActionListener(e -> dispose());
@@ -230,10 +238,10 @@ public class IncomeDialog extends JDialog {
      * 填充字段值
      */
     private void populateFields() {
-        if (income != null) {
+        if (expense != null) {
             // 设置账户
             for (int i = 0; i < accounts.size(); i++) {
-                if (accounts.get(i).getId() == income.getAccountId()) {
+                if (accounts.get(i).getId() == expense.getAccountId()) {
                     accountComboBox.setSelectedIndex(i);
                     break;
                 }
@@ -241,25 +249,25 @@ public class IncomeDialog extends JDialog {
 
             // 设置类别
             for (int i = 0; i < categoryComboBox.getItemCount(); i++) {
-                if (categoryComboBox.getItemAt(i).equals(income.getCategory())) {
+                if (categoryComboBox.getItemAt(i).equals(expense.getCategory())) {
                     categoryComboBox.setSelectedIndex(i);
                     break;
                 }
             }
 
-            amountField.setText(String.valueOf(income.getAmount()));
-            dateField.setText(DateUtils.formatDate(income.getDate()));
-            descriptionArea.setText(income.getDescription());
+            amountField.setText(String.valueOf(expense.getAmount()));
+            dateField.setText(DateUtils.formatDate(expense.getDate()));
+            descriptionArea.setText(expense.getDescription());
         } else {
-            // 新增收入，设置默认值
+            // 新增支出，设置默认值
             dateField.setText(DateUtils.formatDate(new Date())); // 默认今天
         }
     }
 
     /**
-     * 保存收入
+     * 保存支出
      */
-    private void saveIncome() {
+    private void saveExpense() {
         // 获取输入值
         int selectedAccountIndex = accountComboBox.getSelectedIndex();
         String category = (String) categoryComboBox.getSelectedItem();
@@ -305,53 +313,71 @@ public class IncomeDialog extends JDialog {
             return;
         }
 
-        try {
-            // 保存收入
-            if (income == null) {
-                // 新增收入
-                Income newIncome = new Income();
-                newIncome.setUserId(userId);
-                newIncome.setAccountId(accounts.get(selectedAccountIndex).getId());
-                newIncome.setCategory(category);
-                newIncome.setAmount(amount);
-                newIncome.setDate((java.sql.Date) date);
-                newIncome.setDescription(description);
+        // 获取选中的账户
+        Account selectedAccount = accounts.get(selectedAccountIndex);
 
-                boolean success = incomeService.addIncome(newIncome);
-                if (success) {
-                    incomeSaved = true;
-                    dispose();
-                } else {
-                    JOptionPane.showMessageDialog(this, "收入添加失败", "错误", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                // 更新收入
-                income.setAccountId(accounts.get(selectedAccountIndex).getId());
-                income.setCategory(category);
-                income.setAmount(amount);
-                income.setDate((java.sql.Date) date);
-                income.setDescription(description);
-
-                boolean success = incomeService.updateIncome(income);
-                if (success) {
-                    incomeSaved = true;
-                    dispose();
-                } else {
-                    JOptionPane.showMessageDialog(this, "收入更新失败", "错误", JOptionPane.ERROR_MESSAGE);
-                }
+        // 检查账户余额是否足够
+        if (expense == null || expense.getAccountId() != selectedAccount.getId() || expense.getAmount() != amount) {
+            if (selectedAccount.getBalance() < amount) {
+                JOptionPane.showMessageDialog(this, "账户余额不足\n当前余额: " + StringUtils.formatCurrency(selectedAccount.getBalance()), "错误", JOptionPane.ERROR_MESSAGE);
+                amountField.requestFocus();
+                return;
             }
-        } catch (Exception e) {
-            LogUtils.error("保存收入失败", e);
-            JOptionPane.showMessageDialog(this, "操作失败: " + e.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
+        }
+
+        // 检查是否超出预算
+        boolean isOverBudget = budgetService.isOverBudget(userId, category, amount);
+        if (isOverBudget) {
+            // 提示用户已超出预算，但允许继续
+            int choice = JOptionPane.showConfirmDialog(
+                    this,
+                    "此支出将超出您设置的 \"" + category + "\" 类别预算限额，是否继续？",
+                    "预算警告",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE
+            );
+
+            if (choice != JOptionPane.YES_OPTION) {
+                return;
+            }
+        }
+
+        // 创建或更新支出对象
+        if (expense == null) {
+            expense = new Expense();
+            expense.setUserId(userId);
+        }
+
+        expense.setAccountId(selectedAccount.getId());
+        expense.setCategory(category);
+        expense.setAmount(amount);
+        expense.setDate((Timestamp) date);
+        expense.setDescription(description);
+
+        // 保存到数据库
+        boolean success;
+        if (expense.getId() > 0) {
+            // 更新
+            success = expenseService.updateExpense(expense);
+        } else {
+            // 新增
+            success = expenseService.addExpense(expense);
+        }
+
+        if (success) {
+            expenseSaved = true;
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "保存支出失败，请稍后重试", "错误", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     /**
-     * 检查收入是否已保存
+     * 判断支出是否已保存
      *
      * @return 是否已保存
      */
-    public boolean isIncomeSaved() {
-        return incomeSaved;
+    public boolean isExpenseSaved() {
+        return expenseSaved;
     }
 }

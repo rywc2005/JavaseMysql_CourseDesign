@@ -1,11 +1,14 @@
-package javasemysql.coursedesign.gui;
+package javasemysql.coursedesign.gui.component;
 
 import javasemysql.coursedesign.dto.AccountQueryParam;
-import javasemysql.coursedesign.gui.dialog.AccountDialog;
+import javasemysql.coursedesign.gui.MainFrame;
+import javasemysql.coursedesign.gui.component.dialog.AccountDialog;
 import javasemysql.coursedesign.model.Account;
 import javasemysql.coursedesign.model.User;
 import javasemysql.coursedesign.service.AccountService;
+import javasemysql.coursedesign.service.UserService;
 import javasemysql.coursedesign.service.impl.AccountServiceImpl;
+import javasemysql.coursedesign.service.impl.UserServiceImpl;
 import javasemysql.coursedesign.utils.LogUtils;
 import javasemysql.coursedesign.utils.StringUtils;
 
@@ -39,6 +42,7 @@ public class AccountPanel extends JPanel {
     private MainFrame mainFrame;
     private User currentUser;
     private AccountService accountService;
+    private UserService userService;
 
     // UI组件
     private JTextField searchField;
@@ -58,6 +62,7 @@ public class AccountPanel extends JPanel {
      */
     public AccountPanel(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
+        this.userService=new UserServiceImpl();
         this.accountService = new AccountServiceImpl();
 
         initComponents();
@@ -108,6 +113,7 @@ public class AccountPanel extends JPanel {
         // 创建搜索图标
         JLabel searchIcon = new JLabel(new ImageIcon(getClass().getResource("/resources/images/search_icon.png")));
         searchIcon.setBorder(new EmptyBorder(0, 5, 0, 5));
+        logger.log(Level.INFO, "Search icon loaded successfully");
 
         // 创建类型下拉框
         typeComboBox = new JComboBox<>(new String[]{"所有类型", "现金", "银行卡", "信用卡", "支付宝", "微信", "其他"});

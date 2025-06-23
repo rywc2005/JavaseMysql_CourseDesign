@@ -1,14 +1,11 @@
-package javasemysql.coursedesign.gui.dialog;
+package javasemysql.coursedesign.gui.component.dialog;
 
 import javasemysql.coursedesign.model.Account;
-import javasemysql.coursedesign.model.Expense;
-import javasemysql.coursedesign.service.BudgetService;
-import javasemysql.coursedesign.service.ExpenseService;
-import javasemysql.coursedesign.service.impl.BudgetServiceImpl;
-import javasemysql.coursedesign.service.impl.ExpenseServiceImpl;
+import javasemysql.coursedesign.model.Bill;
+import javasemysql.coursedesign.service.BillService;
+import javasemysql.coursedesign.service.impl.BillServiceImpl;
 import javasemysql.coursedesign.utils.DateUtils;
 import javasemysql.coursedesign.utils.LogUtils;
-import javasemysql.coursedesign.utils.StringUtils;
 import javasemysql.coursedesign.utils.ValidationUtils;
 
 import javax.swing.*;
@@ -17,55 +14,49 @@ import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- * 支出编辑对话框
+ * 账单编辑对话框
  *
  * @author rywc2005
  * @version 1.0
  * @date 2025-06-21
  */
-public class ExpenseDialog extends JDialog {
-
-    private static final Logger logger = Logger.getLogger(ExpenseDialog.class.getName());
+public class BillDialog extends JDialog {
 
     private JComboBox<String> accountComboBox;
-    private JComboBox<String> categoryComboBox;
+    private JTextField categoryField;
     private JTextField amountField;
-    private JFormattedTextField dateField;
+    private JFormattedTextField dueDateField;
+    private JComboBox<String> statusComboBox;
     private JTextArea descriptionArea;
     private JButton saveButton;
     private JButton cancelButton;
 
-    private Expense expense;
+    private Bill bill;
     private int userId;
     private List<Account> accounts;
-    private ExpenseService expenseService;
-    private BudgetService budgetService;
-    private boolean expenseSaved = false;
+    private BillService billService;
+    private boolean billSaved = false;
 
     /**
      * 构造函数
      *
      * @param parent 父窗口
-     * @param expense 支出对象（为null表示新增）
+     * @param bill 账单对象（为null表示新增）
      * @param userId 用户ID
      * @param accounts 账户列表
      */
-    public ExpenseDialog(JFrame parent, Expense expense, int userId, List<Account> accounts) {
-        super(parent, expense == null ? "添加支出" : "编辑支出", true);
-        this.expense = expense;
+    public BillDialog(JFrame parent, Bill bill, int userId, List<Account> accounts) {
+        super(parent, bill == null ? "添加账单" : "编辑账单", true);
+        this.bill = bill;
         this.userId = userId;
         this.accounts = accounts;
-        this.expenseService = new ExpenseServiceImpl();
-        this.budgetService = new BudgetServiceImpl();
+        this.billService = new BillServiceImpl();
 
         initComponents();
         setupListeners();
@@ -118,14 +109,12 @@ public class ExpenseDialog extends JDialog {
         gbc.gridwidth = 1;
         formPanel.add(categoryLabel, gbc);
 
-        // 创建类别下拉框
-        categoryComboBox = new JComboBox<>(new String[]{"餐饮", "交通", "购物", "娱乐", "居家", "医疗", "教育", "旅行", "社交", "其他"});
-        categoryComboBox.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-
+        categoryField = new JTextField(20);
+        categoryField.setFont(new Font("微软雅黑", Font.PLAIN, 14));
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridwidth = 2;
-        formPanel.add(categoryComboBox, gbc);
+        formPanel.add(categoryField, gbc);
 
         // 金额
         JLabel amountLabel = new JLabel("金额:");
@@ -142,36 +131,51 @@ public class ExpenseDialog extends JDialog {
         gbc.gridwidth = 2;
         formPanel.add(amountField, gbc);
 
-        // 日期
-        JLabel dateLabel = new JLabel("日期:");
-        dateLabel.setFont(new Font("微软雅黑", Font.BOLD, 14));
+        // 到期日
+        JLabel dueDateLabel = new JLabel("到期日:");
+        dueDateLabel.setFont(new Font("微软雅黑", Font.BOLD, 14));
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridwidth = 1;
-        formPanel.add(dateLabel, gbc);
+        formPanel.add(dueDateLabel, gbc);
 
         // 创建日期格式化输入框
         try {
             MaskFormatter dateFormatter = new MaskFormatter("####-##-##");
             dateFormatter.setPlaceholderCharacter('_');
-            dateField = new JFormattedTextField(dateFormatter);
+            dueDateField = new JFormattedTextField(dateFormatter);
         } catch (ParseException e) {
-            dateField = new JFormattedTextField();
+            dueDateField = new JFormattedTextField();
             LogUtils.error("创建日期格式化器失败", e);
         }
 
-        dateField.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-        dateField.setToolTipText("格式：YYYY-MM-DD");
+        dueDateField.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+        dueDateField.setToolTipText("格式：YYYY-MM-DD");
         gbc.gridx = 1;
         gbc.gridy = 3;
         gbc.gridwidth = 2;
-        formPanel.add(dateField, gbc);
+        formPanel.add(dueDateField, gbc);
+
+        // 状态
+        JLabel statusLabel = new JLabel("状态:");
+        statusLabel.setFont(new Font("微软雅黑", Font.BOLD, 14));
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.gridwidth = 1;
+        formPanel.add(statusLabel, gbc);
+
+        statusComboBox = new JComboBox<>(new String[]{"待付款", "已付款"});
+        statusComboBox.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+        gbc.gridx = 1;
+        gbc.gridy = 4;
+        gbc.gridwidth = 2;
+        formPanel.add(statusComboBox, gbc);
 
         // 说明
         JLabel descriptionLabel = new JLabel("说明:");
         descriptionLabel.setFont(new Font("微软雅黑", Font.BOLD, 14));
         gbc.gridx = 0;
-        gbc.gridy = 4;
+        gbc.gridy = 5;
         gbc.gridwidth = 1;
         formPanel.add(descriptionLabel, gbc);
 
@@ -182,7 +186,7 @@ public class ExpenseDialog extends JDialog {
 
         JScrollPane scrollPane = new JScrollPane(descriptionArea);
         gbc.gridx = 1;
-        gbc.gridy = 4;
+        gbc.gridy = 5;
         gbc.gridwidth = 2;
         formPanel.add(scrollPane, gbc);
 
@@ -213,7 +217,7 @@ public class ExpenseDialog extends JDialog {
      */
     private void setupListeners() {
         // 保存按钮点击事件
-        saveButton.addActionListener(e -> saveExpense());
+        saveButton.addActionListener(e -> saveBill());
 
         // 取消按钮点击事件
         cancelButton.addActionListener(e -> dispose());
@@ -239,41 +243,42 @@ public class ExpenseDialog extends JDialog {
      * 填充字段值
      */
     private void populateFields() {
-        if (expense != null) {
+        if (bill != null) {
             // 设置账户
             for (int i = 0; i < accounts.size(); i++) {
-                if (accounts.get(i).getId() == expense.getAccountId()) {
+                if (accounts.get(i).getId() == bill.getAccountId()) {
                     accountComboBox.setSelectedIndex(i);
                     break;
                 }
             }
 
-            // 设置类别
-            for (int i = 0; i < categoryComboBox.getItemCount(); i++) {
-                if (categoryComboBox.getItemAt(i).equals(expense.getCategory())) {
-                    categoryComboBox.setSelectedIndex(i);
-                    break;
-                }
+            amountField.setText(String.valueOf(bill.getAmount()));
+            dueDateField.setText(DateUtils.formatDate(bill.getDueDate()));
+
+            // 设置状态
+            if ("paid".equalsIgnoreCase(bill.getStatus())) {
+                statusComboBox.setSelectedIndex(1); // 已付款
+            } else {
+                statusComboBox.setSelectedIndex(0); // 待付款
             }
 
-            amountField.setText(String.valueOf(expense.getAmount()));
-            dateField.setText(DateUtils.formatDate(expense.getDate()));
-            descriptionArea.setText(expense.getDescription());
         } else {
-            // 新增支出，设置默认值
-            dateField.setText(DateUtils.formatDate(new Date())); // 默认今天
+            // 新增账单，设置默认值
+            statusComboBox.setSelectedIndex(0); // 默认待付款
+            dueDateField.setText(DateUtils.formatDate(new Date())); // 默认今天
         }
     }
 
     /**
-     * 保存支出
+     * 保存账单
      */
-    private void saveExpense() {
+    private void saveBill() {
         // 获取输入值
         int selectedAccountIndex = accountComboBox.getSelectedIndex();
-        String category = (String) categoryComboBox.getSelectedItem();
+        String category = categoryField.getText().trim();
         String amountStr = amountField.getText().trim();
-        String dateStr = dateField.getText().trim();
+        String dueDateStr = dueDateField.getText().trim();
+        boolean isPaid = statusComboBox.getSelectedIndex() == 1;
         String description = descriptionArea.getText().trim();
 
         // 验证输入
@@ -283,15 +288,21 @@ public class ExpenseDialog extends JDialog {
             return;
         }
 
+        if (category.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "请输入类别", "错误", JOptionPane.ERROR_MESSAGE);
+            categoryField.requestFocus();
+            return;
+        }
+
         if (amountStr.isEmpty() || !ValidationUtils.isValidAmount(amountStr)) {
             JOptionPane.showMessageDialog(this, "请输入有效的金额", "错误", JOptionPane.ERROR_MESSAGE);
             amountField.requestFocus();
             return;
         }
 
-        if (!ValidationUtils.isValidDate(dateStr)) {
+        if (!ValidationUtils.isValidDate(dueDateStr)) {
             JOptionPane.showMessageDialog(this, "请输入有效的日期（格式：YYYY-MM-DD）", "错误", JOptionPane.ERROR_MESSAGE);
-            dateField.requestFocus();
+            dueDateField.requestFocus();
             return;
         }
 
@@ -305,80 +316,59 @@ public class ExpenseDialog extends JDialog {
             return;
         }
 
-        Date date;
+        Date dueDate;
         try {
-            date = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+            dueDate = new SimpleDateFormat("yyyy-MM-dd").parse(dueDateStr);
         } catch (ParseException e) {
             JOptionPane.showMessageDialog(this, "日期格式不正确", "错误", JOptionPane.ERROR_MESSAGE);
-            dateField.requestFocus();
+            dueDateField.requestFocus();
             return;
         }
 
-        // 获取选中的账户
-        Account selectedAccount = accounts.get(selectedAccountIndex);
+        try {
+            // 保存账单
+            if (bill == null) {
+                // 新增账单
+                Bill newBill = new Bill();
+                newBill.setUserId(userId);
+                newBill.setAccountId(accounts.get(selectedAccountIndex).getId());
+                newBill.setAmount(amount);
+                newBill.setStatus(isPaid ? "paid" : "unpaid");
 
-        // 检查账户余额是否足够
-        if (expense == null || expense.getAccountId() != selectedAccount.getId() || expense.getAmount() != amount) {
-            if (selectedAccount.getBalance() < amount) {
-                JOptionPane.showMessageDialog(this, "账户余额不足\n当前余额: " + StringUtils.formatCurrency(selectedAccount.getBalance()), "错误", JOptionPane.ERROR_MESSAGE);
-                amountField.requestFocus();
-                return;
+                boolean success = billService.addBill(newBill);
+                if (success) {
+                    billSaved = true;
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "账单添加失败", "错误", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                // 更新账单
+                bill.setAccountId(accounts.get(selectedAccountIndex).getId());
+                bill.setAmount(amount);
+                bill.setDueDate((java.sql.Date) dueDate);
+                bill.setStatus(isPaid ? "paid" : "unpaid");
+
+                boolean success = billService.updateBill(bill);
+                if (success) {
+                    billSaved = true;
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "账单更新失败", "错误", JOptionPane.ERROR_MESSAGE);
+                }
             }
-        }
-
-        // 检查是否超出预算
-        boolean isOverBudget = budgetService.isOverBudget(userId, category, amount);
-        if (isOverBudget) {
-            // 提示用户已超出预算，但允许继续
-            int choice = JOptionPane.showConfirmDialog(
-                    this,
-                    "此支出将超出您设置的 \"" + category + "\" 类别预算限额，是否继续？",
-                    "预算警告",
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.WARNING_MESSAGE
-            );
-
-            if (choice != JOptionPane.YES_OPTION) {
-                return;
-            }
-        }
-
-        // 创建或更新支出对象
-        if (expense == null) {
-            expense = new Expense();
-            expense.setUserId(userId);
-        }
-
-        expense.setAccountId(selectedAccount.getId());
-        expense.setCategory(category);
-        expense.setAmount(amount);
-        expense.setDate((Timestamp) date);
-        expense.setDescription(description);
-
-        // 保存到数据库
-        boolean success;
-        if (expense.getId() > 0) {
-            // 更新
-            success = expenseService.updateExpense(expense);
-        } else {
-            // 新增
-            success = expenseService.addExpense(expense);
-        }
-
-        if (success) {
-            expenseSaved = true;
-            dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "保存支出失败，请稍后重试", "错误", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            LogUtils.error("保存账单失败", e);
+            JOptionPane.showMessageDialog(this, "操作失败: " + e.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     /**
-     * 判断支出是否已保存
+     * 检查账单是否已保存
      *
      * @return 是否已保存
      */
-    public boolean isExpenseSaved() {
-        return expenseSaved;
+    public boolean isBillSaved() {
+        return billSaved;
     }
 }

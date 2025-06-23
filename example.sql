@@ -2,7 +2,7 @@
 CREATE DATABASE personal_finance_management0 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; -- 创建名为 personal_finance_management 的数据库，使用 utf8mb4 字符集和排序规则
 
 -- 使用数据库
-USE personal_finance_management0; -- 选择使用刚创建的数据库
+USE personal_finance_management0;
 
 -- 创建用户表
 CREATE TABLE `user` (

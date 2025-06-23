@@ -147,14 +147,14 @@ public class ExpenseDaoImpl implements ExpenseDao {
         PreparedStatement pstmt = null;
 
         try {
-            String sql = "INSERT INTO expense (user_id, account_id, category, amount, date, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO expense (user_id, account_id, category, amount, date, description) VALUES ( ?, ?, ?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setInt(1, expense.getUserId());
             pstmt.setInt(2, expense.getAccountId());
-            pstmt.setString(4, expense.getCategory());
-            pstmt.setDouble(5, expense.getAmount());
-            pstmt.setTimestamp(6, new Timestamp(expense.getDate().getTime()));
-            pstmt.setString(7, expense.getDescription());
+            pstmt.setString(3, expense.getCategory());
+            pstmt.setDouble(4, expense.getAmount());
+            pstmt.setTimestamp(5, new Timestamp(expense.getDate().getTime()));
+            pstmt.setString(6, expense.getDescription());
 
             int rows = pstmt.executeUpdate();
 

@@ -1,7 +1,8 @@
-package javasemysql.coursedesign.gui;
+package javasemysql.coursedesign.gui.component;
 
 import javasemysql.coursedesign.dto.BackupQueryParam;
-import javasemysql.coursedesign.gui.dialog.BackupDialog;
+import javasemysql.coursedesign.gui.MainFrame;
+import javasemysql.coursedesign.gui.component.dialog.BackupDialog;
 import javasemysql.coursedesign.model.Backup;
 import javasemysql.coursedesign.model.User;
 import javasemysql.coursedesign.service.BackupService;

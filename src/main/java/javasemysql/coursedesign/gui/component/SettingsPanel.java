@@ -1,5 +1,6 @@
-package javasemysql.coursedesign.gui;
+package javasemysql.coursedesign.gui.component;
 
+import javasemysql.coursedesign.gui.MainFrame;
 import javasemysql.coursedesign.model.User;
 import javasemysql.coursedesign.service.UserService;
 import javasemysql.coursedesign.service.impl.UserServiceImpl;
@@ -90,7 +91,6 @@ public class SettingsPanel extends JPanel {
         addLabelAndField(appearancePanel, "主题:", themeComboBox, 0);
         addLabelAndField(appearancePanel, "语言:", languageComboBox, 1);
         JButton applyButton = new JButton("应用设置");
-        applyButton.addActionListener(this::applySettings);
         appearancePanel.add(applyButton, createGBC(0, 2, 2));
 
         // 添加所有面板
@@ -234,13 +234,6 @@ public class SettingsPanel extends JPanel {
     /**
      * 应用界面设置
      */
-    private void applySettings(ActionEvent e) {
-        String theme = (String) themeComboBox.getSelectedItem();
-        String language = (String) languageComboBox.getSelectedItem();
-
-        // TODO: 实现主题和语言切换功能
-        mainFrame.showInfoMessage("界面设置已保存，部分设置将在重启后生效");
-    }
 
     /**
      * 清除密码字段

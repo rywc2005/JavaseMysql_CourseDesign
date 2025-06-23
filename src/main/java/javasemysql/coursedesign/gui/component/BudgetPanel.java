@@ -1,7 +1,8 @@
-package javasemysql.coursedesign.gui;
+package javasemysql.coursedesign.gui.component;
 
 import javasemysql.coursedesign.dto.BudgetQueryParam;
-import javasemysql.coursedesign.gui.dialog.BudgetDialog;
+import javasemysql.coursedesign.gui.MainFrame;
+import javasemysql.coursedesign.gui.component.dialog.BudgetDialog;
 import javasemysql.coursedesign.model.Budget;
 import javasemysql.coursedesign.model.User;
 import javasemysql.coursedesign.service.BudgetService;
@@ -27,7 +28,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**

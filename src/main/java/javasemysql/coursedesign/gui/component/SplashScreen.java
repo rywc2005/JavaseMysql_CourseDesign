@@ -1,4 +1,4 @@
-package javasemysql.coursedesign.gui;
+package javasemysql.coursedesign.gui.component;
 
 import javax.swing.*;
 import java.awt.*;

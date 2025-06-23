@@ -1,9 +1,9 @@
 package javasemysql.coursedesign;
 
 import javasemysql.coursedesign.gui.MainFrame;
-import javasemysql.coursedesign.gui.SplashScreen;
-import javasemysql.coursedesign.service.impl.BudgetServiceImpl;
-import javasemysql.coursedesign.service.impl.ExpenseServiceImpl;
+import javasemysql.coursedesign.gui.component.SplashScreen;
+import javasemysql.coursedesign.service.*;
+import javasemysql.coursedesign.service.impl.*;
 import javasemysql.coursedesign.utils.ConfigUtils;
 import javasemysql.coursedesign.utils.DBUtils;
 import javasemysql.coursedesign.utils.LogUtils;
@@ -168,15 +168,23 @@ public class Main {
     private static void startApplication() {
         SwingUtilities.invokeLater(() -> {
             try {
-                BudgetServiceImpl budgetService = new BudgetServiceImpl();
-                ExpenseServiceImpl expenseService = new ExpenseServiceImpl();
+                // 初始化服务
+                logger.info("正在初始化服务...");
+                // 创建服务实例
+                logger.info("创建服务实例...");
+                BudgetService budgetService = new BudgetServiceImpl();
+                ExpenseService expenseService = new ExpenseServiceImpl();
+                AccountService accountService = new AccountServiceImpl();
+                BackupService backupService = new BackupServiceImpl();
+                IncomeService incomeService = new IncomeServiceImpl();
+                UserService userService = new UserServiceImpl();
+                BillService billService = new BillServiceImpl();
 
-                budgetService.setExpenseService(expenseService);
-                expenseService.setBudgetService(budgetService);
                 // 初始化服务
                 logger.info("服务初始化成功");
                 // 创建主窗口
-                MainFrame mainFrame = new MainFrame(budgetService, expenseService);
+                MainFrame mainFrame = new MainFrame(
+                        accountService,backupService,billService,budgetService,expenseService,incomeService,userService);
                 mainFrame.setVisible(true);
                 logger.info("主窗口创建成功, 应用程序启动中...");
                 logger.info("应用程序启动成功");

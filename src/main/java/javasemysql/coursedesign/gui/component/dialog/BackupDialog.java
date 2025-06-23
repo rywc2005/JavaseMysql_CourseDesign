@@ -1,4 +1,4 @@
-package javasemysql.coursedesign.gui.dialog;
+package javasemysql.coursedesign.gui.component.dialog;
 
 import javasemysql.coursedesign.model.Backup;
 import javasemysql.coursedesign.model.User;

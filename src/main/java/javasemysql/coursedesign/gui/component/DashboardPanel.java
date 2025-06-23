@@ -1,5 +1,6 @@
-package javasemysql.coursedesign.gui;
+package javasemysql.coursedesign.gui.component;
 
+import javasemysql.coursedesign.gui.MainFrame;
 import javasemysql.coursedesign.model.Account;
 import javasemysql.coursedesign.model.Bill;
 import javasemysql.coursedesign.model.Budget;
@@ -30,11 +31,9 @@ import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;

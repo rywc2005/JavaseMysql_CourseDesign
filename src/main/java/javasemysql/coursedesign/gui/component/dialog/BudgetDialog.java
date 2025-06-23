@@ -1,4 +1,4 @@
-package javasemysql.coursedesign.gui.dialog;
+package javasemysql.coursedesign.gui.component.dialog;
 
 import javasemysql.coursedesign.model.Budget;
 import javasemysql.coursedesign.service.BudgetService;
@@ -9,7 +9,6 @@ import javasemysql.coursedesign.utils.ValidationUtils;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.KeyAdapter;

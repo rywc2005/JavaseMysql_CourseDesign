@@ -1,14 +1,15 @@
-package javasemysql.coursedesign.gui;
+package javasemysql.coursedesign.gui.component;
 
-import javasemysql.coursedesign.dto.IncomeQueryParam;
-import javasemysql.coursedesign.gui.dialog.IncomeDialog;
+import javasemysql.coursedesign.dto.ExpenseQueryParam;
+import javasemysql.coursedesign.gui.MainFrame;
+import javasemysql.coursedesign.gui.component.dialog.ExpenseDialog;
 import javasemysql.coursedesign.model.Account;
-import javasemysql.coursedesign.model.Income;
+import javasemysql.coursedesign.model.Expense;
 import javasemysql.coursedesign.model.User;
 import javasemysql.coursedesign.service.AccountService;
-import javasemysql.coursedesign.service.IncomeService;
+import javasemysql.coursedesign.service.ExpenseService;
 import javasemysql.coursedesign.service.impl.AccountServiceImpl;
-import javasemysql.coursedesign.service.impl.IncomeServiceImpl;
+import javasemysql.coursedesign.service.impl.ExpenseServiceImpl;
 import javasemysql.coursedesign.utils.DateUtils;
 import javasemysql.coursedesign.utils.LogUtils;
 import javasemysql.coursedesign.utils.StringUtils;
@@ -30,7 +31,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -39,28 +39,28 @@ import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 
 /**
- * 收入管理面板
+ * 支出管理面板
  *
  * @author rywc2005
  * @version 1.0
  * @date 2025-06-21
  */
-public class IncomePanel extends JPanel {
+public class ExpensePanel extends JPanel {
 
-    private static final Logger logger = Logger.getLogger(IncomePanel.class.getName());
+    private static final Logger logger = Logger.getLogger(ExpensePanel.class.getName());
 
     private MainFrame mainFrame;
     private User currentUser;
-    private IncomeService incomeService;
+    private ExpenseService expenseService;
     private AccountService accountService;
 
     // UI组件
     private JTextField searchField;
     private JComboBox<String> categoryComboBox;
     private JComboBox<String> timeRangeComboBox;
-    private JTable incomeTable;
+    private JTable expenseTable;
     private DefaultTableModel tableModel;
-    private JLabel totalIncomeLabel;
+    private JLabel totalExpenseLabel;
     private JButton addButton;
     private JButton editButton;
     private JButton deleteButton;
@@ -76,9 +76,9 @@ public class IncomePanel extends JPanel {
      *
      * @param mainFrame 主窗口引用
      */
-    public IncomePanel(MainFrame mainFrame) {
+    public ExpensePanel(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
-        this.incomeService = new IncomeServiceImpl();
+        this.expenseService = new ExpenseServiceImpl();
         this.accountService = new AccountServiceImpl();
 
         initComponents();
@@ -98,16 +98,16 @@ public class IncomePanel extends JPanel {
         topPanel.setOpaque(false);
 
         // 创建标题标签
-        JLabel titleLabel = new JLabel("收入管理");
+        JLabel titleLabel = new JLabel("支出管理");
         titleLabel.setFont(new Font("微软雅黑", Font.BOLD, 24));
 
-        // 创建总收入标签
-        totalIncomeLabel = new JLabel("总收入: ¥0.00");
-        totalIncomeLabel.setFont(new Font("微软雅黑", Font.BOLD, 18));
-        totalIncomeLabel.setForeground(new Color(92, 184, 92));  // 绿色
+        // 创建总支出标签
+        totalExpenseLabel = new JLabel("总支出: ¥0.00");
+        totalExpenseLabel.setFont(new Font("微软雅黑", Font.BOLD, 18));
+        totalExpenseLabel.setForeground(new Color(217, 83, 79));  // 红色
 
         topPanel.add(titleLabel, BorderLayout.WEST);
-        topPanel.add(totalIncomeLabel, BorderLayout.EAST);
+        topPanel.add(totalExpenseLabel, BorderLayout.EAST);
 
         // 创建工具栏面板
         JPanel toolbarPanel = new JPanel(new BorderLayout(10, 0));
@@ -131,7 +131,7 @@ public class IncomePanel extends JPanel {
         searchIcon.setBorder(new EmptyBorder(0, 5, 0, 5));
 
         // 创建类别下拉框
-        categoryComboBox = new JComboBox<>(new String[]{"所有类别", "工资", "奖金", "投资收益", "利息", "礼金", "兼职", "退款", "其他"});
+        categoryComboBox = new JComboBox<>(new String[]{"所有类别", "餐饮", "交通", "购物", "住房", "娱乐", "教育", "医疗", "旅行", "其他"});
         categoryComboBox.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         // 创建时间范围下拉框
@@ -153,7 +153,7 @@ public class IncomePanel extends JPanel {
         buttonPanel.setOpaque(false);
 
         // 创建按钮
-        addButton = new JButton("添加收入");
+        addButton = new JButton("添加支出");
         addButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
         addButton.setIcon(new ImageIcon(getClass().getResource("/resources/images/add_icon.png")));
         addButton.setFocusPainted(false);
@@ -192,13 +192,13 @@ public class IncomePanel extends JPanel {
         splitPane.setBorder(null);  // 移除边框
 
         // 创建表格
-        createIncomeTable();
+        createExpenseTable();
 
         // 创建表格面板
         JPanel tablePanel = new JPanel(new BorderLayout());
         tablePanel.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(new Color(200, 200, 200)),
-                "收入列表",
+                "支出列表",
                 TitledBorder.LEFT,
                 TitledBorder.TOP,
                 new Font("微软雅黑", Font.BOLD, 14)
@@ -206,7 +206,7 @@ public class IncomePanel extends JPanel {
         tablePanel.setBackground(Color.WHITE);
 
         // 创建滚动面板
-        JScrollPane scrollPane = new JScrollPane(incomeTable);
+        JScrollPane scrollPane = new JScrollPane(expenseTable);
         scrollPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         tablePanel.add(scrollPane, BorderLayout.CENTER);
 
@@ -214,7 +214,7 @@ public class IncomePanel extends JPanel {
         chartPanel = new JPanel(new BorderLayout());
         chartPanel.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(new Color(200, 200, 200)),
-                "收入统计",
+                "支出统计",
                 TitledBorder.LEFT,
                 TitledBorder.TOP,
                 new Font("微软雅黑", Font.BOLD, 14)
@@ -232,9 +232,9 @@ public class IncomePanel extends JPanel {
     }
 
     /**
-     * 创建收入表格
+     * 创建支出表格
      */
-    private void createIncomeTable() {
+    private void createExpenseTable() {
         // 定义表格列名
         String[] columnNames = {"ID", "账户ID", "账户名称", "类别", "金额", "日期", "说明"};
 
@@ -257,34 +257,34 @@ public class IncomePanel extends JPanel {
         };
 
         // 创建表格
-        incomeTable = new JTable(tableModel);
-        incomeTable.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-        incomeTable.setRowHeight(30);
-        incomeTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        incomeTable.setAutoCreateRowSorter(true);
+        expenseTable = new JTable(tableModel);
+        expenseTable.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+        expenseTable.setRowHeight(30);
+        expenseTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        expenseTable.setAutoCreateRowSorter(true);
 
         // 设置表格样式
-        incomeTable.getTableHeader().setFont(new Font("微软雅黑", Font.BOLD, 14));
-        incomeTable.getTableHeader().setReorderingAllowed(false);
-        incomeTable.getTableHeader().setResizingAllowed(true);
+        expenseTable.getTableHeader().setFont(new Font("微软雅黑", Font.BOLD, 14));
+        expenseTable.getTableHeader().setReorderingAllowed(false);
+        expenseTable.getTableHeader().setResizingAllowed(true);
 
         // 设置列宽
-        incomeTable.getColumnModel().getColumn(0).setPreferredWidth(50);
-        incomeTable.getColumnModel().getColumn(1).setPreferredWidth(50);
-        incomeTable.getColumnModel().getColumn(2).setPreferredWidth(120);
-        incomeTable.getColumnModel().getColumn(3).setPreferredWidth(100);
-        incomeTable.getColumnModel().getColumn(4).setPreferredWidth(100);
-        incomeTable.getColumnModel().getColumn(5).setPreferredWidth(120);
-        incomeTable.getColumnModel().getColumn(6).setPreferredWidth(300);
+        expenseTable.getColumnModel().getColumn(0).setPreferredWidth(50);
+        expenseTable.getColumnModel().getColumn(1).setPreferredWidth(50);
+        expenseTable.getColumnModel().getColumn(2).setPreferredWidth(120);
+        expenseTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+        expenseTable.getColumnModel().getColumn(4).setPreferredWidth(100);
+        expenseTable.getColumnModel().getColumn(5).setPreferredWidth(120);
+        expenseTable.getColumnModel().getColumn(6).setPreferredWidth(300);
 
         // 隐藏ID列和账户ID列
-        incomeTable.getColumnModel().getColumn(0).setMinWidth(0);
-        incomeTable.getColumnModel().getColumn(0).setMaxWidth(0);
-        incomeTable.getColumnModel().getColumn(0).setWidth(0);
+        expenseTable.getColumnModel().getColumn(0).setMinWidth(0);
+        expenseTable.getColumnModel().getColumn(0).setMaxWidth(0);
+        expenseTable.getColumnModel().getColumn(0).setWidth(0);
 
-        incomeTable.getColumnModel().getColumn(1).setMinWidth(0);
-        incomeTable.getColumnModel().getColumn(1).setMaxWidth(0);
-        incomeTable.getColumnModel().getColumn(1).setWidth(0);
+        expenseTable.getColumnModel().getColumn(1).setMinWidth(0);
+        expenseTable.getColumnModel().getColumn(1).setMaxWidth(0);
+        expenseTable.getColumnModel().getColumn(1).setWidth(0);
 
         // 设置金额列的单元格渲染器，以便格式化显示
         DefaultTableCellRenderer amountRenderer = new DefaultTableCellRenderer() {
@@ -296,7 +296,7 @@ public class IncomePanel extends JPanel {
                 if (value != null) {
                     double amount = (Double) value;
                     label.setText(StringUtils.formatCurrency(amount));
-                    label.setForeground(new Color(92, 184, 92));  // 绿色
+                    label.setForeground(new Color(217, 83, 79));  // 红色
                 }
 
                 label.setHorizontalAlignment(JLabel.RIGHT);
@@ -318,26 +318,26 @@ public class IncomePanel extends JPanel {
         };
 
         // 应用渲染器
-        incomeTable.getColumnModel().getColumn(4).setCellRenderer(amountRenderer);
-        incomeTable.getColumnModel().getColumn(5).setCellRenderer(dateRenderer);
+        expenseTable.getColumnModel().getColumn(4).setCellRenderer(amountRenderer);
+        expenseTable.getColumnModel().getColumn(5).setCellRenderer(dateRenderer);
 
         // 创建表格排序器
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
-        incomeTable.setRowSorter(sorter);
+        expenseTable.setRowSorter(sorter);
     }
 
     /**
      * 设置事件监听器
      */
     private void setupListeners() {
-        // 添加收入按钮点击事件
-        addButton.addActionListener(e -> addIncome());
+        // 添加支出按钮点击事件
+        addButton.addActionListener(e -> addExpense());
 
-        // 编辑收入按钮点击事件
-        editButton.addActionListener(e -> editSelectedIncome());
+        // 编辑支出按钮点击事件
+        editButton.addActionListener(e -> editSelectedExpense());
 
-        // 删除收入按钮点击事件
-        deleteButton.addActionListener(e -> deleteSelectedIncome());
+        // 删除支出按钮点击事件
+        deleteButton.addActionListener(e -> deleteSelectedExpense());
 
         // 刷新按钮点击事件
         refreshButton.addActionListener(e -> refreshData());
@@ -347,38 +347,38 @@ public class IncomePanel extends JPanel {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    filterIncomes();
+                    filterExpenses();
                 }
             }
         });
 
         // 类别下拉框选择事件
-        categoryComboBox.addActionListener(e -> filterIncomes());
+        categoryComboBox.addActionListener(e -> filterExpenses());
 
         // 时间范围下拉框选择事件
         timeRangeComboBox.addActionListener(e -> {
             if ("自定义".equals(timeRangeComboBox.getSelectedItem())) {
                 showDateRangeDialog();
             } else {
-                filterIncomes();
+                filterExpenses();
             }
         });
 
         // 表格选择事件
-        incomeTable.getSelectionModel().addListSelectionListener(e -> {
+        expenseTable.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
-                boolean hasSelection = incomeTable.getSelectedRow() != -1;
+                boolean hasSelection = expenseTable.getSelectedRow() != -1;
                 editButton.setEnabled(hasSelection);
                 deleteButton.setEnabled(hasSelection);
             }
         });
 
         // 表格双击事件
-        incomeTable.addMouseListener(new MouseAdapter() {
+        expenseTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2 && incomeTable.getSelectedRow() != -1) {
-                    editSelectedIncome();
+                if (e.getClickCount() == 2 && expenseTable.getSelectedRow() != -1) {
+                    editSelectedExpense();
                 }
             }
         });
@@ -427,7 +427,7 @@ public class IncomePanel extends JPanel {
                 }
 
                 // 使用自定义日期范围过滤
-                filterIncomes();
+                filterExpenses();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "日期格式不正确", "错误", JOptionPane.ERROR_MESSAGE);
                 timeRangeComboBox.setSelectedIndex(0); // 重置为"所有时间"
@@ -438,9 +438,9 @@ public class IncomePanel extends JPanel {
     }
 
     /**
-     * 添加收入
+     * 添加支出
      */
-    private void addIncome() {
+    private void addExpense() {
         if (currentUser == null) {
             mainFrame.showErrorMessage("请先登录");
             return;
@@ -453,36 +453,36 @@ public class IncomePanel extends JPanel {
             return;
         }
 
-        // 创建收入对话框
-        IncomeDialog dialog = new IncomeDialog(mainFrame, null, currentUser.getId(), accounts);
+        // 创建支出对话框
+        ExpenseDialog dialog = new ExpenseDialog(mainFrame, null, currentUser.getId(), accounts);
         dialog.setVisible(true);
 
-        // 如果收入添加成功，刷新数据
-        if (dialog.isIncomeSaved()) {
+        // 如果支出添加成功，刷新数据
+        if (dialog.isExpenseSaved()) {
             refreshData();
         }
     }
 
     /**
-     * 编辑选中的收入
+     * 编辑选中的支出
      */
-    private void editSelectedIncome() {
-        int selectedRow = incomeTable.getSelectedRow();
+    private void editSelectedExpense() {
+        int selectedRow = expenseTable.getSelectedRow();
         if (selectedRow == -1) {
             return;
         }
 
         // 获取选中行的实际索引（考虑排序）
-        int modelRow = incomeTable.convertRowIndexToModel(selectedRow);
+        int modelRow = expenseTable.convertRowIndexToModel(selectedRow);
 
-        // 获取收入ID和账户ID
-        int incomeId = Integer.parseInt(tableModel.getValueAt(modelRow, 0).toString());
+        // 获取支出ID和账户ID
+        int expenseId = Integer.parseInt(tableModel.getValueAt(modelRow, 0).toString());
         int accountId = Integer.parseInt(tableModel.getValueAt(modelRow, 1).toString());
 
-        // 获取收入信息
-        Income income = incomeService.getIncomeById(incomeId);
-        if (income == null) {
-            mainFrame.showErrorMessage("获取收入信息失败");
+        // 获取支出信息
+        Expense expense = expenseService.getExpenseById(expenseId);
+        if (expense == null) {
+            mainFrame.showErrorMessage("获取支出信息失败");
             return;
         }
 
@@ -493,55 +493,55 @@ public class IncomePanel extends JPanel {
             return;
         }
 
-        // 创建收入对话框
-        IncomeDialog dialog = new IncomeDialog(mainFrame, income, currentUser.getId(), accounts);
+        // 创建支出对话框
+        ExpenseDialog dialog = new ExpenseDialog(mainFrame, expense, currentUser.getId(), accounts);
         dialog.setVisible(true);
 
-        // 如果收入编辑成功，刷新数据
-        if (dialog.isIncomeSaved()) {
+        // 如果支出编辑成功，刷新数据
+        if (dialog.isExpenseSaved()) {
             refreshData();
         }
     }
 
     /**
-     * 删除选中的收入
+     * 删除选中的支出
      */
-    private void deleteSelectedIncome() {
-        int selectedRow = incomeTable.getSelectedRow();
+    private void deleteSelectedExpense() {
+        int selectedRow = expenseTable.getSelectedRow();
         if (selectedRow == -1) {
             return;
         }
 
         // 获取选中行的实际索引（考虑排序）
-        int modelRow = incomeTable.convertRowIndexToModel(selectedRow);
+        int modelRow = expenseTable.convertRowIndexToModel(selectedRow);
 
-        // 获取收入ID和分类
-        int incomeId = Integer.parseInt(tableModel.getValueAt(modelRow, 0).toString());
+        // 获取支出ID和分类
+        int expenseId = Integer.parseInt(tableModel.getValueAt(modelRow, 0).toString());
         String category = tableModel.getValueAt(modelRow, 3).toString();
         double amount = (Double) tableModel.getValueAt(modelRow, 4);
 
         // 确认删除
         boolean confirmed = mainFrame.showConfirmDialog(
-                "确定要删除分类为 \"" + category + "\" 金额为 \"" + StringUtils.formatCurrency(amount) + "\" 的收入记录吗？"
+                "确定要删除分类为 \"" + category + "\" 金额为 \"" + StringUtils.formatCurrency(amount) + "\" 的支出记录吗？"
         );
         if (!confirmed) {
             return;
         }
 
         // 执行删除操作
-        boolean success = incomeService.deleteIncome(incomeId);
+        boolean success = expenseService.deleteExpense(expenseId);
         if (success) {
-            mainFrame.showInfoMessage("收入记录删除成功");
+            mainFrame.showInfoMessage("支出记录删除成功");
             refreshData();
         } else {
-            mainFrame.showErrorMessage("收入记录删除失败");
+            mainFrame.showErrorMessage("支出记录删除失败");
         }
     }
 
     /**
-     * 过滤收入
+     * 过滤支出
      */
-    private void filterIncomes() {
+    private void filterExpenses() {
         if (currentUser == null) {
             return;
         }
@@ -554,7 +554,7 @@ public class IncomePanel extends JPanel {
         String selectedTimeRange = (String) timeRangeComboBox.getSelectedItem();
 
         // 创建查询参数
-        IncomeQueryParam param = new IncomeQueryParam(currentUser.getId());
+        ExpenseQueryParam param = new ExpenseQueryParam(currentUser.getId());
 
         // 设置说明关键字
         if (!keyword.isEmpty()) {
@@ -581,21 +581,21 @@ public class IncomePanel extends JPanel {
         }
 
         // 异步加载数据
-        SwingWorker<List<Income>, Void> worker = new SwingWorker<List<Income>, Void>() {
+        SwingWorker<List<Expense>, Void> worker = new SwingWorker<List<Expense>, Void>() {
             @Override
-            protected List<Income> doInBackground() throws Exception {
-                return incomeService.queryIncomes(param);
+            protected List<Expense> doInBackground() throws Exception {
+                return expenseService.queryExpenses(param);
             }
 
             @Override
             protected void done() {
                 try {
-                    List<Income> incomes = get();
-                    updateIncomeTable(incomes);
-                    updateIncomeChart(incomes);
+                    List<Expense> expenses = get();
+                    updateExpenseTable(expenses);
+                    updateExpenseChart(expenses);
                 } catch (Exception e) {
-                    LogUtils.error("过滤收入失败", e);
-                    mainFrame.showErrorMessage("加载收入数据失败");
+                    LogUtils.error("过滤支出失败", e);
+                    mainFrame.showErrorMessage("加载支出数据失败");
                 }
             }
         };
@@ -639,49 +639,49 @@ public class IncomePanel extends JPanel {
     }
 
     /**
-     * 更新收入表格
+     * 更新支出表格
      *
-     * @param incomes 收入列表
+     * @param expenses 支出列表
      */
-    private void updateIncomeTable(List<Income> incomes) {
+    private void updateExpenseTable(List<Expense> expenses) {
         // 清空表格
         tableModel.setRowCount(0);
 
-        if (incomes == null || incomes.isEmpty()) {
-            // 更新总收入标签
-            totalIncomeLabel.setText("总收入: " + StringUtils.formatCurrency(0));
+        if (expenses == null || expenses.isEmpty()) {
+            // 更新总支出标签
+            totalExpenseLabel.setText("总支出: " + StringUtils.formatCurrency(0));
             return;
         }
 
-        // 计算总收入
-        double totalIncome = incomes.stream().mapToDouble(Income::getAmount).sum();
+        // 计算总支出
+        double totalExpense = expenses.stream().mapToDouble(Expense::getAmount).sum();
 
-        // 更新总收入标签
-        totalIncomeLabel.setText("总收入: " + StringUtils.formatCurrency(totalIncome));
+        // 更新总支出标签
+        totalExpenseLabel.setText("总支出: " + StringUtils.formatCurrency(totalExpense));
 
         // 添加数据到表格
-        for (Income income : incomes) {
+        for (Expense expense : expenses) {
             Vector<Object> row = new Vector<>();
-            row.add(income.getId());
-            row.add(income.getAccountId());
-            row.add(income.getCategory());
-            row.add(income.getAmount());
-            row.add(income.getDate());
-            row.add(income.getDescription());
+            row.add(expense.getId());
+            row.add(expense.getAccountId());
+            row.add(expense.getCategory());
+            row.add(expense.getAmount());
+            row.add(expense.getDate());
+            row.add(expense.getDescription());
             tableModel.addRow(row);
         }
     }
 
     /**
-     * 更新收入图表
+     * 更新支出图表
      *
-     * @param incomes 收入列表
+     * @param expenses 支出列表
      */
-    private void updateIncomeChart(List<Income> incomes) {
+    private void updateExpenseChart(List<Expense> expenses) {
         // 清空图表面板
         chartPanel.removeAll();
 
-        if (incomes == null || incomes.isEmpty()) {
+        if (expenses == null || expenses.isEmpty()) {
             // 显示无数据提示
             JLabel emptyLabel = new JLabel("没有数据可供显示", JLabel.CENTER);
             emptyLabel.setFont(new Font("微软雅黑", Font.PLAIN, 14));
@@ -692,26 +692,26 @@ public class IncomePanel extends JPanel {
             return;
         }
 
-        // 统计各类别收入
-        Map<String, Double> categoryIncomes = new HashMap<>();
-        for (Income income : incomes) {
-            String category = income.getCategory();
-            double amount = income.getAmount();
+        // 统计各类别支出
+        Map<String, Double> categoryExpenses = new HashMap<>();
+        for (Expense expense : expenses) {
+            String category = expense.getCategory();
+            double amount = expense.getAmount();
 
-            categoryIncomes.put(category, categoryIncomes.getOrDefault(category, 0.0) + amount);
+            categoryExpenses.put(category, categoryExpenses.getOrDefault(category, 0.0) + amount);
         }
 
         // 创建饼图数据集
         DefaultPieDataset dataset = new DefaultPieDataset();
 
         // 添加数据
-        for (Map.Entry<String, Double> entry : categoryIncomes.entrySet()) {
+        for (Map.Entry<String, Double> entry : categoryExpenses.entrySet()) {
             dataset.setValue(entry.getKey(), entry.getValue());
         }
 
         // 创建饼图
         JFreeChart chart = ChartFactory.createPieChart(
-                "收入类别分布",   // 图表标题
+                "支出类别分布",   // 图表标题
                 dataset,         // 数据集
                 true,            // 是否显示图例
                 true,            // 是否生成工具提示
@@ -725,13 +725,14 @@ public class IncomePanel extends JPanel {
         plot.setOutlineVisible(false);
 
         // 设置不同类别的颜色
-        plot.setSectionPaint("工资", new Color(92, 184, 92));
-        plot.setSectionPaint("奖金", new Color(66, 139, 202));
-        plot.setSectionPaint("投资收益", new Color(91, 192, 222));
-        plot.setSectionPaint("利息", new Color(240, 173, 78));
-        plot.setSectionPaint("礼金", new Color(153, 102, 255));
-        plot.setSectionPaint("兼职", new Color(220, 20, 60));
-        plot.setSectionPaint("退款", new Color(255, 165, 0));
+        plot.setSectionPaint("餐饮", new Color(217, 83, 79));
+        plot.setSectionPaint("交通", new Color(240, 173, 78));
+        plot.setSectionPaint("购物", new Color(91, 192, 222));
+        plot.setSectionPaint("住房", new Color(66, 139, 202));
+        plot.setSectionPaint("娱乐", new Color(153, 102, 255));
+        plot.setSectionPaint("教育", new Color(92, 184, 92));
+        plot.setSectionPaint("医疗", new Color(220, 20, 60));
+        plot.setSectionPaint("旅行", new Color(255, 165, 0));
         plot.setSectionPaint("其他", new Color(128, 128, 128));
 
         // 创建饼图面板
@@ -744,12 +745,12 @@ public class IncomePanel extends JPanel {
 
         // 创建类别统计表格
         String[] columnNames = {"类别", "金额", "占比"};
-        Object[][] data = new Object[categoryIncomes.size()][3];
+        Object[][] data = new Object[categoryExpenses.size()][3];
 
-        double totalAmount = incomes.stream().mapToDouble(Income::getAmount).sum();
+        double totalAmount = expenses.stream().mapToDouble(Expense::getAmount).sum();
 
         int i = 0;
-        for (Map.Entry<String, Double> entry : categoryIncomes.entrySet()) {
+        for (Map.Entry<String, Double> entry : categoryExpenses.entrySet()) {
             data[i][0] = entry.getKey();
             data[i][1] = StringUtils.formatCurrency(entry.getValue());
             data[i][2] = String.format("%.2f%%", entry.getValue() / totalAmount * 100);
@@ -792,14 +793,14 @@ public class IncomePanel extends JPanel {
         // 如果没有用户登录，清空表格和图表
         if (user == null) {
             tableModel.setRowCount(0);
-            totalIncomeLabel.setText("总收入: " + StringUtils.formatCurrency(0));
+            totalExpenseLabel.setText("总支出: " + StringUtils.formatCurrency(0));
             chartPanel.removeAll();
             chartPanel.revalidate();
             chartPanel.repaint();
             return;
         }
 
-        // 加载收入数据
+        // 加载支出数据
         refreshData();
     }
 
@@ -819,21 +820,21 @@ public class IncomePanel extends JPanel {
         endDate = null;
 
         // 异步加载数据
-        SwingWorker<List<Income>, Void> worker = new SwingWorker<List<Income>, Void>() {
+        SwingWorker<List<Expense>, Void> worker = new SwingWorker<List<Expense>, Void>() {
             @Override
-            protected List<Income> doInBackground() throws Exception {
-                return incomeService.getIncomesByUserId(currentUser.getId());
+            protected List<Expense> doInBackground() throws Exception {
+                return expenseService.getExpensesByUserId(currentUser.getId());
             }
 
             @Override
             protected void done() {
                 try {
-                    List<Income> incomes = get();
-                    updateIncomeTable(incomes);
-                    updateIncomeChart(incomes);
+                    List<Expense> expenses = get();
+                    updateExpenseTable(expenses);
+                    updateExpenseChart(expenses);
                 } catch (Exception e) {
-                    LogUtils.error("加载收入数据失败", e);
-                    mainFrame.showErrorMessage("加载收入数据失败");
+                    LogUtils.error("加载支出数据失败", e);
+                    mainFrame.showErrorMessage("加载支出数据失败");
                 }
             }
         };

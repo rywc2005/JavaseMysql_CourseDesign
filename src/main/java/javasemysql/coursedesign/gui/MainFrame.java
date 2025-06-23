@@ -1,8 +1,8 @@
 package javasemysql.coursedesign.gui;
 
+import javasemysql.coursedesign.gui.component.*;
 import javasemysql.coursedesign.model.User;
-import javasemysql.coursedesign.service.BudgetService;
-import javasemysql.coursedesign.service.ExpenseService;
+import javasemysql.coursedesign.service.*;
 import javasemysql.coursedesign.utils.LogUtils;
 
 import javax.swing.*;
@@ -22,9 +22,29 @@ public class MainFrame extends JFrame {
 
     private static final Logger logger = Logger.getLogger(MainFrame.class.getName());
 
-    private static MainFrame instance;
+    private User user;
 
-    private User currentUser;
+    // 添加服务层字段
+    private final AccountService accountService;
+    private final BackupService backupService;
+    private final BillService billService;
+    private final BudgetService budgetService;
+    private final ExpenseService expenseService;
+    private final IncomeService incomeService;
+    private final UserService userService;
+    private User currentUser; // 当前登录用户
+    /**
+     * 获取单例实例
+     *
+     * @param accountService 账户服务
+     * @param backupService 备份服务
+     * @param billService 账单服务
+     * @param budgetService 预算服务
+     * @param expenseService 支出服务
+     * @param incomeService 收入服务
+     * @param userService 用户服务
+     * @return MainFrame实例
+     */
     private CardLayout cardLayout;
     private JPanel contentPanel;
     private JPanel sidebarPanel;
@@ -41,44 +61,23 @@ public class MainFrame extends JFrame {
     private BackupPanel backupPanel;
     private SettingsPanel settingsPanel;
 
-    // 添加服务层字段
-    private static BudgetService budgetService;
-    private static ExpenseService expenseService;
-
     /**
      * 私有构造函数（单例模式）
      */
-    public MainFrame(BudgetService budgetService, ExpenseService expenseService) {
+    public MainFrame(AccountService accountService,BackupService backupService,BillService billService,
+                     BudgetService budgetService, ExpenseService expenseService,
+                     IncomeService incomeService, UserService userService) {
+        this.accountService = accountService;
+        this.backupService = backupService;
+        this.billService = billService;
         this.budgetService = budgetService;
         this.expenseService = expenseService;
+        this.incomeService = incomeService;
+        this.userService = userService;
+
         initLookAndFeel();
         initComponents();
         setupListeners();
-    }
-
-    /**
-     * 获取预算服务实例
-     */
-    public static BudgetService getBudgetService() {
-        return budgetService;
-    }
-
-    /**
-     * 获取支出服务实例
-     */
-    public static ExpenseService getExpenseService() {
-        return expenseService;
-    }
-    /**
-     * 获取实例（单例模式）
-     *
-     * @return MainFrame实例
-     */
-    public static MainFrame getInstance() {
-        if (instance == null) {
-            instance = new MainFrame(getBudgetService(), getExpenseService());
-        }
-        return instance;
     }
 
     /**
@@ -119,14 +118,6 @@ public class MainFrame extends JFrame {
         setMinimumSize(new Dimension(1024, 768));
         setLocationRelativeTo(null);  // 居中显示
 
-        // 设置图标
-        try {
-            ImageIcon icon = new ImageIcon(getClass().getResource("/resources/images/icon.png"));
-            setIconImage(icon.getImage());
-        } catch (Exception e) {
-            logger.log(Level.WARNING, "无法加载应用图标", e);
-        }
-
         // 创建主面板
         JPanel mainPanel = new JPanel(new BorderLayout());
 
@@ -142,16 +133,23 @@ public class MainFrame extends JFrame {
         sidebarPanel.setPreferredSize(new Dimension(220, getHeight()));
 
         // 创建各个功能面板
+        logger.info("创建各个功能面板");
+
+        try{
         loginPanel = new LoginPanel(this);
+        logger.info("LoginPanel创建成功");
         dashboardPanel = new DashboardPanel(this);
+        logger.info("DashboardPanel创建成功");
         accountPanel = new AccountPanel(this);
-        incomePanel = new IncomePanel(this);
-        expensePanel = new ExpensePanel(this);
-        budgetPanel = new BudgetPanel(this);
-        billPanel = new BillPanel(this);
-        statisticsPanel = new StatisticsPanel(this);
-        backupPanel = new BackupPanel(this);
+        logger.info("AccountPanel创建成功");
+        incomePanel = new IncomePanel(this);logger.info("IncomePanel创建成功");
+        expensePanel = new ExpensePanel(this);logger.info("ExpensePanel创建成功");
+        budgetPanel = new BudgetPanel(this);logger.info("BudgetPanel创建成功");
+        billPanel = new BillPanel(this);logger.info("BillPanel创建成功");
+        statisticsPanel = new StatisticsPanel(this);logger.info("StatisticsPanel创建成功");
+        backupPanel = new BackupPanel(this);logger.info("BackupPanel创建成功");
         settingsPanel = new SettingsPanel(this);
+        logger.info("new成功");
 
         // 添加面板到内容面板
         contentPanel.add(loginPanel, "login");
@@ -164,20 +162,34 @@ public class MainFrame extends JFrame {
         contentPanel.add(statisticsPanel, "statistics");
         contentPanel.add(backupPanel, "backup");
         contentPanel.add(settingsPanel, "settings");
+        logger.info("各个功能面板创建完成");
 
         // 创建侧边栏菜单按钮
         createSidebarButtons();
+        logger.info("侧边栏按钮创建完成");
 
         // 默认显示登录面板，隐藏侧边栏
         cardLayout.show(contentPanel, "login");
         sidebarPanel.setVisible(false);
+        logger.info("默认显示登录面板，侧边栏隐藏");
 
         // 将组件添加到主面板
         mainPanel.add(sidebarPanel, BorderLayout.WEST);
         mainPanel.add(contentPanel, BorderLayout.CENTER);
+        logger.info("主面板组件添加完成");
 
         // 设置主面板为内容面板
         setContentPane(mainPanel);
+
+        logger.info("主窗口组件初始化完成");
+        }
+        catch (Exception e) {
+            logger.log(Level.SEVERE, "初始化组件失败", e);
+            JOptionPane.showMessageDialog(this, "初始化组件失败: "
+                    + e.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
+            //终止
+            System.exit(1);
+        }
     }
 
     /**

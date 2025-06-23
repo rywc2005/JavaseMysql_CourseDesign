@@ -4,63 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60d18e0a-3eb6-4ce7-863d-fe5484752b10" name="更改" comment="解决bug：无法加载应用图标">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example0.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/finance_20250622.log.0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/finance_20250622.log.0.1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/finance_20250622.log.0.2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/finance_20250622.log.0.3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/account_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/alert_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/app_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/backup_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/bill_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/dshboard_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/income_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/logout_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/splash_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/statistics_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/user_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/warning_icon.png" afterDir="false" />
+    <list default="true" id="60d18e0a-3eb6-4ce7-863d-fe5484752b10" name="更改" comment="模块字段错误">
+      <change afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/dialog/BillDetailsDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/dao/impl/AccountDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/dao/impl/AccountDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/dao/impl/BackupDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/dao/impl/BackupDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/dao/impl/BillDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/dao/impl/BillDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/dao/impl/BudgetDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/dao/impl/BudgetDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example.sql" beforeDir="false" afterPath="$PROJECT_DIR$/example.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/finance_20250622.log.0" beforeDir="false" afterPath="$PROJECT_DIR$/logs/finance_20250622.log.0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/finance_20250622.log.0.1" beforeDir="false" afterPath="$PROJECT_DIR$/logs/finance_20250622.log.0.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/dao/impl/ExpenseDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/dao/impl/ExpenseDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/dao/impl/IncomeDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/dao/impl/IncomeDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/dao/impl/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/dao/impl/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/AccountPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/AccountPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/BackupPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/BackupPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/BillPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/BillPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/DashboardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/DashboardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/ExpensePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/ExpensePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/IncomePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/IncomePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/AccountDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/AccountDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/BackupDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/BackupDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/BillDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/BillDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/BudgetDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/BudgetDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/ExpenseDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/ExpenseDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/IncomeDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/IncomeDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/RegisterDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/RegisterDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/model/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/model/Backup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/model/Backup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/model/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/model/Bill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/model/Budget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/model/Budget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/model/Expense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/model/Expense.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/model/Income.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/model/Income.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/service/impl/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/service/impl/AccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/service/impl/BackupServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/service/impl/BackupServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/service/impl/BillServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/service/impl/BillServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/service/impl/BudgetServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/service/impl/BudgetServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/service/impl/ExpenseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/service/impl/ExpenseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/service/impl/IncomeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/service/impl/IncomeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/AccountPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/AccountPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/BackupPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/BackupPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/BillDetailsDialog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/BillPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/BillPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/BudgetPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/BudgetPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/DashboardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/DashboardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/ExpensePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/ExpensePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/IncomePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/IncomePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/LoginPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/LoginPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/SettingsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/SettingsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/SplashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/SplashScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/StatisticsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/StatisticsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/AccountDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/dialog/AccountDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/BackupDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/dialog/BackupDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/BillDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/dialog/BillDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/BudgetDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/dialog/BudgetDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/ExpenseDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/dialog/ExpenseDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/IncomeDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/dialog/IncomeDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/dialog/RegisterDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/component/dialog/RegisterDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/dshboard_icon.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,9 +51,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2ypONobkjrH7nZHCFyT6QdtxOVd" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -99,7 +72,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/AAAmajor_class/AAA专/大二/课设/个人财务管理系统/新建文件夹/ZhkuSystem-master/ZhkuSystem-master",
+    "last_opened_file_path": "D:/AAAmajor_class/AAA专/大二/课设/个人财务管理系统/新建文件夹/PFM - 副本 (3)",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -129,6 +102,21 @@
       <recent name="D:\AAAmajor_class\AAA专\大二\课设\个人财务管理系统\新建文件夹\PFM\src\main\java\javasemysql\coursedesign\gui\dialog" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="PFM - 副本 (3)" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="PFM - 副本 (3)" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -137,7 +125,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750528010867</updated>
-      <workItem from="1750528011840" duration="32526000" />
+      <workItem from="1750528011840" duration="46246000" />
+      <workItem from="1750663480588" duration="411000" />
     </task>
     <task id="LOCAL-00001" summary="解决bug：无法加载应用图标">
       <option name="closed" value="true" />
@@ -147,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750597521196</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="模块字段错误">
+      <option name="closed" value="true" />
+      <created>1750608770308</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1750608770308</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,15 +153,25 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="解决bug：无法加载应用图标" />
-    <option name="LAST_COMMIT_MESSAGE" value="解决bug：无法加载应用图标" />
+    <MESSAGE value="模块字段错误" />
+    <option name="LAST_COMMIT_MESSAGE" value="模块字段错误" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/MainFrame.java</url>
+          <line>20</line>
+          <properties class="javasemysql.coursedesign.gui.MainFrame">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/javasemysql/coursedesign/gui/MainFrame.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="1" />
+          <line>190</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

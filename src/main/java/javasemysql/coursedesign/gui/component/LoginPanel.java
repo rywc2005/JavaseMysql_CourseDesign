@@ -1,6 +1,7 @@
-package javasemysql.coursedesign.gui;
+package javasemysql.coursedesign.gui.component;
 
-import javasemysql.coursedesign.gui.dialog.RegisterDialog;
+import javasemysql.coursedesign.gui.MainFrame;
+import javasemysql.coursedesign.gui.component.dialog.RegisterDialog;
 import javasemysql.coursedesign.model.User;
 import javasemysql.coursedesign.service.UserService;
 import javasemysql.coursedesign.service.impl.UserServiceImpl;

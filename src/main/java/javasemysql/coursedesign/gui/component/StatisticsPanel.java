@@ -1,6 +1,7 @@
-package javasemysql.coursedesign.gui;
+package javasemysql.coursedesign.gui.component;
 
 import javasemysql.coursedesign.dto.StatisticsQueryParam;
+import javasemysql.coursedesign.gui.MainFrame;
 import javasemysql.coursedesign.model.Account;
 import javasemysql.coursedesign.model.User;
 import javasemysql.coursedesign.service.AccountService;
@@ -16,27 +17,20 @@ import javasemysql.coursedesign.utils.StringUtils;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.CategoryAxis;
-import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
