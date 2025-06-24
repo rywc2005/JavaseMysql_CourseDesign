@@ -1,6 +1,7 @@
 package com.PFM.CD.dao.impl;
 
 import com.PFM.CD.dao.interfaces.CategoryDao;
+import com.PFM.CD.dao.interfaces.ConnectionManager;
 import com.PFM.CD.entity.Category;
 import com.PFM.CD.entity.enums.CategoryType;
 
@@ -15,6 +16,14 @@ import java.util.List;
  * @since 2025-06-24
  */
 public class CategoryDaoImpl extends BaseDaoImpl<Category, Integer> implements CategoryDao {
+
+    public CategoryDaoImpl(ConnectionManager connectionManager) {
+        super();
+    }
+
+    public CategoryDaoImpl() {
+
+    }
 
     @Override
     public boolean save(Category category) throws SQLException {
