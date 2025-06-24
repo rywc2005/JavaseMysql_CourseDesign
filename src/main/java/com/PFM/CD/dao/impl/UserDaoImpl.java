@@ -1,157 +1,231 @@
 package com.PFM.CD.dao.impl;
 
-import com.PFM.CD.dao.UserDao;
+import com.PFM.CD.dao.interfaces.UserDao;
 import com.PFM.CD.entity.User;
-import com.PFM.CD.utils.db.DatabaseUtil;
 
-import com.PFM.CD.utils.db.LocalDateBeanProcessor;
-import org.apache.commons.dbutils.BasicRowProcessor;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanHandler;
-import org.apache.commons.dbutils.handlers.BeanListHandler;
-import org.apache.commons.dbutils.handlers.ScalarHandler;
-
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 用户数据访问对象实现类
+ * 用户数据访问实现类
  *
  * @author rywc2005
  * @since 2025-06-24
  */
-public class UserDaoImpl implements UserDao {
-    private final QueryRunner queryRunner;
-    private final BasicRowProcessor rowProcessor;
-
-    public UserDaoImpl() {
-        this.queryRunner = DatabaseUtil.createQueryRunner();
-        this.rowProcessor = new BasicRowProcessor(new LocalDateBeanProcessor());
-    }
+public class UserDaoImpl extends BaseDaoImpl<User, Integer> implements UserDao {
 
     @Override
-    public User createUser(User user) throws SQLException {
-        Connection conn = null;
-        try {
-            conn = DatabaseUtil.getConnection();
+    public boolean save(User user) throws SQLException {
+        String sql = "INSERT INTO users (username, password_hash, email, created_at) VALUES (?, ?, ?, ?)";
 
-            if (user.getCreatedAt() == null) {
-                user.setCreatedAt(LocalDate.now());
+        return executeWithTransaction(conn -> {
+            try (PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setString(1, user.getUsername());
+                ps.setString(2, user.getPasswordHash());
+                ps.setString(3, user.getEmail());
+                ps.setDate(4, Date.valueOf(user.getCreatedAt() != null ? user.getCreatedAt() : LocalDate.now()));
+
+                int affectedRows = ps.executeUpdate();
+
+                if (affectedRows > 0) {
+                    try (ResultSet rs = ps.getGeneratedKeys()) {
+                        if (rs.next()) {
+                            user.setUserId(rs.getInt(1));
+                            return true;
+                        }
+                    }
+                }
+                return false;
             }
+        });
+    }
 
-            String sql = "INSERT INTO users (username, password_hash, email, created_at) VALUES (?, ?, ?, ?)";
+    @Override
+    public User findById(Integer userId) throws SQLException {
+        String sql = "SELECT * FROM users WHERE user_id = ?";
 
-            long userId = queryRunner.insert(conn, sql, new ScalarHandler<Long>(),
-                    user.getUsername(),
-                    user.getPasswordHash(),
-                    user.getEmail(),
-                    java.sql.Date.valueOf(user.getCreatedAt()));
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            user.setUserId((int) userId);
-            return user;
-        } finally {
-            DatabaseUtil.closeConnection(conn);
+            ps.setInt(1, userId);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return mapResultSetToUser(rs);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public boolean update(User user) throws SQLException {
+        String sql = "UPDATE users SET username = ?, email = ? WHERE user_id = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getEmail());
+            ps.setInt(3, user.getUserId());
+
+            return ps.executeUpdate() > 0;
         }
     }
 
     @Override
-    public User findById(int userId) throws SQLException {
-        Connection conn = null;
-        try {
-            conn = DatabaseUtil.getConnection();
+    public boolean delete(Integer userId) throws SQLException {
+        String sql = "DELETE FROM users WHERE user_id = ?";
 
-            String sql = "SELECT user_id AS userId, username, password_hash AS passwordHash, " +
-                    "email, created_at AS createdAt FROM users WHERE user_id = ?";
-            return queryRunner.query(conn, sql, new BeanHandler<>(User.class, rowProcessor), userId);
-        } finally {
-            DatabaseUtil.closeConnection(conn);
-        }
-    }
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
 
-    @Override
-    public User findByUsername(String username) throws SQLException {
-        Connection conn = null;
-        try {
-            conn = DatabaseUtil.getConnection();
+            ps.setInt(1, userId);
 
-            String sql = "SELECT user_id AS userId, username, password_hash AS passwordHash, " +
-                    "email, created_at AS createdAt FROM users WHERE username = ?";
-            return queryRunner.query(conn, sql, new BeanHandler<>(User.class, rowProcessor), username);
-        } finally {
-            DatabaseUtil.closeConnection(conn);
-        }
-    }
-
-    @Override
-    public User findByEmail(String email) throws SQLException {
-        Connection conn = null;
-        try {
-            conn = DatabaseUtil.getConnection();
-
-            String sql = "SELECT user_id AS userId, username, password_hash AS passwordHash, " +
-                    "email, created_at AS createdAt FROM users WHERE email = ?";
-            return queryRunner.query(conn, sql, new BeanHandler<>(User.class, rowProcessor), email);
-        } finally {
-            DatabaseUtil.closeConnection(conn);
+            return ps.executeUpdate() > 0;
         }
     }
 
     @Override
     public List<User> findAll() throws SQLException {
-        Connection conn = null;
-        try {
-            conn = DatabaseUtil.getConnection();
+        String sql = "SELECT * FROM users";
+        List<User> users = new ArrayList<>();
 
-            String sql = "SELECT user_id AS userId, username, password_hash AS passwordHash, " +
-                    "email, created_at AS createdAt FROM users";
-            return queryRunner.query(conn, sql, new BeanListHandler<>(User.class, rowProcessor));
-        } finally {
-            DatabaseUtil.closeConnection(conn);
-        }
-    }
-    @Override
-    public int updateUser(User user) throws SQLException {
-        Connection conn = null;
-        try {
-            conn = DatabaseUtil.getConnection();
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
 
-            String sql = "UPDATE users SET username = ?, password_hash = ?, email = ? WHERE user_id = ?";
-            return queryRunner.update(conn, sql,
-                    user.getUsername(),
-                    user.getPasswordHash(),
-                    user.getEmail(),
-                    user.getUserId());
-        } finally {
-            DatabaseUtil.closeConnection(conn);
+            while (rs.next()) {
+                users.add(mapResultSetToUser(rs));
+            }
         }
+
+        return users;
     }
 
     @Override
-    public int deleteUser(int userId) throws SQLException {
-        Connection conn = null;
-        try {
-            conn = DatabaseUtil.getConnection();
+    public User findByUsername(String username) throws SQLException {
+        String sql = "SELECT * FROM users WHERE username = ?";
 
-            String sql = "DELETE FROM users WHERE user_id = ?";
-            return queryRunner.update(conn, sql, userId);
-        } finally {
-            DatabaseUtil.closeConnection(conn);
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, username);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return mapResultSetToUser(rs);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public User findByEmail(String email) throws SQLException {
+        String sql = "SELECT * FROM users WHERE email = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, email);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return mapResultSetToUser(rs);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public User authenticate(String username, String passwordHash) throws SQLException {
+        String sql = "SELECT * FROM users WHERE username = ? AND password_hash = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, username);
+            ps.setString(2, passwordHash);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return mapResultSetToUser(rs);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public boolean updatePassword(int userId, String newPasswordHash) throws SQLException {
+        String sql = "UPDATE users SET password_hash = ? WHERE user_id = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, newPasswordHash);
+            ps.setInt(2, userId);
+
+            return ps.executeUpdate() > 0;
         }
     }
 
     @Override
-    public boolean verifyPassword(String username, String hashedPassword) throws SQLException {
-        Connection conn = null;
-        try {
-            conn = DatabaseUtil.getConnection();
+    public boolean isUsernameExists(String username) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM users WHERE username = ?";
 
-            String sql = "SELECT COUNT(*) FROM users WHERE username = ? AND password_hash = ?";
-            Long count = queryRunner.query(conn, sql, new ScalarHandler<>(), username, hashedPassword);
-            return count != null && count > 0;
-        } finally {
-            DatabaseUtil.closeConnection(conn);
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, username);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
         }
+
+        return false;
+    }
+
+    @Override
+    public boolean isEmailExists(String email) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, email);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * 将ResultSet映射为User对象
+     */
+    private User mapResultSetToUser(ResultSet rs) throws SQLException {
+        User user = new User();
+        user.setUserId(rs.getInt("user_id"));
+        user.setUsername(rs.getString("username"));
+        user.setPasswordHash(rs.getString("password_hash"));
+        user.setEmail(rs.getString("email"));
+        user.setCreatedAt(rs.getDate("created_at").toLocalDate());
+        return user;
     }
 }

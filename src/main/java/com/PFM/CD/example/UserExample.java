@@ -1,6 +1,6 @@
 package com.PFM.CD.example;
 
-import com.PFM.CD.dao.UserDao;
+import com.PFM.CD.dao.interfaces.UserDao;
 import com.PFM.CD.dao.impl.UserDaoImpl;
 import com.PFM.CD.entity.User;
 

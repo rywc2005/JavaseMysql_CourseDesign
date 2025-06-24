@@ -4,23 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7521e9f-4cfe-4ccf-be55-ab5103ad2ba7" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/CustomRowProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/UserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/UserDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/example/UserExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/db/DBConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/db/DatabaseUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/db/LocalDateBeanProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
+    <list default="true" id="d7521e9f-4cfe-4ccf-be55-ab5103ad2ba7" name="更改" comment="成功实现数据库连接，user作为测试通过。关注依赖文件所实现，dbbase实现数据库连接，基于localdate处理器和CustomRow处理器，实现数据库与entity的映射。在dao中通过接口与实现类处理与数据库的crud。">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/FinanceApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/exception/BusinessLogicException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/AccountDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/BaseDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/BudgetCategoryDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/BudgetDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/CategoryDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/ReportDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/TransactionDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/AccountDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/BaseDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/BudgetCategoryDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/BudgetDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/CategoryDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/ReportDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/TransactionDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/Budget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/BudgetCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/Report.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/enums/AccountStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/enums/CategoryType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/enums/PeriodType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/enums/ReportType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/enums/TransactionType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/MainFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/db/DBTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/example/UserExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/example/UserExample.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +57,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="learn" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
@@ -51,10 +77,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "learnNotORM",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -66,6 +94,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.PFM.CD.dao.interfaces" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="UserExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.PFM.CD.example.UserExample" />
@@ -95,11 +128,32 @@
       <option name="presentableId" value="Default" />
       <updated>1750681694450</updated>
       <workItem from="1750681695801" duration="4117000" />
-      <workItem from="1750746117889" duration="6312000" />
+      <workItem from="1750746117889" duration="13264000" />
     </task>
+    <task id="LOCAL-00001" summary="成功实现数据库连接，user作为测试通过。关注依赖文件所实现，dbbase实现数据库连接，基于localdate处理器和CustomRow处理器，实现数据库与entity的映射。在dao中通过接口与实现类处理与数据库的crud。">
+      <option name="closed" value="true" />
+      <created>1750753731696</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1750753731696</updated>
+    </task>
+    <task id="LOCAL-00002" summary="成功实现数据库连接，user作为测试通过。关注依赖文件所实现，dbbase实现数据库连接，基于localdate处理器和CustomRow处理器，实现数据库与entity的映射。在dao中通过接口与实现类处理与数据库的crud。">
+      <option name="closed" value="true" />
+      <created>1750753783454</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1750753783454</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="成功实现数据库连接，user作为测试通过。关注依赖文件所实现，dbbase实现数据库连接，基于localdate处理器和CustomRow处理器，实现数据库与entity的映射。在dao中通过接口与实现类处理与数据库的crud。" />
+    <option name="LAST_COMMIT_MESSAGE" value="成功实现数据库连接，user作为测试通过。关注依赖文件所实现，dbbase实现数据库连接，基于localdate处理器和CustomRow处理器，实现数据库与entity的映射。在dao中通过接口与实现类处理与数据库的crud。" />
   </component>
 </project>
