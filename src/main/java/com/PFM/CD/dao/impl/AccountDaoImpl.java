@@ -1,6 +1,7 @@
 package com.PFM.CD.dao.impl;
 
 import com.PFM.CD.dao.interfaces.AccountDao;
+import com.PFM.CD.dao.interfaces.ConnectionManager;
 import com.PFM.CD.entity.Account;
 import com.PFM.CD.entity.enums.AccountStatus;
 
@@ -16,6 +17,10 @@ import java.util.List;
  * @since 2025-06-24
  */
 public class AccountDaoImpl extends BaseDaoImpl<Account, Integer> implements AccountDao {
+
+    public AccountDaoImpl(ConnectionManager connectionManager) {
+        super();
+    }
 
     @Override
     public boolean save(Account account) throws SQLException {

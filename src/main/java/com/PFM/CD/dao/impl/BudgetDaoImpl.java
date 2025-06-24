@@ -1,6 +1,7 @@
 package com.PFM.CD.dao.impl;
 
 import com.PFM.CD.dao.interfaces.BudgetDao;
+import com.PFM.CD.dao.interfaces.ConnectionManager;
 import com.PFM.CD.entity.Budget;
 import com.PFM.CD.entity.BudgetCategory;
 import com.PFM.CD.entity.enums.PeriodType;
@@ -17,6 +18,10 @@ import java.util.List;
  * @since 2025-06-24
  */
 public class BudgetDaoImpl extends BaseDaoImpl<Budget, Integer> implements BudgetDao {
+
+    public BudgetDaoImpl(ConnectionManager connectionManager) {
+        super();
+    }
 
     @Override
     public boolean save(Budget budget) throws SQLException {

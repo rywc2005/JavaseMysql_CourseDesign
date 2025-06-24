@@ -1,5 +1,6 @@
 package com.PFM.CD.dao.impl;
 
+import com.PFM.CD.dao.interfaces.ConnectionManager;
 import com.PFM.CD.dao.interfaces.UserDao;
 import com.PFM.CD.entity.User;
 
@@ -15,6 +16,10 @@ import java.util.List;
  * @since 2025-06-24
  */
 public class UserDaoImpl extends BaseDaoImpl<User, Integer> implements UserDao {
+
+    public UserDaoImpl(ConnectionManager connectionManager) {
+        super();
+    }
 
     @Override
     public boolean save(User user) throws SQLException {

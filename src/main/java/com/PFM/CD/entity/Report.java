@@ -167,4 +167,9 @@ public class Report {
     public int hashCode() {
         return Objects.hash(reportId, userId);
     }
+
+    public void setContent(String reportContent) {
+        // 设置报表内容，通常用于存储生成的报表数据
+        this.parameters = reportContent; // 假设content是JSON格式的字符串
+    }
 }

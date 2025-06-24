@@ -11,7 +11,12 @@ public enum ReportType {
 
     INCOME_EXPENSE("收支分析报表", "分析收入和支出的比例及趋势"),
     CATEGORY_ANALYSIS("分类分析报表", "按分类统计收支情况"),
-    BUDGET_EVALUATION("预算评估报表", "评估预算执行情况");
+    BUDGET_EVALUATION("预算评估报表", "评估预算执行情况"),
+
+    BUDGET("预算报表", "展示指定期间的预算信息"),
+    CATEGORY("分类报表", "展示各分类的收支统计"),
+    ACCOUNT("账户报表", "展示账户相关的交易与余额");
+
 
     private final String displayName;
     private final String description;
@@ -49,6 +54,12 @@ public enum ReportType {
                 return "category_analysis_report";
             case BUDGET_EVALUATION:
                 return "budget_evaluation_report";
+            case BUDGET:
+                return "budget_report";
+            case CATEGORY:
+                return "category_report";
+            case ACCOUNT:
+                return "account_report";
             default:
                 return "report"; // 不应该发生
         }
@@ -59,7 +70,7 @@ public enum ReportType {
      * @return 如果需要预算数据返回true，否则返回false
      */
     public boolean requiresBudgetData() {
-        return this == BUDGET_EVALUATION;
+        return this == BUDGET_EVALUATION || this == BUDGET;
     }
 
     /**

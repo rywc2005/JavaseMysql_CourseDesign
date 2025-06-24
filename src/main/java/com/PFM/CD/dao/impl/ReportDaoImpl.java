@@ -1,5 +1,6 @@
 package com.PFM.CD.dao.impl;
 
+import com.PFM.CD.dao.interfaces.ConnectionManager;
 import com.PFM.CD.dao.interfaces.ReportDao;
 import com.PFM.CD.entity.Report;
 import com.PFM.CD.entity.enums.ReportType;
@@ -16,6 +17,10 @@ import java.util.List;
  * @since 2025-06-24
  */
 public class ReportDaoImpl extends BaseDaoImpl<Report, Integer> implements ReportDao {
+
+    public ReportDaoImpl(ConnectionManager connectionManager) {
+        super();
+    }
 
     @Override
     public boolean save(Report report) throws SQLException {

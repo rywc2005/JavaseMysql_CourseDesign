@@ -1,6 +1,7 @@
 package com.PFM.CD.dao.impl;
 
 import com.PFM.CD.dao.interfaces.BudgetCategoryDao;
+import com.PFM.CD.dao.interfaces.ConnectionManager;
 import com.PFM.CD.entity.BudgetCategory;
 
 import java.math.BigDecimal;
@@ -16,6 +17,10 @@ import java.util.List;
  * @since 2025-06-24
  */
 public class BudgetCategoryDaoImpl extends BaseDaoImpl<BudgetCategory, Integer> implements BudgetCategoryDao {
+
+    public BudgetCategoryDaoImpl(ConnectionManager connectionManager) {
+        super();
+    }
 
     @Override
     public boolean save(BudgetCategory budgetCategory) throws SQLException {

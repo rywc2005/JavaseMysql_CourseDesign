@@ -1,5 +1,6 @@
 package com.PFM.CD.dao.impl;
 
+import com.PFM.CD.dao.interfaces.ConnectionManager;
 import com.PFM.CD.dao.interfaces.TransactionDao;
 import com.PFM.CD.entity.Transaction;
 import com.PFM.CD.entity.enums.TransactionType;
@@ -19,6 +20,10 @@ import java.util.Map;
  * @since 2025-06-24
  */
 public class TransactionDaoImpl extends BaseDaoImpl<Transaction, Integer> implements TransactionDao {
+
+    public TransactionDaoImpl(ConnectionManager connectionManager) {
+        super();
+    }
 
     @Override
     public boolean save(Transaction transaction) throws SQLException {
