@@ -211,4 +211,9 @@ public class UserServiceImpl implements UserService {
             }
         }
     }
+
+    @Override
+    public int getTotalUserCount() {
+        return userDao.getTotalUserCount();
+    }
 }

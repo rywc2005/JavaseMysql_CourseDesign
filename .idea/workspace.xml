@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7521e9f-4cfe-4ccf-be55-ab5103ad2ba7" name="更改" comment="豆包和gpt4.1不好用，重写gui">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/db/StoredProcedureExecutor.java" afterDir="false" />
+    <list default="true" id="d7521e9f-4cfe-4ccf-be55-ab5103ad2ba7" name="更改" comment="阶段尾2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/ForgotPasswordFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/ForgotPasswordFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/LoginFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/LoginPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/RegisterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/RegisterFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/AccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/TransactionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/TransactionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/SettingsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/SettingsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/StatusPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/StatusPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/db/StoredProcedureExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/db/StoredProcedureExecutor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750838396660</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="阶段尾2">
+      <option name="closed" value="true" />
+      <created>1750873263286</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1750873263286</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,7 +279,8 @@
     <MESSAGE value="dbutils不变，entity加入enums模块，dao未使用数据库触发器，以显式代码实现功能服务，自定义异常模块待补充。" />
     <MESSAGE value="report有点奇怪有些方法没用上，已解决所有报错，utils内容很多。只剩下gui" />
     <MESSAGE value="豆包和gpt4.1不好用，重写gui" />
-    <option name="LAST_COMMIT_MESSAGE" value="豆包和gpt4.1不好用，重写gui" />
+    <MESSAGE value="阶段尾2" />
+    <option name="LAST_COMMIT_MESSAGE" value="阶段尾2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

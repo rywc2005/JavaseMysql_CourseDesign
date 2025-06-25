@@ -111,4 +111,12 @@ public class User {
     public int hashCode() {
         return Objects.hash(userId, username, email);
     }
+
+    public String getRole() {
+        if (username.equals("admin")) {
+            return "admin";
+        } else {
+            return "user";
+        }
+    }
 }

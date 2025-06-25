@@ -131,7 +131,9 @@ public class MainFrame extends JFrame {
         sidebar.add(Box.createVerticalStrut(8));
         sidebar.add(createNavButton("📈 报表中心", "reports", ACCENT, SIDEBAR_BG));
         sidebar.add(Box.createVerticalStrut(8));
-        sidebar.add(createNavButton("👤 用户中心", "settings", ACCENT, SIDEBAR_BG));
+        sidebar.add(createNavButton("👤 系统中心", "settings", ACCENT, SIDEBAR_BG));
+        sidebar.add(Box.createVerticalStrut(8));
+        sidebar.add(createNavButton("📋 用户中心", "status", ACCENT, SIDEBAR_BG));
         sidebar.add(Box.createVerticalGlue());
 
         add(sidebar, BorderLayout.WEST);
@@ -148,6 +150,7 @@ public class MainFrame extends JFrame {
         contentPanel.add(catogoryPanel, "catogory");
         contentPanel.add(reportsPanel, "reports");
         contentPanel.add(settingsPanel, "settings");
+        contentPanel.add(statusPanel, "status");
 
         add(contentPanel, BorderLayout.CENTER);
 
@@ -292,9 +295,6 @@ public class MainFrame extends JFrame {
      */
     public void showPanel(String panelName) {
         cardLayout.show(contentPanel, panelName);
-        if(statusPanel != null) {
-            statusPanel.setStatus("当前页面：" + getPanelDisplayName(panelName));
-        }
     }
 
     private String getPanelDisplayName(String panelName) {
@@ -306,6 +306,7 @@ public class MainFrame extends JFrame {
             case "catogory": return "分类";
             case "reports": return "报表";
             case "settings": return "设置";
+            case "status": return "状态";
             default: return "";
         }
     }

@@ -61,4 +61,6 @@ public interface UserDao extends BaseDao<User, Integer> {
      * @return 如果存在返回true，否则返回false
      */
     boolean isEmailExists(String email) throws SQLException;
+
+    int getTotalUserCount();
 }

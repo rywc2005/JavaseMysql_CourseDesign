@@ -102,4 +102,6 @@ public interface UserService {
     boolean isEmailAvailable(String email) throws ServiceException;
 
     void resetPassword(String username, String email, String newPassword);
+
+    int getTotalUserCount();
 }

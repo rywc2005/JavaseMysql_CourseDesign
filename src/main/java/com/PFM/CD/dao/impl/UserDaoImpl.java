@@ -225,6 +225,24 @@ public class UserDaoImpl extends BaseDaoImpl<User, Integer> implements UserDao {
         return false;
     }
 
+    @Override
+public int getTotalUserCount() {
+        String sql = "SELECT COUNT(*) FROM users";
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return 0;
+    }
+
     /**
      * 将ResultSet映射为User对象
      */
