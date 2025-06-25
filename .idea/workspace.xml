@@ -5,32 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7521e9f-4cfe-4ccf-be55-ab5103ad2ba7" name="更改" comment="豆包和gpt4.1不好用，重写gui">
-      <change afterPath="$PROJECT_DIR$/.idea/MarsCodeWorkspaceAppSettings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/Page.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/AccountsPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/BudgetsPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/CatogoryPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/DashboardPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/ForgotPasswordFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/LoginFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/LoginPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/MainFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/RegisterFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/ReportsPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/SettingsPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/StatusPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/TransactionFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/TransactionsPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/db/StoredProcedureExecutor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/FinanceApp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/factory/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/factory/DaoFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/BaseDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/BaseDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/ConnectionManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/ConnectionManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/TransactionDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/TransactionDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/TransactionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/TransactionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/factory/ServiceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/factory/ServiceFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/ForgotPasswordFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/ForgotPasswordFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/LoginPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/RegisterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/RegisterFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/AccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/TransactionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/TransactionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/AccountService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,35 +61,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;learnNotORM&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "learnNotORM",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;java.sql.Driver&quot;,
-      &quot;f187bdfa-34bf-48f7-b32c-f011e5effb72&quot;,
-      &quot;oracle&quot;,
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "java.sql.Driver",
+      "f187bdfa-34bf-48f7-b32c-f011e5effb72",
+      "oracle",
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.PFM.CD.gui" />
@@ -168,8 +153,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.PFM.CD.gui.Main" />
+    <configuration name="ReportFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.PFM.CD.gui.ReportFrame" />
       <module name="learn" />
       <extension name="coverage">
         <pattern>
@@ -184,10 +169,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.LoginFrame (2)" />
+        <item itemvalue="应用程序.ReportFrame" />
         <item itemvalue="应用程序.LoginFrame (1)" />
         <item itemvalue="应用程序.FinanceManagementSystem" />
         <item itemvalue="应用程序.LoginFrame" />
-        <item itemvalue="应用程序.Main" />
       </list>
     </recent_temporary>
   </component>

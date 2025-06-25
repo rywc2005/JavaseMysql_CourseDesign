@@ -113,10 +113,6 @@ public class TransactionServiceImpl implements TransactionService {
                     throw new ServiceException("保存交易记录失败");
                 }
 
-                // 更新账户余额
-                BigDecimal newBalance = account.getBalance().add(amount);
-                accountDao.updateBalance(accountId, newBalance);
-
                 transactionDao.commitTransaction(conn);
                 return transaction;
             } catch (SQLException e) {
@@ -571,4 +567,5 @@ public class TransactionServiceImpl implements TransactionService {
             throw new ServiceException("批量导入交易记录过程中发生数据库错误", e);
         }
     }
+
 }

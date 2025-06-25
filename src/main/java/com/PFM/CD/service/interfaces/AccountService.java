@@ -84,51 +84,6 @@ public interface AccountService {
     List<Account> getActiveAccounts(int userId) throws ServiceException;
 
     /**
-     * 调整账户余额（直接设置）
-     *
-     * @param accountId 账户ID
-     * @param newBalance 新余额
-     * @return 更新后的账户
-     * @throws ServiceException 如果调整过程中发生错误
-     */
-    Account adjustBalance(int accountId, BigDecimal newBalance) throws ServiceException;
-
-    /**
-     * 账户充值（增加余额）
-     *
-     * @param accountId 账户ID
-     * @param amount 增加金额
-     * @return 更新后的账户
-     * @throws ServiceException 如果充值过程中发生错误
-     */
-    Account deposit(int accountId, BigDecimal amount) throws ServiceException;
-
-    /**
-     * 账户提款（减少余额）
-     *
-     * @param accountId 账户ID
-     * @param amount 减少金额
-     * @return 更新后的账户
-     * @throws InsufficientBalanceException 如果余额不足
-     * @throws ServiceException 如果提款过程中发生其他错误
-     */
-    Account withdraw(int accountId, BigDecimal amount)
-            throws InsufficientBalanceException, ServiceException;
-
-    /**
-     * 账户间转账
-     *
-     * @param fromAccountId 源账户ID
-     * @param toAccountId 目标账户ID
-     * @param amount 转账金额
-     * @return 是否转账成功
-     * @throws InsufficientBalanceException 如果源账户余额不足
-     * @throws ServiceException 如果转账过程中发生其他错误
-     */
-    boolean transfer(int fromAccountId, int toAccountId, BigDecimal amount)
-            throws InsufficientBalanceException, ServiceException;
-
-    /**
      * 计算用户总资产
      *
      * @param userId 用户ID
