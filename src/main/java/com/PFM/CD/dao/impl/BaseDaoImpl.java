@@ -1,6 +1,7 @@
 package com.PFM.CD.dao.impl;
 
 import com.PFM.CD.dao.interfaces.BaseDao;
+import com.PFM.CD.entity.Transaction;
 import com.PFM.CD.utils.db.DatabaseUtil;
 
 import java.sql.Connection;
@@ -87,6 +88,7 @@ public abstract class BaseDaoImpl<T, K> implements BaseDao<T, K> {
             closeConnection(conn);
         }
     }
+
 
     /**
      * 函数式接口，用于执行事务操作

@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class ConnectionManagerImpl implements ConnectionManager {
 
     private static final int MAX_CONNECTIONS = 10;
-    private static final int INITIAL_CONNECTIONS = 5;
+    private static final int INITIAL_CONNECTIONS = 0;
 
     private final String jdbcUrl;
     private final String username;

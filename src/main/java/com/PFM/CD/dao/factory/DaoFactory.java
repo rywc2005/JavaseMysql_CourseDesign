@@ -111,7 +111,7 @@ public class DaoFactory {
         if (transactionDao == null) {
             synchronized (LOCK) {
                 if (transactionDao == null) {
-                    transactionDao = new TransactionDaoImpl(connectionManager);
+                    transactionDao = new TransactionDaoImpl();
                 }
             }
         }

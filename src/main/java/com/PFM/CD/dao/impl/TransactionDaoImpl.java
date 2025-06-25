@@ -21,10 +21,6 @@ import java.util.Map;
  */
 public class TransactionDaoImpl extends BaseDaoImpl<Transaction, Integer> implements TransactionDao {
 
-    public TransactionDaoImpl(ConnectionManager connectionManager) {
-        super();
-    }
-
     @Override
     public boolean save(Transaction transaction) throws SQLException {
         String sql = "INSERT INTO transactions (user_id, source_account_id, destination_account_id, " +
@@ -467,53 +463,31 @@ public class TransactionDaoImpl extends BaseDaoImpl<Transaction, Integer> implem
 
     @Override
     public int batchSave(List<Transaction> transactions) throws SQLException {
-        String sql = "INSERT INTO transactions (user_id, source_account_id, destination_account_id, " +
-                "category_id, amount, transaction_type, transaction_date, description) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = """
+        INSERT INTO transactions (
+            user_id, source_account_id, destination_account_id, category_id, 
+            amount, transaction_type, transaction_date, description
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """;
 
-        int count = 0;
-
-        try (Connection conn = getConnection()) {
-            beginTransaction(conn);
-
-            try (PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                for (Transaction transaction : transactions) {
-                    ps.setInt(1, transaction.getUserId());
-                    setNullableInteger(ps, 2, transaction.getSourceAccountId());
-                    setNullableInteger(ps, 3, transaction.getDestinationAccountId());
-                    ps.setInt(4, transaction.getCategoryId());
-                    ps.setBigDecimal(5, transaction.getAmount());
-                    ps.setString(6, transaction.getTransactionType().toString());
-                    ps.setDate(7, Date.valueOf(transaction.getTransactionDate()));
-                    ps.setString(8, transaction.getDescription());
-                    ps.addBatch();
-                }
-
-                int[] results = ps.executeBatch();
-
-                // Get the generated keys for all inserted records
-                try (ResultSet rs = ps.getGeneratedKeys()) {
-                    int i = 0;
-                    while (rs.next() && i < transactions.size()) {
-                        transactions.get(i).setTransactionId(rs.getInt(1));
-                        i++;
-                    }
-                }
-
-                for (int result : results) {
-                    if (result > 0) {
-                        count++;
-                    }
-                }
-
-                commitTransaction(conn);
-            } catch (SQLException e) {
-                rollbackTransaction(conn);
-                throw e;
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            int count = 0;
+            for (Transaction t : transactions) {
+                stmt.setInt(1, t.getUserId());
+                stmt.setObject(2, t.getSourceAccountId(), Types.INTEGER);  // 允许NULL
+                stmt.setObject(3, t.getDestinationAccountId(), Types.INTEGER);  // 允许NULL
+                stmt.setInt(4, t.getCategoryId());
+                stmt.setBigDecimal(5, t.getAmount());
+                stmt.setString(6, t.getTransactionType().name());
+                stmt.setDate(7, Date.valueOf(t.getTransactionDate()));
+                stmt.setString(8, t.getDescription());
+                stmt.addBatch();
+                count++;
             }
+            stmt.executeBatch();  // 执行批量插入
+            return count;
         }
-
-        return count;
     }
 
     /**
@@ -563,4 +537,96 @@ public class TransactionDaoImpl extends BaseDaoImpl<Transaction, Integer> implem
 
         return transaction;
     }
+
+    @Override
+    public List<Transaction> findByUserIdWithPagination(int userId, LocalDate startDate, LocalDate endDate,
+                                                        TransactionType type, int offset, int limit) throws SQLException {
+        // 构建动态SQL（基础条件+可选过滤）
+        StringBuilder sql = new StringBuilder("""
+            SELECT transaction_id, user_id, source_account_id, destination_account_id,
+                   category_id, amount, transaction_type, transaction_date, description
+            FROM transactions
+            WHERE user_id = ?
+        """);
+        List<Object> params = new ArrayList<>();
+        params.add(userId);
+
+        // 添加日期范围过滤
+        if (startDate != null && endDate != null) {
+            sql.append(" AND transaction_date BETWEEN ? AND ? ");
+            params.add(Date.valueOf(startDate));
+            params.add(Date.valueOf(endDate));
+        }
+
+        // 添加交易类型过滤
+        if (type != null) {
+            sql.append(" AND transaction_type = ? ");
+            params.add(type.name());
+        }
+
+        // 排序和分页
+        sql.append(" ORDER BY transaction_date DESC LIMIT ? OFFSET ?");
+        params.add(limit);
+        params.add(offset);
+
+        // 执行查询
+        try (Connection conn =getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
+            // 设置参数
+            for (int i = 0; i < params.size(); i++) {
+                stmt.setObject(i + 1, params.get(i));
+            }
+
+            // 映射结果集
+            List<Transaction> transactions = new ArrayList<>();
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Transaction t = new Transaction();
+                    t.setTransactionId(rs.getInt("transaction_id"));
+                    t.setUserId(rs.getInt("user_id"));
+                    t.setSourceAccountId(rs.getInt("source_account_id"));
+                    t.setDestinationAccountId(rs.getInt("destination_account_id"));
+                    t.setCategoryId(rs.getInt("category_id"));
+                    t.setAmount(rs.getBigDecimal("amount"));
+                    t.setTransactionType(TransactionType.valueOf(rs.getString("transaction_type")));
+                    t.setTransactionDate(rs.getDate("transaction_date").toLocalDate());
+                    t.setDescription(rs.getString("description"));
+                    transactions.add(t);
+                }
+            }
+            return transactions;
+        }
+    }
+
+    @Override
+    public long countByUserId(int userId, LocalDate startDate, LocalDate endDate, TransactionType type) throws SQLException {
+        // 构建统计SQL（与查询SQL条件保持一致）
+        StringBuilder sql = new StringBuilder("SELECT COUNT(*) AS total FROM transactions WHERE user_id = ?");
+        List<Object> params = new ArrayList<>();
+        params.add(userId);
+
+        if (startDate != null && endDate != null) {
+            sql.append(" AND transaction_date BETWEEN ? AND ? ");
+            params.add(Date.valueOf(startDate));
+            params.add(Date.valueOf(endDate));
+        }
+
+        if (type != null) {
+            sql.append(" AND transaction_type = ? ");
+            params.add(type.name());
+        }
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
+            for (int i = 0; i < params.size(); i++) {
+                stmt.setObject(i + 1, params.get(i));
+            }
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                rs.next();
+                return rs.getLong("total");
+            }
+        }
+    }
+
 }

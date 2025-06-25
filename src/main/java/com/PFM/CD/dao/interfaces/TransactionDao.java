@@ -126,5 +126,33 @@ public interface TransactionDao extends BaseDao<Transaction, Integer> {
      * @param transactions 交易列表
      * @return 成功保存的数量
      */
+
+    // ... 原有方法 ...
+
+/**
+ * 分页查询用户交易记录
+ * @param userId 用户ID
+ * @param startDate 开始日期（可选）
+ * @param endDate 结束日期（可选）
+ * @param type 交易类型（可选）
+ * @param offset SQL偏移量
+ * @param limit 每页记录数
+ * @return 交易列表
+ * @throws SQLException 数据库异常
+ */
+List<Transaction> findByUserIdWithPagination(int userId, LocalDate startDate, LocalDate endDate,
+                                            TransactionType type, int offset, int limit) throws SQLException;
+
+/**
+ * 统计用户交易记录总数
+ * @param userId 用户ID
+ * @param startDate 开始日期（可选）
+ * @param endDate 结束日期（可选）
+ * @param type 交易类型（可选）
+ * @return 总记录数
+ * @throws SQLException 数据库异常
+ */
+long countByUserId(int userId, LocalDate startDate, LocalDate endDate, TransactionType type) throws SQLException;
+
     int batchSave(List<Transaction> transactions) throws SQLException;
 }

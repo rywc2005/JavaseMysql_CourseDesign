@@ -33,7 +33,7 @@ public class ServiceFactory {
     /**
      * 私有构造函数
      */
-    private ServiceFactory() {
+    public ServiceFactory() {
         this.daoFactory = DaoFactory.getInstance();
         this.serviceConfig = new ServiceConfig();
     }
