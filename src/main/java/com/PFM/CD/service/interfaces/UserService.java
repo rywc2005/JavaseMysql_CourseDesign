@@ -100,4 +100,6 @@ public interface UserService {
      * @throws ServiceException 如果检查过程中发生错误
      */
     boolean isEmailAvailable(String email) throws ServiceException;
+
+    void resetPassword(String username, String email, String newPassword);
 }

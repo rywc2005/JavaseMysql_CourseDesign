@@ -187,4 +187,28 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException("检查邮箱可用性过程中发生数据库错误", e);
         }
     }
+
+    @Override
+    public void resetPassword(String username, String email, String newPassword) {
+        try {
+            // 检查用户名和邮箱是否匹配
+            User user = userDao.findByUsername(username);
+            if (user == null || !user.getEmail().equals(email)) {
+                throw new ServiceException("用户名或邮箱不匹配");
+            }
+
+            // 更新密码
+            String newPasswordHash = PasswordHasher.hashPassword(newPassword);
+            boolean success = userDao.updatePassword(user.getUserId(), newPasswordHash);
+            if (!success) {
+                throw new ServiceException("重置密码失败");
+            }
+        } catch (SQLException | ServiceException e) {
+            try {
+                throw new ServiceException("重置密码过程中发生数据库错误", e);
+            } catch (ServiceException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+    }
 }

@@ -21,6 +21,10 @@ public class UserDaoImpl extends BaseDaoImpl<User, Integer> implements UserDao {
         super();
     }
 
+    public UserDaoImpl() {
+
+    }
+
     @Override
     public boolean save(User user) throws SQLException {
         String sql = "INSERT INTO users (username, password_hash, email, created_at) VALUES (?, ?, ?, ?)";

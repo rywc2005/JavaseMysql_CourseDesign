@@ -4,86 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7521e9f-4cfe-4ccf-be55-ab5103ad2ba7" name="更改" comment="report有点奇怪有些方法没用上，已解决所有报错，utils内容很多。只剩下gui">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/constants/DaoConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/exception/DataValidationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/exception/DatabaseConnectionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/exception/DuplicateEntityException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/exception/EntityNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/exception/SqlExecutionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/exception/TransactionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/factory/DaoFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/ConnectionManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/ConnectionManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/util/DatabaseUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/util/SqlUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/config/ServiceConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/constants/ServiceConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/dto/AccountBalanceTrend.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/dto/AccountDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/dto/AccountSummaryDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/dto/CategoryDistribution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/dto/CategoryDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/dto/IncomeExpenseTrend.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/dto/TransactionDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/dto/TransactionFrequency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/dto/TransactionSummaryDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/dto/UserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/exception/AccessDeniedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/exception/AuthenticationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/exception/BusinessRuleException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/exception/DuplicateResourceException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/exception/ExportException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/exception/InsufficientBalanceException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/exception/InvalidDataException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/exception/ResourceNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/exception/ServiceException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/exception/ValidationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/factory/ServiceFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/AccountServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/BudgetServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/ReportServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/StatisticsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/TransactionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/AccountService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/BudgetService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/ReportService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/StatisticsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/TransactionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/util/TransactionUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/util/ValidationUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/date/DateUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/date/PeriodCalculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/file/CsvUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/file/FileUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/file/TempFileManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/format/CurrencyFormatter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/format/DateFormatter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/format/NumberFormatter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/report/ExcelExporter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/report/PdfExporter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/report/ReportGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/security/EncryptionUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/security/PasswordHasher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/security/PasswordUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/validation/InputValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/validation/RegexPatterns.java" afterDir="false" />
+    <list default="true" id="d7521e9f-4cfe-4ccf-be55-ab5103ad2ba7" name="更改" comment="豆包和gpt4.1不好用，重写gui">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/exception/BusinessLogicException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/exception/DaoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/AccountDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/AccountDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/BudgetCategoryDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/BudgetCategoryDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/BudgetDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/BudgetDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/CategoryDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/CategoryDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/ReportDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/ReportDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/TransactionDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/TransactionDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/FinanceApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/CustomRowProcessor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/Report.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/enums/ReportType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/enums/ReportType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/example/UserExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/MainFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,8 +42,11 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/PFM/CD/example/UserExample.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -143,7 +75,8 @@
     "project.structure.last.edited": "项目",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "com.github.copilot.settings.ApplicationConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -155,7 +88,20 @@
       <recent name="D:\AAAmajor_class\AAA专\大二\课设\个人财务管理系统\电子材料\A\learn\src\main\java\com\PFM\CD\service\factory" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="应用程序.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.PFM.CD.gui.Main" />
+      <module name="learn" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.PFM.CD.gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.PFM.CD.example.UserExample" />
       <module name="learn" />
@@ -171,6 +117,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.Main" />
         <item itemvalue="应用程序.UserExample" />
       </list>
     </recent_temporary>
@@ -184,7 +131,8 @@
       <option name="presentableId" value="Default" />
       <updated>1750681694450</updated>
       <workItem from="1750681695801" duration="4117000" />
-      <workItem from="1750746117889" duration="25485000" />
+      <workItem from="1750746117889" duration="32701000" />
+      <workItem from="1750836661800" duration="1687000" />
     </task>
     <task id="LOCAL-00001" summary="成功实现数据库连接，user作为测试通过。关注依赖文件所实现，dbbase实现数据库连接，基于localdate处理器和CustomRow处理器，实现数据库与entity的映射。在dao中通过接口与实现类处理与数据库的crud。">
       <option name="closed" value="true" />
@@ -210,7 +158,23 @@
       <option name="project" value="LOCAL" />
       <updated>1750769060185</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="report有点奇怪有些方法没用上，已解决所有报错，utils内容很多。只剩下gui">
+      <option name="closed" value="true" />
+      <created>1750780673990</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1750780673990</updated>
+    </task>
+    <task id="LOCAL-00005" summary="report有点奇怪有些方法没用上，已解决所有报错，utils内容很多。只剩下gui">
+      <option name="closed" value="true" />
+      <created>1750780889812</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1750780889812</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,7 +191,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="learnNotORM" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -243,6 +207,22 @@
     <MESSAGE value="成功实现数据库连接，user作为测试通过。关注依赖文件所实现，dbbase实现数据库连接，基于localdate处理器和CustomRow处理器，实现数据库与entity的映射。在dao中通过接口与实现类处理与数据库的crud。" />
     <MESSAGE value="dbutils不变，entity加入enums模块，dao未使用数据库触发器，以显式代码实现功能服务，自定义异常模块待补充。" />
     <MESSAGE value="report有点奇怪有些方法没用上，已解决所有报错，utils内容很多。只剩下gui" />
-    <option name="LAST_COMMIT_MESSAGE" value="report有点奇怪有些方法没用上，已解决所有报错，utils内容很多。只剩下gui" />
+    <MESSAGE value="豆包和gpt4.1不好用，重写gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="豆包和gpt4.1不好用，重写gui" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/AccountDaoImpl.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
