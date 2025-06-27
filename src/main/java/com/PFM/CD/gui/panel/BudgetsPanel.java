@@ -1,4 +1,4 @@
-package com.PFM.CD.gui;
+package com.PFM.CD.gui.panel;
 
 import com.PFM.CD.entity.Budget;
 import com.PFM.CD.entity.BudgetCategory;
@@ -10,6 +10,8 @@ import com.PFM.CD.service.interfaces.BudgetService;
 import com.PFM.CD.service.interfaces.CategoryService;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.math.BigDecimal;
@@ -18,68 +20,84 @@ import java.util.List;
 
 /**
  * 预算面板：创建预算、分配预算、监控执行
- * Controller负责与BudgetService/CategoryService交互
- * 支持预算的增删改查、分类分配与执行监控
+ * 风格对齐TransactionsPanel，表格第一列为"序号"
  */
 public class BudgetsPanel extends JPanel {
     private JTable table;
     private DefaultTableModel tableModel;
     private JButton addButton, editButton, deleteButton, categoryButton, refreshButton;
-    private  BudgetController controller;
-    private  int userId;
+    private BudgetController controller;
+    private int userId;
 
     public BudgetsPanel(int userId, BudgetService budgetService, CategoryService categoryService) {
         this.userId = userId;
         this.controller = new BudgetControllerImpl(budgetService, categoryService);
 
-        setLayout(new BorderLayout());
-        setBackground(Color.WHITE);
+        setLayout(new BorderLayout(0, 0));
+        setBackground(new Color(247, 249, 254));
+        setBorder(new EmptyBorder(12, 18, 12, 18));
 
-        // 顶部工具栏
-        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 8));
-        topPanel.setBackground(Color.WHITE);
+        // 顶部工具栏分两行
+        JPanel topPanelOuter = new JPanel();
+        topPanelOuter.setLayout(new BoxLayout(topPanelOuter, BoxLayout.Y_AXIS));
+        topPanelOuter.setOpaque(false);
 
-        refreshButton = new JButton("刷新");
-        refreshButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+        // 第一行：刷新
+        JPanel topPanelRow1 = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 8));
+        topPanelRow1.setOpaque(false);
+
+        refreshButton = createFlatButton("刷新", new Color(80, 170, 230), new Color(105, 200, 255));
+        refreshButton.setPreferredSize(new Dimension(120, 40));
+        refreshButton.setForeground(Color.WHITE);
         refreshButton.addActionListener(e -> loadBudgets());
 
-        addButton = new JButton("新建预算");
-        addButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-        addButton.setBackground(new Color(0, 123, 255));
+        topPanelRow1.add(refreshButton);
+
+        // 第二行：功能按钮
+        JPanel topPanelRow2 = new JPanel(new FlowLayout(FlowLayout.LEFT, 24, 0));
+        topPanelRow2.setOpaque(false);
+
+        addButton = createFlatButton("新建预算", new Color(0, 123, 255), new Color(30, 150, 255));
+        addButton.setPreferredSize(new Dimension(150, 40));
         addButton.setForeground(Color.WHITE);
         addButton.addActionListener(e -> addBudget());
 
-        editButton = new JButton("编辑预算");
-        editButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+        editButton = createFlatButton("编辑预算", new Color(70, 180, 100), new Color(110, 220, 140));
+        editButton.setPreferredSize(new Dimension(150, 40));
+        editButton.setForeground(Color.WHITE);
         editButton.addActionListener(e -> editBudget());
 
-        deleteButton = new JButton("删除预算");
-        deleteButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-        deleteButton.setForeground(Color.RED.darker());
+        deleteButton = createFlatButton("删除预算", new Color(230, 70, 70), new Color(240, 100, 100));
+        deleteButton.setPreferredSize(new Dimension(150, 40));
+        deleteButton.setForeground(Color.WHITE);
         deleteButton.addActionListener(e -> deleteBudget());
 
-        categoryButton = new JButton("分配/管理分类");
-        categoryButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+        categoryButton = createFlatButton("分配/管理分类", new Color(130, 90, 220), new Color(180, 140, 255));
+        categoryButton.setPreferredSize(new Dimension(250, 40));
+        categoryButton.setForeground(Color.WHITE);
         categoryButton.addActionListener(e -> manageCategories());
 
-        topPanel.add(refreshButton);
-        topPanel.add(Box.createHorizontalStrut(18));
-        topPanel.add(addButton);
-        topPanel.add(editButton);
-        topPanel.add(deleteButton);
-        topPanel.add(categoryButton);
+        topPanelRow2.add(addButton);
+        topPanelRow2.add(Box.createHorizontalStrut(12));
+        topPanelRow2.add(editButton);
+        topPanelRow2.add(Box.createHorizontalStrut(12));
+        topPanelRow2.add(deleteButton);
+        topPanelRow2.add(Box.createHorizontalStrut(12));
+        topPanelRow2.add(categoryButton);
 
-        add(topPanel, BorderLayout.NORTH);
+        topPanelOuter.add(topPanelRow1);
+        topPanelOuter.add(Box.createVerticalStrut(8));
+        topPanelOuter.add(topPanelRow2);
 
-        String[] columns = {"ID", "预算名称", "周期", "起始", "结束", "总额", "已分配", "已用", "进度(%)"};
+        add(topPanelOuter, BorderLayout.NORTH);
+
+        // 表格
+        String[] columns = {"序号", "预算名称", "周期", "起始", "结束", "总额", "已分配", "已用", "进度(%)"};
         tableModel = new DefaultTableModel(columns, 0) {
             public boolean isCellEditable(int row, int col) { return false; }
         };
         table = new JTable(tableModel);
-        table.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-        table.setRowHeight(28);
-        table.getTableHeader().setFont(new Font("微软雅黑", Font.BOLD, 14));
-        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        styleTable(table);
 
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
@@ -96,15 +114,15 @@ public class BudgetsPanel extends JPanel {
         });
     }
 
-    public BudgetsPanel() {
-    }
+    public BudgetsPanel() {}
 
     private void loadBudgets() {
         tableModel.setRowCount(0);
         List<Budget> budgetList = controller.queryBudgets(userId);
+        int rowNum = 1;
         for (Budget b : budgetList) {
             tableModel.addRow(new Object[]{
-                    b.getBudgetId(),
+                    rowNum++,
                     b.getName(),
                     b.getPeriodType().getDisplayName(),
                     b.getStartDate(),
@@ -120,8 +138,15 @@ public class BudgetsPanel extends JPanel {
     private Budget getSelectedBudget() {
         int row = table.getSelectedRow();
         if (row == -1) return null;
-        int budgetId = (int) tableModel.getValueAt(row, 0);
-        return controller.getBudgetById(budgetId);
+        // 序号列是第0列，预算名称是第1列
+        String name = (String) tableModel.getValueAt(row, 1);
+        List<Budget> budgetList = controller.queryBudgets(userId);
+        for (Budget b : budgetList) {
+            if (b.getName().equals(name)) {
+                return b;
+            }
+        }
+        return null;
     }
 
     private void addBudget() {
@@ -200,6 +225,35 @@ public class BudgetsPanel extends JPanel {
 
     private void showWarn(String msg) {
         JOptionPane.showMessageDialog(this, msg, "提示", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    // === 样式工具 ===
+    private JButton createFlatButton(String text, Color color, Color hover) {
+        JButton btn = new JButton(text);
+        btn.setFocusPainted(false);
+        btn.setFont(new Font("微软雅黑", Font.BOLD, 20));
+        btn.setBackground(color);
+        btn.setForeground(Color.WHITE);
+        btn.setBorder(BorderFactory.createEmptyBorder(10, 34, 10, 34));
+        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btn.setOpaque(true);
+        btn.setBorderPainted(false);
+        btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent e) { btn.setBackground(hover); }
+            public void mouseExited(java.awt.event.MouseEvent e) { btn.setBackground(color); }
+        });
+        return btn;
+    }
+
+    private void styleTable(JTable table) {
+        table.setFont(new Font("微软雅黑", Font.PLAIN, 22));
+        table.setRowHeight(28);
+        table.getTableHeader().setFont(new Font("微软雅黑", Font.BOLD, 20));
+        table.getTableHeader().setBackground(new Color(238, 242, 255));
+        table.getTableHeader().setForeground(new Color(55, 80, 150));
+        ((DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        table.setSelectionBackground(new Color(230, 240, 255));
+        table.setGridColor(new Color(220, 222, 230));
     }
 
     // ==== Controller层 ====
@@ -314,42 +368,51 @@ public class BudgetsPanel extends JPanel {
 
             JLabel nameLabel = new JLabel("预算名称：");
             nameLabel.setBounds(30, 24, 80, 26);
+            nameLabel.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             nameField = new JTextField();
             nameField.setBounds(110, 24, 240, 26);
+            nameField.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             form.add(nameLabel); form.add(nameField);
 
             JLabel periodLabel = new JLabel("周期类型：");
             periodLabel.setBounds(30, 62, 80, 26);
+            periodLabel.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             periodCombo = new JComboBox<>(PeriodType.values());
             periodCombo.setBounds(110, 62, 240, 26);
+            periodCombo.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             form.add(periodLabel); form.add(periodCombo);
 
             JLabel startLabel = new JLabel("起始日期：");
             startLabel.setBounds(30, 100, 80, 26);
+            startLabel.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             startDateSpinner = new JSpinner(new SpinnerDateModel());
             JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(startDateSpinner, "yyyy-MM-dd");
             startDateSpinner.setEditor(dateEditor);
             startDateSpinner.setBounds(110, 100, 240, 26);
+            startDateSpinner.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             form.add(startLabel); form.add(startDateSpinner);
 
             JLabel amountLabel = new JLabel("预算总额：");
             amountLabel.setBounds(30, 138, 80, 26);
+            amountLabel.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             amountField = new JTextField();
             amountField.setBounds(110, 138, 240, 26);
+            amountField.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             form.add(amountLabel); form.add(amountField);
 
             JButton okBtn = new JButton("确定");
+            okBtn.setFont(new Font("微软雅黑", Font.BOLD, 16));
             okBtn.setBounds(100, 190, 90, 28);
             okBtn.setBackground(new Color(0, 123, 255));
             okBtn.setForeground(Color.WHITE);
             JButton cancelBtn = new JButton("取消");
+            cancelBtn.setFont(new Font("微软雅黑", Font.BOLD, 16));
             cancelBtn.setBounds(210, 190, 90, 28);
 
             form.add(okBtn); form.add(cancelBtn);
 
             add(form, BorderLayout.CENTER);
 
-            // 填充数据
             if (b != null) {
                 nameField.setText(b.getName());
                 periodCombo.setSelectedItem(b.getPeriodType());
@@ -436,9 +499,14 @@ public class BudgetsPanel extends JPanel {
                 public boolean isCellEditable(int row, int col) { return false; }
             };
             catTable = new JTable(catTableModel);
-            catTable.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-            catTable.setRowHeight(26);
-            catTable.getTableHeader().setFont(new Font("微软雅黑", Font.BOLD, 14));
+            catTable.setFont(new Font("微软雅黑", Font.PLAIN, 16));
+            catTable.setRowHeight(28);
+            catTable.getTableHeader().setFont(new Font("微软雅黑", Font.BOLD, 16));
+            catTable.getTableHeader().setBackground(new Color(238, 242, 255));
+            catTable.getTableHeader().setForeground(new Color(55, 80, 150));
+            ((DefaultTableCellRenderer) catTable.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+            catTable.setSelectionBackground(new Color(230, 240, 255));
+            catTable.setGridColor(new Color(220, 222, 230));
             catTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
             JScrollPane scroll = new JScrollPane(catTable);
@@ -553,23 +621,29 @@ public class BudgetsPanel extends JPanel {
 
             JLabel catLabel = new JLabel("分类：");
             catLabel.setBounds(30, 24, 60, 26);
+            catLabel.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             if (categories != null) {
                 catCombo = new JComboBox<>(categories.toArray(new Category[0]));
                 catCombo.setBounds(100, 24, 200, 26);
+                catCombo.setFont(new Font("微软雅黑", Font.PLAIN, 16));
                 form.add(catLabel); form.add(catCombo);
             }
 
             JLabel allocLabel = new JLabel("分配金额：");
             allocLabel.setBounds(30, 62, 60, 26);
+            allocLabel.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             allocField = new JTextField();
             allocField.setBounds(100, 62, 200, 26);
+            allocField.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             form.add(allocLabel); form.add(allocField);
 
             JButton okBtn = new JButton("确定");
+            okBtn.setFont(new Font("微软雅黑", Font.BOLD, 16));
             okBtn.setBounds(60, 110, 90, 28);
             okBtn.setBackground(new Color(0, 123, 255));
             okBtn.setForeground(Color.WHITE);
             JButton cancelBtn = new JButton("取消");
+            cancelBtn.setFont(new Font("微软雅黑", Font.BOLD, 16));
             cancelBtn.setBounds(170, 110, 90, 28);
 
             form.add(okBtn); form.add(cancelBtn);

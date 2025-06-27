@@ -1,11 +1,7 @@
 package com.PFM.CD.service.impl;
 
 import com.PFM.CD.dao.interfaces.*;
-import com.PFM.CD.entity.Account;
-import com.PFM.CD.entity.Budget;
-import com.PFM.CD.entity.Report;
-import com.PFM.CD.entity.Transaction;
-import com.PFM.CD.entity.Category;
+import com.PFM.CD.entity.*;
 import com.PFM.CD.entity.enums.ReportType;
 import com.PFM.CD.service.exception.ServiceException;
 import com.PFM.CD.service.interfaces.ReportService;
@@ -368,6 +364,11 @@ public class ReportServiceImpl implements ReportService {
         } catch (SQLException e) {
             throw new ServiceException("删除旧报表过程中发生数据库错误", e);
         }
+    }
+
+    @Override
+    public Page<Report> getReportsByFilter(int i, ReportType selectedType, LocalDate startDate, LocalDate endDate, int currentPage, int pageSize) {
+        return null;
     }
 
     /**

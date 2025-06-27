@@ -220,4 +220,12 @@ public interface TransactionService {
      * @throws ServiceException 如果导入过程中发生错误
      */
     int importTransactions(List<Transaction> transactions) throws ServiceException;
+
+    List<Transaction> getTransactionsWithPagination(int currentUserId, LocalDate startDate, LocalDate endDate, TransactionType type, int accountId, int offset, int pageSize);
+
+    int countByUserId(int currentUserId, LocalDate startDate, LocalDate endDate, TransactionType type);
+
+    Map<Integer, BigDecimal> calculateIncomeByCategory(int currentUserId, LocalDate startDate, LocalDate endDate);
+
+    Map<Integer, BigDecimal> calculateExpenseByCategory(int currentUserId, LocalDate startDate, LocalDate endDate);
 }

@@ -1,4 +1,4 @@
-package com.PFM.CD.gui;
+package com.PFM.CD.gui.Frame;
 
 /**
  * @Author: 马xs
@@ -6,7 +6,6 @@ package com.PFM.CD.gui;
  * @Description:
  * @Version: 17.0
  */
-import com.PFM.CD.service.exception.ServiceException;
 import com.PFM.CD.service.factory.ServiceFactory;
 import com.PFM.CD.service.interfaces.UserService;
 
@@ -257,7 +256,7 @@ public class ForgotPasswordFrame extends JFrame {
             loginFrame.showLogin();
             dispose();
         } catch (Exception ex) {
-            statusLabel.setText("发生错误，请稍后再试");
+            statusLabel.setText("forgetpd发生错误，请稍后再试");
         }
     }
 

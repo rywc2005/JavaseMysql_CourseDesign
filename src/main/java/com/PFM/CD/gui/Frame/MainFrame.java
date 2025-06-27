@@ -1,6 +1,7 @@
-package com.PFM.CD.gui;
+package com.PFM.CD.gui.Frame;
 
 import com.PFM.CD.entity.User;
+import com.PFM.CD.gui.panel.*;
 import com.PFM.CD.service.factory.ServiceFactory;
 import com.PFM.CD.service.interfaces.*;
 
@@ -11,18 +12,18 @@ import java.awt.event.WindowEvent;
 
 /**
  * 个人财务管理系统 - 主界面
- * 采用高端大气的现代UI风格，扁平化按钮、现代配色、渐变背景、圆角、侧边大图标导航等
+ * 现代UI风格，扁平化按钮、现代配色、渐变背景、圆角、侧边大图标导航等
  */
 public class MainFrame extends JFrame {
     private User currentUser;
 
     // 各功能面板
-    private DashboardPanel dashboardPanel;
+   // private StatisticsPanel statisticsPanel;
     private AccountsPanel accountsPanel;
     private TransactionsPanel transactionsPanel;
     private BudgetsPanel budgetsPanel;
     private CatogoryPanel catogoryPanel;
-    private ReportsPanel reportsPanel;
+  //  private ReportsPanel reportsPanel;
     private SettingsPanel settingsPanel;
     private StatusPanel statusPanel;
 
@@ -42,9 +43,9 @@ public class MainFrame extends JFrame {
 
         setTitle("PFM - 个人财务管理系统");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1260, 800);
-        setMinimumSize(new Dimension(1120, 700));
-        setLocationRelativeTo(null);
+        setMinimumSize(new Dimension(1120, 700));  // 保留最小尺寸限制
+        setExtendedState(JFrame.MAXIMIZED_BOTH);  // 设置窗口为最大化状态（全屏效果）
+        setLocationRelativeTo(null);  // 可选：保持窗口居中（最大化后此设置影响不大）
         setLayout(new BorderLayout());
 
         // 定制全局字体
@@ -66,12 +67,12 @@ public class MainFrame extends JFrame {
         StatisticsService statisticsService = ServiceFactory.getInstance().getStatisticsService();
 
         // 初始化各面板
-        dashboardPanel = new DashboardPanel();
+        //statisticsPanel = new StatisticsPanel();
         accountsPanel = new AccountsPanel(userid, accountService);
-        transactionsPanel = new TransactionsPanel(transactionService);
+        transactionsPanel = new TransactionsPanel(transactionService, accountService, currentUser.getUserId());
         budgetsPanel = new BudgetsPanel(userid, budgetService, categoryService);
         catogoryPanel = new CatogoryPanel(categoryService);
-        reportsPanel = new ReportsPanel();
+       // reportsPanel = new ReportsPanel();
         settingsPanel = new SettingsPanel();
         statusPanel = new StatusPanel(currentUser);
 
@@ -119,7 +120,7 @@ public class MainFrame extends JFrame {
         sidebar.setPreferredSize(new Dimension(162, 0));
 
         sidebar.add(Box.createVerticalStrut(26));
-        sidebar.add(createNavButton("📊 仪表盘", "dashboard", ACCENT, SIDEBAR_BG));
+   //     sidebar.add(createNavButton("📊 仪表盘", "dashboard", ACCENT, SIDEBAR_BG));
         sidebar.add(Box.createVerticalStrut(8));
         sidebar.add(createNavButton("🏦 账户管理", "accounts", ACCENT, SIDEBAR_BG));
         sidebar.add(Box.createVerticalStrut(8));
@@ -129,8 +130,8 @@ public class MainFrame extends JFrame {
         sidebar.add(Box.createVerticalStrut(8));
         sidebar.add(createNavButton("📁 分类管理", "catogory", ACCENT, SIDEBAR_BG));
         sidebar.add(Box.createVerticalStrut(8));
-        sidebar.add(createNavButton("📈 报表中心", "reports", ACCENT, SIDEBAR_BG));
-        sidebar.add(Box.createVerticalStrut(8));
+    //    sidebar.add(createNavButton("📈 报表中心", "reports", ACCENT, SIDEBAR_BG));
+   //     sidebar.add(Box.createVerticalStrut(8));
         sidebar.add(createNavButton("👤 系统中心", "settings", ACCENT, SIDEBAR_BG));
         sidebar.add(Box.createVerticalStrut(8));
         sidebar.add(createNavButton("📋 用户中心", "status", ACCENT, SIDEBAR_BG));
@@ -143,12 +144,12 @@ public class MainFrame extends JFrame {
         contentPanel = new JPanel(cardLayout);
         contentPanel.setBackground(MAIN_BG);
 
-        contentPanel.add(dashboardPanel, "dashboard");
+      //  contentPanel.add(statisticsPanel, "dashboard");
         contentPanel.add(accountsPanel, "accounts");
         contentPanel.add(transactionsPanel, "transactions");
         contentPanel.add(budgetsPanel, "budgets");
         contentPanel.add(catogoryPanel, "catogory");
-        contentPanel.add(reportsPanel, "reports");
+       // contentPanel.add(reportsPanel, "reports");
         contentPanel.add(settingsPanel, "settings");
         contentPanel.add(statusPanel, "status");
 
@@ -157,8 +158,8 @@ public class MainFrame extends JFrame {
         // 状态栏
         add(createStatusBar(ACCENT), BorderLayout.SOUTH);
 
-        // 默认显示仪表盘
-        showPanel("dashboard");
+        // 默认显示
+        showPanel("accounts");
 
         // 关闭前确认
         addWindowListener(new WindowAdapter() {
@@ -174,7 +175,7 @@ public class MainFrame extends JFrame {
     }
 
     /**
-     * 优雅的LookAndFeel
+     * LookAndFeel
      */
     private void setElegantLookAndFeel() {
         try {
@@ -188,7 +189,7 @@ public class MainFrame extends JFrame {
                     }
                 }
             } catch (Exception e2) {
-                // 忽略
+
             }
         }
     }
@@ -196,37 +197,41 @@ public class MainFrame extends JFrame {
     /**
      * 菜单栏，主功能入口（高端扁平风格）
      */
-    private JMenuBar createMenuBar(Color accent) {
+    private JMenuBar createMenuBar(Color accent) {//顶头功能选项
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBackground(new Color(245, 247, 251));
-        menuBar.setOpaque(true);
+        menuBar.setOpaque(true);// 确保菜单栏背景可见
 
         JMenu menuHome = new JMenu("首页");
-        menuHome.add(createMenuItem("仪表盘", "dashboard"));
+      //  menuHome.add(createMenuItem("仪表盘", "dashboard"));
         JMenu menuAccount = new JMenu("账户");
+        menuAccount.add(createMenuItem("账户明细", "accounts"));
         menuAccount.add(createMenuItem("账户管理", "accounts"));
         JMenu menuTransaction = new JMenu("交易");
-        menuTransaction.add(createMenuItem("交易明细", "transactions"));
+        menuTransaction.add(createMenuItem("记录收支", "transactions"));
+        menuTransaction.add(createMenuItem("交易管理", "transactions"));
         JMenu menuBudget = new JMenu("预算");
-        menuBudget.add(createMenuItem("预算管理", "budgets"));
+        menuBudget.add(createMenuItem("预算明细", "budgets"));
+        menuBudget.add(createMenuItem("预算监控", "budgets"));
         JMenu menuCategory = new JMenu("分类");
-        menuCategory.add(createMenuItem("分类管理", "catogory"));
-        JMenu menuReport = new JMenu("报表");
-        menuReport.add(createMenuItem("报表中心", "reports"));
+        menuCategory.add(createMenuItem("收支分类", "catogory"));
+     //   JMenu menuReport = new JMenu("报表");
+    //    menuReport.add(createMenuItem("报表中心", "reports"));
         JMenu menuSetting = new JMenu("设置");
         menuSetting.add(createMenuItem("系统设置", "settings"));
-
+//顶头功能选项
         menuBar.add(menuHome);
         menuBar.add(menuAccount);
         menuBar.add(menuTransaction);
         menuBar.add(menuBudget);
         menuBar.add(menuCategory);
-        menuBar.add(menuReport);
+  //      menuBar.add(menuReport);
         menuBar.add(menuSetting);
 
         return menuBar;
     }
 
+    /// 菜单条目
     private JMenuItem createMenuItem(String text, String panelName) {
         JMenuItem item = new JMenuItem(text);
         item.addActionListener(e -> showPanel(panelName));
@@ -247,7 +252,8 @@ public class MainFrame extends JFrame {
         btn.setMaximumSize(new Dimension(170, 44));
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btn.addActionListener(e -> showPanel(panelName));
+
+        btn.addActionListener(e -> showPanel(panelName));// 点击切换面板，showpanel
         btn.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -291,7 +297,7 @@ public class MainFrame extends JFrame {
     }
 
     /**
-     * 切换主内容区显示的面板
+     * 切换主内容区显示的面板！！！
      */
     public void showPanel(String panelName) {
         cardLayout.show(contentPanel, panelName);
@@ -299,12 +305,12 @@ public class MainFrame extends JFrame {
 
     private String getPanelDisplayName(String panelName) {
         switch (panelName) {
-            case "dashboard": return "仪表盘";
+      //      case "dashboard": return "仪表盘";
             case "accounts": return "账户";
             case "transactions": return "交易";
             case "budgets": return "预算";
             case "catogory": return "分类";
-            case "reports": return "报表";
+        //    case "reports": return "报表";
             case "settings": return "设置";
             case "status": return "状态";
             default: return "";

@@ -101,4 +101,6 @@ public interface AccountService {
      * @throws ServiceException 如果检查过程中发生错误
      */
     boolean isAccountNameAvailable(int userId, String accountName) throws ServiceException;
+
+    List<Account> getUserActiveAccounts(int currentUserId);
 }

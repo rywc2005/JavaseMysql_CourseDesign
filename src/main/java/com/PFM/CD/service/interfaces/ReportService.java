@@ -1,5 +1,6 @@
 package com.PFM.CD.service.interfaces;
 
+import com.PFM.CD.entity.Page;
 import com.PFM.CD.entity.Report;
 import com.PFM.CD.entity.enums.ReportType;
 import com.PFM.CD.service.exception.ServiceException;
@@ -83,4 +84,6 @@ public interface ReportService {
      * @return 删除的报表数量
      */
     int deleteOldReports(int userId, LocalDate olderThan) throws ServiceException;
+
+    Page<Report> getReportsByFilter(int i, ReportType selectedType, LocalDate startDate, LocalDate endDate, int currentPage, int pageSize);
 }

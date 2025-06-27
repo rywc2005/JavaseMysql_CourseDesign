@@ -155,4 +155,6 @@ List<Transaction> findByUserIdWithPagination(int userId, LocalDate startDate, Lo
 long countByUserId(int userId, LocalDate startDate, LocalDate endDate, TransactionType type) throws SQLException;
 
     int batchSave(List<Transaction> transactions) throws SQLException;
+
+    List<Transaction> getTransactionsWithPagination(int currentUserId, LocalDate startDate, LocalDate endDate, TransactionType type, int accountId, int offset, int pageSize) throws SQLException;
 }

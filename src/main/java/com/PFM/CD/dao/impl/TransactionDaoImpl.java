@@ -490,6 +490,66 @@ public class TransactionDaoImpl extends BaseDaoImpl<Transaction, Integer> implem
         }
     }
 
+    @Override
+    public List<Transaction> getTransactionsWithPagination(int currentUserId, LocalDate startDate, LocalDate endDate, TransactionType type, int accountId, int offset, int pageSize)
+            throws SQLException {
+        StringBuilder sql = new StringBuilder("""
+            SELECT t.*, c.category_name, 
+                   sa.account_name as source_account_name, 
+                   da.account_name as destination_account_name 
+            FROM transactions t 
+            LEFT JOIN categories c ON t.category_id = c.category_id 
+            LEFT JOIN accounts sa ON t.source_account_id = sa.account_id 
+            LEFT JOIN accounts da ON t.destination_account_id = da.account_id 
+            WHERE t.user_id = ? 
+        """);
+        List<Object> params = new ArrayList<>();
+        params.add(currentUserId);
+
+        // 添加日期范围过滤
+        if (startDate != null && endDate != null) {
+            sql.append(" AND t.transaction_date BETWEEN ? AND ? ");
+            params.add(Date.valueOf(startDate));
+            params.add(Date.valueOf(endDate));
+        }
+
+        // 添加交易类型过滤
+        if (type != null) {
+            sql.append(" AND t.transaction_type = ? ");
+            params.add(type.name());
+        }
+
+        // 添加账户ID过滤
+        if (accountId > 0) {
+            sql.append(" AND (t.source_account_id = ? OR t.destination_account_id = ?) ");
+            params.add(accountId);
+            params.add(accountId);
+        }
+
+        // 排序和分页
+        sql.append(" ORDER BY t.transaction_date DESC LIMIT ? OFFSET ?");
+        params.add(pageSize);
+        params.add(offset);
+
+        List<Transaction> transactions = new ArrayList<>();
+
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql.toString())) {
+            for (int i = 0; i < params.size(); i++) {
+                ps.setObject(i + 1, params.get(i));
+            }
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    transactions.add(mapResultSetToTransaction(rs));
+                }
+            }
+        }
+
+        return transactions;
+
+    }
+
     /**
      * 设置可为null的整数参数
      */

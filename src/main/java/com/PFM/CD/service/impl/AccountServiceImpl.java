@@ -325,4 +325,18 @@ public class AccountServiceImpl implements AccountService {
             throw new ServiceException("检查账户名称可用性过程中发生数据库错误", e);
         }
     }
+
+    @Override
+    public List<Account> getUserActiveAccounts(int currentUserId) {
+        try {
+            return accountDao.findByUserIdAndStatus(currentUserId, AccountStatus.ACTIVE);
+        } catch (SQLException e) {
+            try {
+                throw new ServiceException("获取用户活跃账户过程中发生数据库错误", e);
+            } catch (ServiceException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+    }
+
 }

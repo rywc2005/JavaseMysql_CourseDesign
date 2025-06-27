@@ -1,4 +1,4 @@
-package com.PFM.CD.gui;
+package com.PFM.CD.gui.panel;
 
 import com.PFM.CD.entity.enums.CategoryType;
 import com.PFM.CD.entity.Category;
@@ -7,6 +7,8 @@ import com.PFM.CD.service.exception.ServiceException;
 import com.PFM.CD.service.interfaces.CategoryService;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.stream.Collectors;
  * 分类管理面板（MVC模式）
  * 支持分类的新增、编辑、删除、查询
  * 显示CategoryDto，操作Category实体，通过CategoryService
+ * 界面风格对齐 TransactionsPanel，ID列为“序号”
  */
 public class CatogoryPanel extends JPanel {
     private JTable table;
@@ -23,71 +26,107 @@ public class CatogoryPanel extends JPanel {
     private JTextField searchField;
     private JComboBox<CategoryType> typeCombo;
     private JButton addButton, editButton, deleteButton, refreshButton;
+
     private CategoryController controller;
 
     public CatogoryPanel(CategoryService categoryService) {
         this.controller = new CategoryControllerImpl(categoryService);
 
-        setLayout(new BorderLayout());
-        setBackground(Color.WHITE);
+        setLayout(new BorderLayout(0, 0));
+        setBackground(new Color(247, 249, 254));
+        setBorder(new EmptyBorder(12, 18, 12, 18));
 
-        // 顶部工具栏
-        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 8));
-        topPanel.setBackground(Color.WHITE);
+        // 顶部工具栏分为两行
+        JPanel topPanelOuter = new JPanel();
+        topPanelOuter.setLayout(new BoxLayout(topPanelOuter, BoxLayout.Y_AXIS));
+        topPanelOuter.setOpaque(false);
 
+        // 第一行：检索输入和按钮
+        JPanel topPanelRow1 = new JPanel(new GridBagLayout());
+        topPanelRow1.setOpaque(false);
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(4, 12, 4, 0);
+        c.fill = GridBagConstraints.NONE;
+        c.anchor = GridBagConstraints.WEST;
+        c.weightx = 0;
+        int gridx = 0;
+
+        c.gridx = gridx++;
+        JLabel nameLbl = new JLabel("名称:");
+        nameLbl.setFont(new Font("微软雅黑", Font.PLAIN, 18));
+        topPanelRow1.add(nameLbl, c);
+
+        c.gridx = gridx++;
         searchField = new JTextField(14);
-        searchField.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+        searchField.setFont(new Font("微软雅黑", Font.PLAIN, 18));
+        searchField.setPreferredSize(new Dimension(140, 36));
+        topPanelRow1.add(searchField, c);
+
+        c.gridx = gridx++;
+        JLabel typeLbl = new JLabel("类型:");
+        typeLbl.setFont(new Font("微软雅黑", Font.PLAIN, 18));
+        topPanelRow1.add(typeLbl, c);
+
+        c.gridx = gridx++;
         typeCombo = new JComboBox<>(CategoryType.values());
-        typeCombo.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+        typeCombo.setFont(new Font("微软雅黑", Font.PLAIN, 18));
+        typeCombo.setPreferredSize(new Dimension(120, 36));
         typeCombo.insertItemAt(null, 0);
         typeCombo.setSelectedIndex(0);
+        topPanelRow1.add(typeCombo, c);
 
-        JButton searchButton = new JButton("查询");
-        searchButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+        c.gridx = gridx++;
+        JButton searchButton = createFlatButton("查询", new Color(51, 102, 255), new Color(80, 130, 255));
+        searchButton.setPreferredSize(new Dimension(120, 40));
+        searchButton.setForeground(Color.WHITE);
         searchButton.addActionListener(e -> doSearch());
+        topPanelRow1.add(searchButton, c);
 
-        refreshButton = new JButton("刷新");
-        refreshButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+        c.gridx = gridx++;
+        refreshButton = createFlatButton("刷新", new Color(80, 170, 230), new Color(105, 200, 255));
+        refreshButton.setPreferredSize(new Dimension(120, 40));
+        refreshButton.setForeground(Color.WHITE);
         refreshButton.addActionListener(e -> loadCategories(null, null));
+        topPanelRow1.add(refreshButton, c);
 
-        addButton = new JButton("新建分类");
-        addButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-        addButton.setBackground(new Color(0, 123, 255));
+        // 第二行：功能按钮
+        JPanel topPanelRow2 = new JPanel(new FlowLayout(FlowLayout.LEFT, 24, 0));
+        topPanelRow2.setOpaque(false);
+
+        addButton = createFlatButton("新建分类", new Color(0, 123, 255), new Color(30, 150, 255));
+        addButton.setPreferredSize(new Dimension(150, 40));
         addButton.setForeground(Color.WHITE);
         addButton.addActionListener(e -> addCategory());
 
-        editButton = new JButton("编辑分类");
-        editButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+        editButton = createFlatButton("编辑分类", new Color(70, 180, 100), new Color(110, 220, 140));
+        editButton.setPreferredSize(new Dimension(150, 40));
+        editButton.setForeground(Color.WHITE);
         editButton.addActionListener(e -> editCategory());
 
-        deleteButton = new JButton("删除分类");
-        deleteButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-        deleteButton.setForeground(Color.RED.darker());
+        deleteButton = createFlatButton("删除分类", new Color(230, 70, 70), new Color(240, 100, 100));
+        deleteButton.setPreferredSize(new Dimension(150, 40));
+        deleteButton.setForeground(Color.WHITE);
         deleteButton.addActionListener(e -> deleteCategory());
 
-        topPanel.add(new JLabel("名称:"));
-        topPanel.add(searchField);
-        topPanel.add(new JLabel("类型:"));
-        topPanel.add(typeCombo);
-        topPanel.add(searchButton);
-        topPanel.add(refreshButton);
-        topPanel.add(Box.createHorizontalStrut(28));
-        topPanel.add(addButton);
-        topPanel.add(editButton);
-        topPanel.add(deleteButton);
+        topPanelRow2.add(addButton);
+        topPanelRow2.add(Box.createHorizontalStrut(12));
+        topPanelRow2.add(editButton);
+        topPanelRow2.add(Box.createHorizontalStrut(12));
+        topPanelRow2.add(deleteButton);
 
-        add(topPanel, BorderLayout.NORTH);
+        topPanelOuter.add(topPanelRow1);
+        topPanelOuter.add(Box.createVerticalStrut(8));
+        topPanelOuter.add(topPanelRow2);
+
+        add(topPanelOuter, BorderLayout.NORTH);
 
         // 表格
-        String[] columns = {"ID", "名称", "类型", "交易数"};
+        String[] columns = {"序号", "名称", "类型", "交易数"};
         tableModel = new DefaultTableModel(columns, 0) {
             public boolean isCellEditable(int row, int col) { return false; }
         };
         table = new JTable(tableModel);
-        table.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-        table.setRowHeight(26);
-        table.getTableHeader().setFont(new Font("微软雅黑", Font.BOLD, 14));
-        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        styleTable(table);
 
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
@@ -108,9 +147,10 @@ public class CatogoryPanel extends JPanel {
     private void loadCategories(String keyword, CategoryType type) {
         tableModel.setRowCount(0);
         List<CategoryDto> list = controller.queryCategories(keyword, type);
+        int rowNum = 1;
         for (CategoryDto dto : list) {
             tableModel.addRow(new Object[]{
-                    dto.getCategoryId(),
+                    rowNum++,
                     dto.getCategoryName(),
                     dto.getCategoryType().getDisplayName(),
                     dto.getTransactionCount()
@@ -127,8 +167,15 @@ public class CatogoryPanel extends JPanel {
     private CategoryDto getSelectedCategory() {
         int row = table.getSelectedRow();
         if (row == -1) return null;
-        int categoryId = (int) tableModel.getValueAt(row, 0);
-        return controller.getCategoryById(categoryId);
+        String name = (String) tableModel.getValueAt(row, 1);
+        String typeDisplay = (String) tableModel.getValueAt(row, 2);
+        List<CategoryDto> all = controller.queryCategories(null, null);
+        for (CategoryDto dto : all) {
+            if (dto.getCategoryName().equals(name) && dto.getCategoryType().getDisplayName().equals(typeDisplay)) {
+                return dto;
+            }
+        }
+        return null;
     }
 
     private void addCategory() {
@@ -285,22 +332,28 @@ public class CatogoryPanel extends JPanel {
             form.setBackground(Color.WHITE);
 
             JLabel nameLabel = new JLabel("分类名称：");
+            nameLabel.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             nameLabel.setBounds(30, 24, 80, 26);
             nameField = new JTextField();
+            nameField.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             nameField.setBounds(110, 24, 180, 26);
             form.add(nameLabel); form.add(nameField);
 
             JLabel typeLabel = new JLabel("分类类型：");
+            typeLabel.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             typeLabel.setBounds(30, 62, 80, 26);
             typeCombo = new JComboBox<>(CategoryType.values());
+            typeCombo.setFont(new Font("微软雅黑", Font.PLAIN, 16));
             typeCombo.setBounds(110, 62, 180, 26);
             form.add(typeLabel); form.add(typeCombo);
 
             JButton okBtn = new JButton("确定");
+            okBtn.setFont(new Font("微软雅黑", Font.BOLD, 16));
             okBtn.setBounds(60, 110, 90, 28);
             okBtn.setBackground(new Color(0, 123, 255));
             okBtn.setForeground(Color.WHITE);
             JButton cancelBtn = new JButton("取消");
+            cancelBtn.setFont(new Font("微软雅黑", Font.BOLD, 16));
             cancelBtn.setBounds(170, 110, 90, 28);
 
             form.add(okBtn); form.add(cancelBtn);
@@ -338,5 +391,39 @@ public class CatogoryPanel extends JPanel {
         public CategoryDto getCategory() {
             return confirmed ? category : null;
         }
+    }
+
+    /**
+     * FlatLaf 风格扁平按钮
+     */
+    private JButton createFlatButton(String text, Color color, Color hover) {
+        JButton btn = new JButton(text);
+        btn.setFocusPainted(false);
+        btn.setFont(new Font("微软雅黑", Font.BOLD, 20));
+        btn.setBackground(color);
+        btn.setForeground(Color.WHITE);
+        btn.setBorder(BorderFactory.createEmptyBorder(10, 34, 10, 34));
+        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btn.setOpaque(true);
+        btn.setBorderPainted(false);
+        btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent e) { btn.setBackground(hover); }
+            public void mouseExited(java.awt.event.MouseEvent e) { btn.setBackground(color); }
+        });
+        return btn;
+    }
+
+    /**
+     * 表格美化
+     */
+    private void styleTable(JTable table) {
+        table.setFont(new Font("微软雅黑", Font.PLAIN, 22));
+        table.setRowHeight(28);
+        table.getTableHeader().setFont(new Font("微软雅黑", Font.BOLD, 20));
+        table.getTableHeader().setBackground(new Color(238, 242, 255));
+        table.getTableHeader().setForeground(new Color(55, 80, 150));
+        ((DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        table.setSelectionBackground(new Color(230, 240, 255));
+        table.setGridColor(new Color(220, 222, 230));
     }
 }

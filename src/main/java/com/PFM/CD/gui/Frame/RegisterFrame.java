@@ -1,4 +1,4 @@
-package com.PFM.CD.gui;
+package com.PFM.CD.gui.Frame;
 
 import com.PFM.CD.entity.User;
 import com.PFM.CD.service.exception.ServiceException;
@@ -251,7 +251,7 @@ public class RegisterFrame extends JFrame {
         } catch (ServiceException ex) {
             statusLabel.setText(ex.getMessage());
         } catch (Exception ex) {
-            statusLabel.setText("发生错误，请稍后再试");
+            statusLabel.setText("register发生错误，请稍后再试");
         }
     }
 

@@ -216,7 +216,7 @@ public class DateFormatter {
      * @param pattern 格式模式
      * @return 日期时间格式化器
      */
-    private static DateTimeFormatter getFormatter(String pattern) {
+    public static DateTimeFormatter getFormatter(String pattern) {
         return FORMATTER_CACHE.computeIfAbsent(pattern, DateTimeFormatter::ofPattern);
     }
 
@@ -265,5 +265,51 @@ public class DateFormatter {
      */
     public static String getWeekdayChineseName(DayOfWeek dayOfWeek) {
         return getWeekdayChineseName(dayOfWeek.getValue());
+    }
+
+
+    /**
+     * 通用日期/时间解析方法（支持多种常见格式）
+     * 尝试顺序：日期时间格式 -> 日期格式 -> 中文日期格式 -> 短日期格式
+     * @param text 待解析的字符串
+     * @return 解析成功返回LocalDate/LocalDateTime对象，失败返回null
+     */
+    public static Object parse(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return null;
+        }
+
+        // 1. 尝试解析为带时间的日期（yyyy-MM-dd HH:mm:ss）
+        LocalDateTime dateTime = parseDateTime(text, "yyyy-MM-dd HH:mm:ss");
+        if (dateTime != null) {
+            return dateTime;
+        }
+
+        // 2. 尝试解析为斜杠分隔的日期时间（yyyy/MM/dd HH:mm:ss）
+        dateTime = parseDateTime(text, "yyyy/MM/dd HH:mm:ss");
+        if (dateTime != null) {
+            return dateTime;
+        }
+
+        // 3. 尝试解析为纯日期（yyyy-MM-dd）
+        LocalDate date = parseDate(text, "yyyy-MM-dd");
+        if (date != null) {
+            return date;
+        }
+
+        // 4. 尝试解析为中文日期（yyyy年MM月dd日）
+        date = parseDate(text, "yyyy年MM月dd日");
+        if (date != null) {
+            return date;
+        }
+
+        // 5. 尝试解析为短年份中文日期（yy年MM月dd日，如25年06月24日）
+        date = parseDate(text, "yy年MM月dd日");
+        if (date != null) {
+            return date;
+        }
+
+        // 可根据实际需求扩展更多格式...
+        return null;
     }
 }

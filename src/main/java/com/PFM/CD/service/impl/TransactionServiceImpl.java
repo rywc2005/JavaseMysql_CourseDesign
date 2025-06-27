@@ -568,4 +568,52 @@ public class TransactionServiceImpl implements TransactionService {
         }
     }
 
+    @Override
+    public List<Transaction> getTransactionsWithPagination(int currentUserId, LocalDate startDate, LocalDate endDate, TransactionType type, int accountId, int offset, int pageSize) {
+        try {
+            return transactionDao.getTransactionsWithPagination(currentUserId, startDate, endDate, type, accountId, offset, pageSize);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public int countByUserId(int currentUserId, LocalDate startDate, LocalDate endDate, TransactionType type) {
+        try {
+            return (int) transactionDao.countByUserId(currentUserId, startDate, endDate, type);
+        } catch (SQLException e) {
+            try {
+                throw new ServiceException("统计交易记录数量过程中发生数据库错误", e);
+            } catch (ServiceException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+    }
+
+    @Override
+    public Map<Integer, BigDecimal> calculateIncomeByCategory(int currentUserId, LocalDate startDate, LocalDate endDate) {
+        try {
+            return transactionDao.calculateIncomeByCategory(currentUserId, startDate, endDate);
+        } catch (SQLException e) {
+            try {
+                throw new ServiceException("按分类统计收入过程中发生数据库错误", e);
+            } catch (ServiceException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+    }
+
+    @Override
+    public Map<Integer, BigDecimal> calculateExpenseByCategory(int currentUserId, LocalDate startDate, LocalDate endDate) {
+        try {
+            return transactionDao.calculateExpenseByCategory(currentUserId, startDate, endDate);
+        } catch (SQLException e) {
+            try {
+                throw new ServiceException("按分类统计支出过程中发生数据库错误", e);
+            } catch (ServiceException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+    }
+
 }

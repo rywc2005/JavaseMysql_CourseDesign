@@ -1,4 +1,6 @@
-package com.PFM.CD.gui;
+package com.PFM.CD.gui.panel;
+
+import com.PFM.CD.gui.Frame.LoginFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,14 +8,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * 系统设置面板（仅管理员可见）
- * 支持主题切换、语言切换、数据备份与恢复、系统信息等
+ * 系统设置面板
+ * 支持主题切换、语言切换、数据备份与恢复、系统信息，返回登录等
  */
 public class SettingsPanel extends JPanel {
     private JComboBox<String> themeCombo;
     private JComboBox<String> languageCombo;
     private JButton backupBtn;
     private JButton restoreBtn;
+    private JButton backBtn;
     private JLabel statusLabel;
 
     public SettingsPanel() {
@@ -63,6 +66,8 @@ public class SettingsPanel extends JPanel {
         dataPanel.setOpaque(false);
         backupBtn = createFlatButton("数据备份", new Color(51, 102, 255), new Color(80, 130, 255));
         restoreBtn = createFlatButton("数据恢复", new Color(40, 167, 69), new Color(80, 200, 110));
+
+
         dataPanel.add(backupBtn);
         dataPanel.add(restoreBtn);
 
@@ -89,6 +94,14 @@ public class SettingsPanel extends JPanel {
         statusLabel.setForeground(new Color(90, 140, 90));
         statusLabel.setBorder(BorderFactory.createEmptyBorder(10, 6, 2, 6));
 
+        // 返回登录按钮
+        JPanel logoutPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 18, 0));
+        logoutPanel.setOpaque(false);
+        JButton logoutBtn = createFlatButton("返回登录", new Color(220, 53, 69), new Color(255, 99, 115));  // 红色系按钮
+        logoutPanel.add(logoutBtn);
+
+        //上面系统信息完毕
+
         // 依次加入主面板
         mainPanel.add(themePanel);
         mainPanel.add(Box.createVerticalStrut(16));
@@ -97,6 +110,8 @@ public class SettingsPanel extends JPanel {
         mainPanel.add(dataPanel);
         mainPanel.add(Box.createVerticalStrut(18));
         mainPanel.add(infoPanel);
+        mainPanel.add(Box.createVerticalStrut(18));
+        mainPanel.add(logoutPanel);
         mainPanel.add(Box.createVerticalStrut(8));
         mainPanel.add(statusLabel);
 
@@ -107,6 +122,24 @@ public class SettingsPanel extends JPanel {
         languageCombo.addActionListener(e -> switchLanguage());
         backupBtn.addActionListener(e -> doBackup());
         restoreBtn.addActionListener(e -> doRestore());
+        logoutBtn.addActionListener(e -> onLogout());
+
+    }
+    // 返回登录逻辑
+    private void onLogout() {
+        // 确认提示
+        int confirm = JOptionPane.showConfirmDialog(this,
+                "确定要返回登录吗？当前会话将结束", "退出确认",
+                JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            // 关闭当前主窗口
+            Window mainWindow = SwingUtilities.getWindowAncestor(this);
+            mainWindow.dispose();
+
+            // 打开登录窗口（假设登录窗口类为LoginFrame）
+            new LoginFrame().setVisible(true);
+        }
     }
 
     private JButton createFlatButton(String text, Color color, Color hover) {
@@ -144,11 +177,11 @@ public class SettingsPanel extends JPanel {
         }
     }
 
-    // 切换语言（仅界面提示示例，未实现多语言资源实际切换）
+    // 切换语言（仅界面提示示例
     private void switchLanguage() {
         String lang = (String) languageCombo.getSelectedItem();
         statusLabel.setText("已切换为：" + lang);
-        // 实际多语言支持可结合ResourceBundle等实现
+        // 可结合ResourceBundle等实现
     }
 
     // 数据备份（演示）
