@@ -4,38 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7521e9f-4cfe-4ccf-be55-ab5103ad2ba7" name="更改" comment="下一步，优化交易">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/component/style.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/controller/AccountController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/controller/AccountControllerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/dialog/AccountDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/TransactionsPanel.java" afterDir="false" />
+    <list default="true" id="d7521e9f-4cfe-4ccf-be55-ab5103ad2ba7" name="更改" comment="等待完善预算分类追踪监控逻辑">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/dialog/BudgetCategoryDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/dialog/BudgetCategoryEditDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/dialog/BudgetDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/AIAssistantPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/OpenRouterService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/TransactionDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/TransactionDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/TransactionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/interfaces/TransactionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/AccountsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/AccountsPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/BudgetsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/BudgetsPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/CatogoryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/CatogoryPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/DashboardPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/ForgotPasswordFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/Frame/ForgotPasswordFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/Frame/LoginFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/Frame/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/RegisterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/Frame/RegisterFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/ReportsPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/SettingsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/SettingsPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/StatusPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/StatusPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/TransactionFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/TransactionsPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/dto/TransactionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/dto/TransactionDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/AccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/ReportServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/TransactionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/TransactionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/ReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/TransactionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/format/DateFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/utils/format/DateFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/enums/TransactionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/enums/TransactionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/Frame/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/Frame/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/AccountsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/AccountsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/BudgetsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/BudgetsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/CatogoryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/CatogoryPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/TransactionsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/TransactionsPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +107,58 @@
     </key>
   </component>
   <component name="RunManager" selected="应用程序.FinanceManagementSystem">
+    <configuration name="AIFinancialAssistant (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.PFM.CD.gui.panel.AIFinancialAssistant" />
+      <module name="learn" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.PFM.CD.gui.panel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AIFinancialAssistant (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.PFM.CD.gui.panel.AIFinancialAssistant" />
+      <module name="learn" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.PFM.CD.gui.panel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AIFinancialAssistant (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.PFM.CD.gui.panel.AIFinancialAssistant" />
+      <module name="learn" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.PFM.CD.gui.panel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AIFinancialAssistant" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.PFM.CD.gui.panel.AIFinancialAssistant" />
+      <module name="learn" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.PFM.CD.gui.panel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FinanceManagementSystem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.PFM.CD.FinanceManagementSystem" />
       <module name="learn" />
@@ -177,45 +211,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.PFM.CD.gui.Frame.start.LoginFrame" />
-      <module name="learn" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.PFM.CD.gui.Frame.start.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReportFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.PFM.CD.gui.ReportFrame" />
-      <module name="learn" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.PFM.CD.gui.Frame.start.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReportsPanel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.PFM.CD.gui.ReportsPanel" />
-      <module name="learn" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.PFM.CD.gui.panel.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="com.PFM.CD.gui.LoginFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.PFM.CD.gui.LoginFrame" />
       <module name="learn" />
@@ -229,26 +224,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.PFM.CD.gui.LoginFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.PFM.CD.gui.LoginFrame" />
-      <module name="learn" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.PFM.CD.gui.panel.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.FinanceManagementSystem" />
-        <item itemvalue="应用程序.ReportsPanel" />
-        <item itemvalue="应用程序.com.PFM.CD.gui.LoginFrame" />
-        <item itemvalue="应用程序.ReportFrame" />
-        <item itemvalue="应用程序.com.PFM.CD.gui.LoginFrame" />
+        <item itemvalue="应用程序.AIFinancialAssistant" />
+        <item itemvalue="应用程序.AIFinancialAssistant (5)" />
+        <item itemvalue="应用程序.AIFinancialAssistant (4)" />
+        <item itemvalue="应用程序.AIFinancialAssistant (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -264,7 +246,7 @@
       <workItem from="1750746117889" duration="32701000" />
       <workItem from="1750836661800" duration="17709000" />
       <workItem from="1750854426666" duration="6706000" />
-      <workItem from="1750918505307" duration="30954000" />
+      <workItem from="1750918505307" duration="58057000" />
     </task>
     <task id="LOCAL-00001" summary="成功实现数据库连接，user作为测试通过。关注依赖文件所实现，dbbase实现数据库连接，基于localdate处理器和CustomRow处理器，实现数据库与entity的映射。在dao中通过接口与实现类处理与数据库的crud。">
       <option name="closed" value="true" />
@@ -322,7 +304,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750873263286</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="等待完善预算分类追踪监控逻辑">
+      <option name="closed" value="true" />
+      <created>1751029794174</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1751029794174</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,7 +347,8 @@
     <MESSAGE value="report有点奇怪有些方法没用上，已解决所有报错，utils内容很多。只剩下gui" />
     <MESSAGE value="豆包和gpt4.1不好用，重写gui" />
     <MESSAGE value="阶段尾2" />
-    <option name="LAST_COMMIT_MESSAGE" value="阶段尾2" />
+    <MESSAGE value="等待完善预算分类追踪监控逻辑" />
+    <option name="LAST_COMMIT_MESSAGE" value="等待完善预算分类追踪监控逻辑" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

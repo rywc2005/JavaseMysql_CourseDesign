@@ -2,8 +2,11 @@ package com.PFM.CD.gui.panel;
 
 import com.PFM.CD.entity.Account;
 import com.PFM.CD.entity.Transaction;
+import com.PFM.CD.entity.Category;
 import com.PFM.CD.entity.enums.TransactionType;
+import com.PFM.CD.gui.component.style;
 import com.PFM.CD.service.interfaces.AccountService;
+import com.PFM.CD.service.interfaces.CategoryService;
 import com.PFM.CD.service.interfaces.TransactionService;
 import com.PFM.CD.utils.format.DateFormatter;
 import com.PFM.CD.utils.format.NumberFormatter;
@@ -12,14 +15,12 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.*;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
 
 /**
  * 交易管理面板（支持查询、展示、统计交易记录，新增分页、账户过滤、分类统计等功能，高端大气风格优化）
@@ -27,13 +28,14 @@ import java.util.stream.Collectors;
 public class TransactionsPanel extends JPanel {
     private final TransactionService transactionService;
     private final AccountService accountService;
+    private final CategoryService categoryService;
     private final int currentUserId;
     private JTable transactionTable;
     private TransactionTableModel tableModel;
     private JDateChooser startDateChooser;
     private JDateChooser endDateChooser;
     private JComboBox<TransactionType> typeComboBox;
-    private JComboBox<Account> accountComboBox;
+    private JComboBox<String> accountComboBox;
     private JComboBox<String> accountNameComboBox;
     private JLabel incomeLabel;
     private JLabel expenseLabel;
@@ -50,9 +52,10 @@ public class TransactionsPanel extends JPanel {
     private JTable categoryStatsTable;
     private CategoryStatsTableModel categoryStatsModel;
 
-    public TransactionsPanel(TransactionService transactionService, AccountService accountService, int currentUserId) {
+    public TransactionsPanel(TransactionService transactionService, AccountService accountService, CategoryService categoryService, int currentUserId) {
         this.transactionService = transactionService;
         this.accountService = accountService;
+        this.categoryService = categoryService;
         this.currentUserId = currentUserId;
         setLayout(new BorderLayout(0, 0));
         setBackground(new Color(247, 249, 254));
@@ -107,7 +110,7 @@ public class TransactionsPanel extends JPanel {
         typeComboBox = new JComboBox<>(TransactionType.values());
         typeComboBox.addItem(null);
         typeComboBox.setSelectedItem(null);
-        typeComboBox.setPreferredSize(new Dimension(120, 36));
+        typeComboBox.setPreferredSize(new Dimension(130, 36));
         typeComboBox.setFont(new Font("微软雅黑", Font.PLAIN, 18));
         c.gridx = gridx++;
         filterRow1.add(typeComboBox, c);
@@ -127,7 +130,7 @@ public class TransactionsPanel extends JPanel {
         JPanel filterRow2 = new JPanel(new FlowLayout(FlowLayout.LEFT, 24, 0));
         filterRow2.setOpaque(false);
 
-        JButton queryBtn = createFlatButton("查询", new Color(51, 102, 255), new Color(80, 130, 255));
+        JButton queryBtn = new style().createFlatButton("查询", new Color(51, 102, 255), new Color(80, 130, 255));
         queryBtn.setPreferredSize(new Dimension(120, 40));
         queryBtn.setForeground(Color.WHITE);
         queryBtn.addActionListener(e -> {
@@ -135,7 +138,7 @@ public class TransactionsPanel extends JPanel {
             loadTransactions();
         });
 
-        JButton recentBtn = createFlatButton("最近10条", new Color(80, 170, 230), new Color(105, 200, 255));
+        JButton recentBtn = new style().createFlatButton("最近几条", new Color(80, 170, 230), new Color(105, 200, 255));
         recentBtn.setPreferredSize(new Dimension(200, 40));
         recentBtn.setForeground(Color.WHITE);
         recentBtn.addActionListener(e -> {
@@ -144,22 +147,22 @@ public class TransactionsPanel extends JPanel {
             loadRecentTransactions();
         });
 
-        addBtn = createFlatButton("新增", new Color(0, 123, 255), new Color(50, 150, 255));
+        addBtn = new style().createFlatButton("新增", new Color(0, 123, 255), new Color(50, 150, 255));
         addBtn.setPreferredSize(new Dimension(120, 40));
         addBtn.setForeground(Color.WHITE);
         addBtn.addActionListener(e -> addTransaction());
 
-        editBtn = createFlatButton("编辑", new Color(70, 180, 100), new Color(110, 220, 140));
+        editBtn = new style().createFlatButton("编辑", new Color(70, 180, 100), new Color(110, 220, 140));
         editBtn.setPreferredSize(new Dimension(120, 40));
         editBtn.setForeground(Color.WHITE);
         editBtn.addActionListener(e -> editTransaction());
 
-        deleteBtn = createFlatButton("删除", new Color(230, 70, 70), new Color(240, 100, 100));
+        deleteBtn = new style().createFlatButton("删除", new Color(230, 70, 70), new Color(240, 100, 100));
         deleteBtn.setPreferredSize(new Dimension(120, 40));
         deleteBtn.setForeground(Color.WHITE);
         deleteBtn.addActionListener(e -> deleteTransaction());
 
-        refreshBtn = createFlatButton("刷新", new Color(80, 170, 230), new Color(105, 200, 255));
+        refreshBtn = new style().createFlatButton("刷新", new Color(80, 170, 230), new Color(105, 200, 255));
         refreshBtn.setPreferredSize(new Dimension(120, 40));
         refreshBtn.setForeground(Color.WHITE);
         refreshBtn.addActionListener(e -> refreshTransactions());
@@ -197,7 +200,7 @@ public class TransactionsPanel extends JPanel {
         transactionListPanel.setOpaque(false);
         tableModel = new TransactionTableModel();
         transactionTable = new JTable(tableModel);
-        styleTable(transactionTable);
+        new style().styleTable(transactionTable);
         transactionListPanel.add(new JScrollPane(transactionTable), BorderLayout.CENTER);
 
         // 分类统计
@@ -205,7 +208,7 @@ public class TransactionsPanel extends JPanel {
         categoryStatsPanel.setOpaque(false);
         categoryStatsModel = new CategoryStatsTableModel();
         categoryStatsTable = new JTable(categoryStatsModel);
-        styleTable(categoryStatsTable);
+        new style().styleTable(categoryStatsTable);
         categoryStatsPanel.add(new JScrollPane(categoryStatsTable), BorderLayout.CENTER);
 
         mainTabPane.addTab("交易列表", transactionListPanel);
@@ -234,8 +237,8 @@ public class TransactionsPanel extends JPanel {
 
         JPanel paginationPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 12, 3));
         paginationPanel.setOpaque(false);
-        prevPageBtn = createFlatButton("上一页", new Color(220, 220, 220), new Color(200, 200, 200));
-        nextPageBtn = createFlatButton("下一页", new Color(220, 220, 220), new Color(200, 200, 200));
+        prevPageBtn = new style().createFlatButton("上一页", new Color(220, 220, 220), new Color(200, 200, 200));
+        nextPageBtn = new style().createFlatButton("下一页", new Color(220, 220, 220), new Color(200, 200, 200));
         prevPageBtn.addActionListener(e -> {
             if (currentPage > 1) {
                 currentPage--;
@@ -349,11 +352,11 @@ public class TransactionsPanel extends JPanel {
         loadTransactions();
     }
     private class TransactionDialog extends JDialog {
-        // 这里省略实际字段，仅做示例
+        // 实际字段
         private JComboBox<TransactionType> typeCombo;
         private JTextField amountField, descField;
-        private JComboBox<Account> srcAccountCombo, dstAccountCombo;
-        private JComboBox<Integer> categoryCombo;
+        private JComboBox<String> srcAccountCombo, dstAccountCombo;
+        private JComboBox<String> categoryCombo;
         private JDateChooser dateChooser;
         private Transaction transaction;
         private boolean confirmed = false;
@@ -361,7 +364,7 @@ public class TransactionsPanel extends JPanel {
         public TransactionDialog(Transaction t) {
             setTitle(t == null ? "新增交易" : "编辑交易");
             setModal(true);
-            setSize(400, 340);
+            setSize(400, 600);
             setLocationRelativeTo(null);
             setLayout(null);
 
@@ -376,29 +379,34 @@ public class TransactionsPanel extends JPanel {
             amountField.setBounds(100, 68, 200, 26);
 
             JLabel srcLbl = new JLabel("源账户：");
-            srcLbl.setBounds(30, 108, 70, 26);
+            srcLbl.setBounds(30, 108, 90, 26);
+
             srcAccountCombo = new JComboBox<>();
             srcAccountCombo.setBounds(100, 108, 200, 26);
             // 加载账户
             try {
                 List<Account> acts = accountService.getUserActiveAccounts(currentUserId);
-                for (Account a : acts) srcAccountCombo.addItem(a);//
+                srcAccountCombo.addItem("");
+                for (Account a : acts) srcAccountCombo.addItem(a.getAccountName());//
             } catch (Exception ignored) {}
 
             JLabel dstLbl = new JLabel("目标账户：");
-            dstLbl.setBounds(30, 148, 70, 26);
+            dstLbl.setBounds(30, 148, 90, 26);
             dstAccountCombo = new JComboBox<>();
-            dstAccountCombo.setBounds(100, 148, 200, 26);
+            dstAccountCombo.setBounds(100, 148, 190, 26);
             try {
                 List<Account> acts = accountService.getUserActiveAccounts(currentUserId);
-                for (Account a : acts) dstAccountCombo.addItem(a);
+                for (Account a : acts) dstAccountCombo.addItem(a.getAccountName());//
             } catch (Exception ignored) {}
 
-            JLabel catLbl = new JLabel("分类ID：");
+            JLabel catLbl = new JLabel("分类：");
             catLbl.setBounds(30, 188, 70, 26);
             categoryCombo = new JComboBox<>();
             categoryCombo.setBounds(100, 188, 200, 26);
-            // 实际应加载分类
+            try{
+                List<Category> cats = categoryService.getAllCategories();
+                for (Category c : cats) categoryCombo.addItem(c.getCategoryName());
+            }catch (Exception ignored){}
 
             JLabel dateLbl = new JLabel("日期：");
             dateLbl.setBounds(30, 228, 70, 26);
@@ -465,41 +473,6 @@ public class TransactionsPanel extends JPanel {
             return confirmed ? transaction : null;
         }
     }
-
-    /**
-     * FlatLaf 风格扁平按钮
-     */
-    private JButton createFlatButton(String text, Color color, Color hover) {
-        JButton btn = new JButton(text);
-        btn.setFocusPainted(false);
-        btn.setFont(new Font("微软雅黑", Font.BOLD, 20));
-        btn.setBackground(color);
-        btn.setForeground(Color.DARK_GRAY);
-        btn.setBorder(BorderFactory.createEmptyBorder(10, 34, 10, 34));
-        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btn.setOpaque(true);
-        btn.setBorderPainted(false);
-        btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent e) { btn.setBackground(hover); }
-            public void mouseExited(java.awt.event.MouseEvent e) { btn.setBackground(color); }
-        });
-        return btn;
-    }
-
-    /**
-     * 表格美化
-     */
-    private void styleTable(JTable table) {
-        table.setFont(new Font("微软雅黑", Font.PLAIN, 25));
-        table.setRowHeight(28);
-        table.getTableHeader().setFont(new Font("微软雅黑", Font.BOLD, 20));
-        table.getTableHeader().setBackground(new Color(238, 242, 255));
-        table.getTableHeader().setForeground(new Color(55, 80, 150));
-        ((DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
-        table.setSelectionBackground(new Color(230, 240, 255));
-        table.setGridColor(new Color(220, 222, 230));
-    }
-
     /**
      * 加载账户下拉框
      */
@@ -511,7 +484,7 @@ public class TransactionsPanel extends JPanel {
             List<Account> activeAccounts = accountService.getUserActiveAccounts(currentUserId);
 
             if (activeAccounts != null) {
-                for (Account a : activeAccounts) accountComboBox.addItem(a);//
+                for (Account a : activeAccounts) accountComboBox.addItem(a.getAccountName());//
               //  for (Account a : activeAccounts) accountNameComboBox.addItem(a.getAccountName());//
             }
         } catch (Exception e) {
@@ -566,7 +539,7 @@ public class TransactionsPanel extends JPanel {
      */
     private void loadRecentTransactions() {
         try {
-            List<Transaction> recentTransactions = transactionService.getRecentTransactions(currentUserId, 10);
+            List<Transaction> recentTransactions = transactionService.getRecentTransactions(currentUserId, 15);
             tableModel.setTransactions(recentTransactions);
             tableModel.fireTableDataChanged();
             prevPageBtn.setEnabled(false);

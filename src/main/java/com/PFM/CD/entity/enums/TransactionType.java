@@ -9,6 +9,7 @@ package com.PFM.CD.entity.enums;
  */
 public enum TransactionType {
 
+    UNKNOWN("未知"),
     INCOME("收入"),
     EXPENSE("支出");
 

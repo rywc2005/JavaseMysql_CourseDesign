@@ -18,14 +18,14 @@ public class MainFrame extends JFrame {
     private User currentUser;
 
     // 各功能面板
-   // private StatisticsPanel statisticsPanel;
     private AccountsPanel accountsPanel;
     private TransactionsPanel transactionsPanel;
     private BudgetsPanel budgetsPanel;
     private CatogoryPanel catogoryPanel;
-  //  private ReportsPanel reportsPanel;
     private SettingsPanel settingsPanel;
     private StatusPanel statusPanel;
+    // 新增AI助手面板
+    private AIAssistantPanel aiAssistantPanel;
 
     // 主内容区
     private JPanel contentPanel;
@@ -38,14 +38,17 @@ public class MainFrame extends JFrame {
     private static final Font TITLE_FONT = new Font("微软雅黑", Font.BOLD, 24);
     private static final Font NAV_FONT = new Font("微软雅黑", Font.PLAIN, 17);
 
+    // 添加OpenRouter API Key常量
+    private static final String OPENROUTER_API_KEY = "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"; // 替换为您的实际API密钥
+
     public MainFrame(User user) {
         this.currentUser = user;
 
         setTitle("PFM - 个人财务管理系统");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(1120, 700));  // 保留最小尺寸限制
-        setExtendedState(JFrame.MAXIMIZED_BOTH);  // 设置窗口为最大化状态（全屏效果）
-        setLocationRelativeTo(null);  // 可选：保持窗口居中（最大化后此设置影响不大）
+        setMinimumSize(new Dimension(1120, 700));
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
         // 定制全局字体
@@ -67,14 +70,14 @@ public class MainFrame extends JFrame {
         StatisticsService statisticsService = ServiceFactory.getInstance().getStatisticsService();
 
         // 初始化各面板
-        //statisticsPanel = new StatisticsPanel();
         accountsPanel = new AccountsPanel(userid, accountService);
-        transactionsPanel = new TransactionsPanel(transactionService, accountService, currentUser.getUserId());
+        transactionsPanel = new TransactionsPanel(transactionService, accountService, categoryService,userid);
         budgetsPanel = new BudgetsPanel(userid, budgetService, categoryService);
-        catogoryPanel = new CatogoryPanel(categoryService);
-       // reportsPanel = new ReportsPanel();
+        catogoryPanel = new CatogoryPanel(categoryService,transactionService,userid);
         settingsPanel = new SettingsPanel();
         statusPanel = new StatusPanel(currentUser);
+        // 初始化AI助手面板
+        aiAssistantPanel = new AIAssistantPanel(OPENROUTER_API_KEY, currentUser.getUsername());
 
         // 顶部栏（渐变背景+LOGO+应用名+用户+设置+退出）
         JPanel topBar = new GradientPanel(new Color(36, 57, 128), ACCENT, 0.7f, 0.3f);
@@ -84,7 +87,7 @@ public class MainFrame extends JFrame {
         // 左侧LOGO和应用名
         JPanel logoPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 18, 12));
         logoPanel.setOpaque(false);
-        JLabel title = new JLabel("PFM 财务管家");
+        JLabel title = new JLabel("PFM 个人财务管理系统");
         title.setForeground(Color.WHITE);
         title.setFont(TITLE_FONT);
         logoPanel.add(title);
@@ -118,11 +121,11 @@ public class MainFrame extends JFrame {
         sidebar.setBackground(SIDEBAR_BG);
         sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
         sidebar.setPreferredSize(new Dimension(162, 0));
+        sidebar.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 24));
 
         sidebar.add(Box.createVerticalStrut(26));
-   //     sidebar.add(createNavButton("📊 仪表盘", "dashboard", ACCENT, SIDEBAR_BG));
-        sidebar.add(Box.createVerticalStrut(8));
         sidebar.add(createNavButton("🏦 账户管理", "accounts", ACCENT, SIDEBAR_BG));
+
         sidebar.add(Box.createVerticalStrut(8));
         sidebar.add(createNavButton("💸 交易管理", "transactions", ACCENT, SIDEBAR_BG));
         sidebar.add(Box.createVerticalStrut(8));
@@ -130,13 +133,14 @@ public class MainFrame extends JFrame {
         sidebar.add(Box.createVerticalStrut(8));
         sidebar.add(createNavButton("📁 分类管理", "catogory", ACCENT, SIDEBAR_BG));
         sidebar.add(Box.createVerticalStrut(8));
-    //    sidebar.add(createNavButton("📈 报表中心", "reports", ACCENT, SIDEBAR_BG));
-   //     sidebar.add(Box.createVerticalStrut(8));
+
+        // 添加AI助手导航按钮
+        sidebar.add(createNavButton("🤖 AI财务管家", "aiassistant", ACCENT, SIDEBAR_BG));
+        sidebar.add(Box.createVerticalGlue());
         sidebar.add(createNavButton("👤 系统中心", "settings", ACCENT, SIDEBAR_BG));
         sidebar.add(Box.createVerticalStrut(8));
         sidebar.add(createNavButton("📋 用户中心", "status", ACCENT, SIDEBAR_BG));
-        sidebar.add(Box.createVerticalGlue());
-
+        sidebar.add(Box.createVerticalStrut(8));
         add(sidebar, BorderLayout.WEST);
 
         // 主内容区
@@ -144,14 +148,14 @@ public class MainFrame extends JFrame {
         contentPanel = new JPanel(cardLayout);
         contentPanel.setBackground(MAIN_BG);
 
-      //  contentPanel.add(statisticsPanel, "dashboard");
         contentPanel.add(accountsPanel, "accounts");
         contentPanel.add(transactionsPanel, "transactions");
         contentPanel.add(budgetsPanel, "budgets");
         contentPanel.add(catogoryPanel, "catogory");
-       // contentPanel.add(reportsPanel, "reports");
         contentPanel.add(settingsPanel, "settings");
         contentPanel.add(statusPanel, "status");
+        // 添加AI助手面板到内容区
+        contentPanel.add(aiAssistantPanel, "aiassistant");
 
         add(contentPanel, BorderLayout.CENTER);
 
@@ -203,7 +207,6 @@ public class MainFrame extends JFrame {
         menuBar.setOpaque(true);// 确保菜单栏背景可见
 
         JMenu menuHome = new JMenu("首页");
-      //  menuHome.add(createMenuItem("仪表盘", "dashboard"));
         JMenu menuAccount = new JMenu("账户");
         menuAccount.add(createMenuItem("账户明细", "accounts"));
         menuAccount.add(createMenuItem("账户管理", "accounts"));
@@ -215,18 +218,20 @@ public class MainFrame extends JFrame {
         menuBudget.add(createMenuItem("预算监控", "budgets"));
         JMenu menuCategory = new JMenu("分类");
         menuCategory.add(createMenuItem("收支分类", "catogory"));
-     //   JMenu menuReport = new JMenu("报表");
-    //    menuReport.add(createMenuItem("报表中心", "reports"));
         JMenu menuSetting = new JMenu("设置");
         menuSetting.add(createMenuItem("系统设置", "settings"));
-//顶头功能选项
+        // 添加AI助手菜单
+        JMenu menuAI = new JMenu("AI财务管家");
+        menuAI.add(createMenuItem("智能问答", "aiassistant"));
+
+        //顶头功能选项
         menuBar.add(menuHome);
         menuBar.add(menuAccount);
         menuBar.add(menuTransaction);
         menuBar.add(menuBudget);
         menuBar.add(menuCategory);
-  //      menuBar.add(menuReport);
         menuBar.add(menuSetting);
+        menuBar.add(menuAI); // 添加AI菜单到菜单栏
 
         return menuBar;
     }
@@ -289,7 +294,7 @@ public class MainFrame extends JFrame {
         JPanel statusBar = new JPanel(new BorderLayout());
         statusBar.setPreferredSize(new Dimension(0, 30));
         statusBar.setBackground(new Color(245, 247, 251));
-        JLabel label = new JLabel("  © 2025 PFM 财务管家 —— 高端·专业·安全");
+        JLabel label = new JLabel("  © 2025 PFM 个人财务管理系统 —— 高端·专业·安全");
         label.setForeground(accent.darker());
         statusBar.add(label, BorderLayout.WEST);
         // 可扩展右侧系统时间/状态
@@ -305,14 +310,13 @@ public class MainFrame extends JFrame {
 
     private String getPanelDisplayName(String panelName) {
         switch (panelName) {
-      //      case "dashboard": return "仪表盘";
             case "accounts": return "账户";
             case "transactions": return "交易";
             case "budgets": return "预算";
             case "catogory": return "分类";
-        //    case "reports": return "报表";
             case "settings": return "设置";
             case "status": return "状态";
+            case "aiassistant": return "AI财务管家"; // 添加AI助手显示名称
             default: return "";
         }
     }

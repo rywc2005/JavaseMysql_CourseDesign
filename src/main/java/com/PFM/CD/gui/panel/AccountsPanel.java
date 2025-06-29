@@ -8,14 +8,15 @@ import com.PFM.CD.service.interfaces.AccountService;
 import com.PFM.CD.gui.controller.AccountController;
 import com.PFM.CD.gui.controller.AccountControllerImpl;
 import com.PFM.CD.gui.dialog.AccountDialog;
+import com.PFM.CD.gui.component.style;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.math.BigDecimal;
 import java.util.List;
+
 
 /**
  * 账户面板：账户的创建、编辑、删除和查询
@@ -65,14 +66,14 @@ public class AccountsPanel extends JPanel {
         topPanelRow1.add(searchField, c);
 
         c.gridx = gridx++;
-        JButton searchButton = createFlatButton("查询", new Color(51, 102, 255), new Color(80, 130, 255));
+        JButton searchButton = new style().createFlatButton("查询", new Color(51, 102, 255), new Color(80, 130, 255));
         searchButton.setPreferredSize(new Dimension(120, 40));
         searchButton.setForeground(Color.WHITE);
         searchButton.addActionListener(e -> doSearch());
         topPanelRow1.add(searchButton, c);
 
         c.gridx = gridx++;
-        refreshButton = createFlatButton("刷新", new Color(80, 170, 230), new Color(105, 200, 255));
+        refreshButton = new style().createFlatButton("刷新", new Color(80, 170, 230), new Color(105, 200, 255));
         refreshButton.setPreferredSize(new Dimension(120, 40));
         refreshButton.setForeground(Color.WHITE);
         refreshButton.addActionListener(e -> loadAccounts(null));
@@ -82,17 +83,17 @@ public class AccountsPanel extends JPanel {
         JPanel topPanelRow2 = new JPanel(new FlowLayout(FlowLayout.LEFT, 24, 0));
         topPanelRow2.setOpaque(false);
 
-        addButton = createFlatButton("新建账户", new Color(0, 123, 255), new Color(30, 150, 255));
+        addButton = new style().createFlatButton("新建账户", new Color(0, 123, 255), new Color(30, 150, 255));
         addButton.setPreferredSize(new Dimension(150, 40));
         addButton.setForeground(Color.WHITE);
         addButton.addActionListener(e -> addAccount());
 
-        editButton = createFlatButton("编辑账户", new Color(70, 180, 100), new Color(110, 220, 140));
+        editButton = new style().createFlatButton("编辑账户", new Color(70, 180, 100), new Color(110, 220, 140));
         editButton.setPreferredSize(new Dimension(150, 40));
         editButton.setForeground(Color.WHITE);
         editButton.addActionListener(e -> editAccount());
 
-        deleteButton = createFlatButton("删除账户", new Color(230, 70, 70), new Color(240, 100, 100));
+        deleteButton = new style().createFlatButton("删除账户", new Color(230, 70, 70), new Color(240, 100, 100));
         deleteButton.setPreferredSize(new Dimension(150, 40));
         deleteButton.setForeground(Color.WHITE);
         deleteButton.addActionListener(e -> deleteAccount());
@@ -115,7 +116,7 @@ public class AccountsPanel extends JPanel {
             public boolean isCellEditable(int row, int col) { return false; }
         };
         table = new JTable(tableModel);
-        styleTable(table);// 表格美化
+        new style().styleTable(table);// 表格美化
 
         JScrollPane scrollPane = new JScrollPane(table);// 表格滚动
         add(scrollPane, BorderLayout.CENTER);
@@ -242,39 +243,5 @@ public class AccountsPanel extends JPanel {
             case INACTIVE: return "停用";
             default: return "未知";
         }
-    }
-
-    /**
-     * FlatLaf 风格扁平按钮
-     */
-    private JButton createFlatButton(String text, Color color, Color hover) {
-        JButton btn = new JButton(text);
-        btn.setFocusPainted(false);
-        btn.setFont(new Font("微软雅黑", Font.BOLD, 20));
-        btn.setBackground(color);
-        btn.setForeground(Color.WHITE);
-        btn.setBorder(BorderFactory.createEmptyBorder(10, 34, 10, 34));
-        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btn.setOpaque(true);
-        btn.setBorderPainted(false);
-        btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent e) { btn.setBackground(hover); }
-            public void mouseExited(java.awt.event.MouseEvent e) { btn.setBackground(color); }
-        });
-        return btn;
-    }
-
-    /**
-     * 表格美化
-     */
-    private void styleTable(JTable table) {
-        table.setFont(new Font("微软雅黑", Font.PLAIN, 22));
-        table.setRowHeight(28);
-        table.getTableHeader().setFont(new Font("微软雅黑", Font.BOLD, 20));
-        table.getTableHeader().setBackground(new Color(238, 242, 255));
-        table.getTableHeader().setForeground(new Color(55, 80, 150));
-        ((DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
-        table.setSelectionBackground(new Color(230, 240, 255));
-        table.setGridColor(new Color(220, 222, 230));
     }
 }
