@@ -2,7 +2,7 @@ package com.PFM.CD.gui.Frame;
 
 import com.PFM.CD.entity.User;
 import com.PFM.CD.service.exception.ServiceException;
-import com.PFM.CD.service.factory.ServiceFactory;
+import com.PFM.CD.service.ServiceFactory;
 
 import javax.swing.*;
 import java.awt.*;

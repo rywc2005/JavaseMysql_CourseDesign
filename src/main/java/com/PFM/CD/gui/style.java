@@ -1,4 +1,4 @@
-package com.PFM.CD.gui.component;
+package com.PFM.CD.gui;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

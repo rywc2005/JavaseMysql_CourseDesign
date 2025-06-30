@@ -81,7 +81,7 @@ public  class BudgetDialog extends JDialog {
 
         add(form, BorderLayout.CENTER);
 
-        if (b != null) {
+        if (b != null) {// 编辑模式
             nameField.setText(b.getName());
             periodCombo.setSelectedItem(b.getPeriodType());
             startDateSpinner.setValue(java.sql.Date.valueOf(b.getStartDate()));

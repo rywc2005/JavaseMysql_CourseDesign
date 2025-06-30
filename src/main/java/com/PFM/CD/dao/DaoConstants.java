@@ -1,4 +1,4 @@
-package com.PFM.CD.dao.constants;
+package com.PFM.CD.dao;
 
 /**
  * DAO层常量类

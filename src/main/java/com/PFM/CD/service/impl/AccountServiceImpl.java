@@ -75,19 +75,19 @@ public class AccountServiceImpl implements AccountService {
                     throw new ServiceException("创建账户失败");
                 }
 
-                // 如果初始余额大于0，创建一个初始存款交易
-                if (initialBalance.compareTo(BigDecimal.ZERO) > 0) {
-                    Transaction transaction = new Transaction();
-                    transaction.setUserId(userId);
-                    transaction.setDestinationAccountId(account.getAccountId());
-                    transaction.setCategoryId(1); // 假设1是"初始余额"分类
-                    transaction.setAmount(initialBalance);
-                    transaction.setTransactionType(TransactionType.INCOME);
-                    transaction.setTransactionDate(LocalDate.now());
-                    transaction.setDescription("初始余额");
-
-                    transactionDao.save(transaction);
-                }
+//                // 如果初始余额大于0，创建一个初始存款交易
+//                if (initialBalance.compareTo(BigDecimal.ZERO) > 0) {
+//                    Transaction transaction = new Transaction();
+//                    transaction.setUserId(userId);
+//                    transaction.setDestinationAccountId(account.getAccountId());
+//                    transaction.setCategoryId(1); // 假设1是"初始余额"分类
+//                    transaction.setAmount(initialBalance);
+//                    transaction.setTransactionType(TransactionType.INCOME);
+//                    transaction.setTransactionDate(LocalDate.now());
+//                    transaction.setDescription("初始余额");
+//
+//                    transactionDao.save(transaction);
+//                }
 
                 accountDao.commitTransaction(conn);
                 return account;

@@ -1,4 +1,4 @@
-package com.PFM.CD.service;
+package com.PFM.CD.service.interfaces;
 
 /**
  * @Author: 马xs

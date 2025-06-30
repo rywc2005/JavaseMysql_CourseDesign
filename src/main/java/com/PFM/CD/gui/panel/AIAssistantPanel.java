@@ -1,6 +1,6 @@
 package com.PFM.CD.gui.panel;
 
-import com.PFM.CD.service.OpenRouterService;
+import com.PFM.CD.service.interfaces.OpenRouterService;
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;

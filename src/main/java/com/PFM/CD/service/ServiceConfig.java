@@ -1,4 +1,4 @@
-package com.PFM.CD.service.config;
+package com.PFM.CD.service;
 
 import java.io.IOException;
 import java.io.InputStream;

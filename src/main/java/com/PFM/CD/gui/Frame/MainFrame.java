@@ -2,7 +2,7 @@ package com.PFM.CD.gui.Frame;
 
 import com.PFM.CD.entity.User;
 import com.PFM.CD.gui.panel.*;
-import com.PFM.CD.service.factory.ServiceFactory;
+import com.PFM.CD.service.ServiceFactory;
 import com.PFM.CD.service.interfaces.*;
 
 import javax.swing.*;
@@ -39,7 +39,8 @@ public class MainFrame extends JFrame {
     private static final Font NAV_FONT = new Font("微软雅黑", Font.PLAIN, 17);
 
     // 添加OpenRouter API Key常量
-    private static final String OPENROUTER_API_KEY = "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"; // 替换为您的实际API密钥
+    private static final String OPENROUTER_API_KEY =
+            "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";
 
     public MainFrame(User user) {
         this.currentUser = user;
@@ -125,7 +126,6 @@ public class MainFrame extends JFrame {
 
         sidebar.add(Box.createVerticalStrut(26));
         sidebar.add(createNavButton("🏦 账户管理", "accounts", ACCENT, SIDEBAR_BG));
-
         sidebar.add(Box.createVerticalStrut(8));
         sidebar.add(createNavButton("💸 交易管理", "transactions", ACCENT, SIDEBAR_BG));
         sidebar.add(Box.createVerticalStrut(8));
@@ -133,14 +133,14 @@ public class MainFrame extends JFrame {
         sidebar.add(Box.createVerticalStrut(8));
         sidebar.add(createNavButton("📁 分类管理", "catogory", ACCENT, SIDEBAR_BG));
         sidebar.add(Box.createVerticalStrut(8));
-
-        // 添加AI助手导航按钮
         sidebar.add(createNavButton("🤖 AI财务管家", "aiassistant", ACCENT, SIDEBAR_BG));
-        sidebar.add(Box.createVerticalGlue());
+        sidebar.add(Box.createVerticalStrut(8));
         sidebar.add(createNavButton("👤 系统中心", "settings", ACCENT, SIDEBAR_BG));
         sidebar.add(Box.createVerticalStrut(8));
         sidebar.add(createNavButton("📋 用户中心", "status", ACCENT, SIDEBAR_BG));
         sidebar.add(Box.createVerticalStrut(8));
+
+
         add(sidebar, BorderLayout.WEST);
 
         // 主内容区

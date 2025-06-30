@@ -8,7 +8,7 @@ import com.PFM.CD.service.interfaces.AccountService;
 import com.PFM.CD.gui.controller.AccountController;
 import com.PFM.CD.gui.controller.AccountControllerImpl;
 import com.PFM.CD.gui.dialog.AccountDialog;
-import com.PFM.CD.gui.component.style;
+import com.PFM.CD.gui.style;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

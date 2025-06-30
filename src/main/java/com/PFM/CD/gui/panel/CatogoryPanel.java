@@ -3,7 +3,7 @@ package com.PFM.CD.gui.panel;
 import com.PFM.CD.entity.Transaction;
 import com.PFM.CD.entity.enums.CategoryType;
 import com.PFM.CD.entity.Category;
-import com.PFM.CD.gui.component.style;
+import com.PFM.CD.gui.style;
 import com.PFM.CD.service.dto.CategoryDto;
 import com.PFM.CD.service.exception.ServiceException;
 import com.PFM.CD.service.interfaces.CategoryService;
@@ -12,7 +12,6 @@ import lombok.SneakyThrows;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;

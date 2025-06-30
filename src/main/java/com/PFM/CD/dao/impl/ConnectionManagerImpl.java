@@ -1,6 +1,6 @@
 package com.PFM.CD.dao.impl;
 
-import com.PFM.CD.dao.constants.DaoConstants;
+import com.PFM.CD.dao.DaoConstants;
 import com.PFM.CD.dao.exception.DatabaseConnectionException;
 import com.PFM.CD.dao.interfaces.ConnectionManager;
 

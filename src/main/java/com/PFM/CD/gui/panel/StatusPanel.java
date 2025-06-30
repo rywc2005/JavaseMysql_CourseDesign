@@ -1,7 +1,7 @@
 package com.PFM.CD.gui.panel;
 
 import com.PFM.CD.entity.User;
-import com.PFM.CD.service.factory.ServiceFactory;
+import com.PFM.CD.service.ServiceFactory;
 import com.PFM.CD.service.interfaces.UserService;
 
 import javax.swing.*;

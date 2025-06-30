@@ -1,6 +1,6 @@
 package com.PFM.CD.service.util;
 
-import com.PFM.CD.service.constants.ServiceConstants;
+import com.PFM.CD.service.ServiceConstants;
 import com.PFM.CD.service.exception.ValidationException;
 
 import java.math.BigDecimal;

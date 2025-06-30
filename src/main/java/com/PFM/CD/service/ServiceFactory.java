@@ -1,7 +1,6 @@
-package com.PFM.CD.service.factory;
+package com.PFM.CD.service;
 
-import com.PFM.CD.dao.factory.DaoFactory;
-import com.PFM.CD.service.config.ServiceConfig;
+import com.PFM.CD.dao.DaoFactory;
 import com.PFM.CD.service.impl.*;
 import com.PFM.CD.service.interfaces.*;
 import com.PFM.CD.utils.report.ExcelExporter;

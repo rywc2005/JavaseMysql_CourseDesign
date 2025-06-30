@@ -4,20 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7521e9f-4cfe-4ccf-be55-ab5103ad2ba7" name="更改" comment="等待完善预算分类追踪监控逻辑">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/dialog/BudgetCategoryDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/dialog/BudgetCategoryEditDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/dialog/BudgetDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/AIAssistantPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/OpenRouterService.java" afterDir="false" />
+    <list default="true" id="d7521e9f-4cfe-4ccf-be55-ab5103ad2ba7" name="更改" comment="交易板块有问题：字段设置的要求（收入或者支出的账户设置问题">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/enums/TransactionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/enums/TransactionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/constants/DaoConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/DaoConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/factory/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/DaoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/ConnectionManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/dao/impl/ConnectionManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/enums/CategoryType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/entity/enums/CategoryType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/Frame/ForgotPasswordFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/Frame/ForgotPasswordFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/Frame/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/Frame/LoginFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/Frame/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/Frame/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/Frame/RegisterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/Frame/RegisterFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/component/style.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/style.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/dialog/BudgetDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/dialog/BudgetDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/AIAssistantPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/AIAssistantPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/AccountsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/AccountsPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/BudgetsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/BudgetsPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/CatogoryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/CatogoryPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/StatusPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/StatusPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/TransactionsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/gui/panel/TransactionsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/OpenRouterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/interfaces/OpenRouterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/config/ServiceConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/ServiceConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/constants/ServiceConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/ServiceConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/factory/ServiceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/ServiceFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/impl/AccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/util/ValidationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/PFM/CD/service/util/ValidationUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +257,7 @@
       <workItem from="1750746117889" duration="32701000" />
       <workItem from="1750836661800" duration="17709000" />
       <workItem from="1750854426666" duration="6706000" />
-      <workItem from="1750918505307" duration="58057000" />
+      <workItem from="1750918505307" duration="65132000" />
     </task>
     <task id="LOCAL-00001" summary="成功实现数据库连接，user作为测试通过。关注依赖文件所实现，dbbase实现数据库连接，基于localdate处理器和CustomRow处理器，实现数据库与entity的映射。在dao中通过接口与实现类处理与数据库的crud。">
       <option name="closed" value="true" />
@@ -312,7 +323,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751029794174</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="交易板块有问题：字段设置的要求（收入或者支出的账户设置问题">
+      <option name="closed" value="true" />
+      <created>1751217830656</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1751217830656</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,7 +367,8 @@
     <MESSAGE value="豆包和gpt4.1不好用，重写gui" />
     <MESSAGE value="阶段尾2" />
     <MESSAGE value="等待完善预算分类追踪监控逻辑" />
-    <option name="LAST_COMMIT_MESSAGE" value="等待完善预算分类追踪监控逻辑" />
+    <MESSAGE value="交易板块有问题：字段设置的要求（收入或者支出的账户设置问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="交易板块有问题：字段设置的要求（收入或者支出的账户设置问题" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

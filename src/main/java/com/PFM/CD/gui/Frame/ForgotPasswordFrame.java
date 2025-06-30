@@ -6,7 +6,7 @@ package com.PFM.CD.gui.Frame;
  * @Description:
  * @Version: 17.0
  */
-import com.PFM.CD.service.factory.ServiceFactory;
+import com.PFM.CD.service.ServiceFactory;
 import com.PFM.CD.service.interfaces.UserService;
 
 import javax.swing.*;

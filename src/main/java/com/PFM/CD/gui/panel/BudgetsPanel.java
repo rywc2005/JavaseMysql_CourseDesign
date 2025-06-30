@@ -5,7 +5,7 @@ import com.PFM.CD.entity.BudgetCategory;
 import com.PFM.CD.entity.Category;
 import com.PFM.CD.entity.enums.CategoryType;
 import com.PFM.CD.entity.enums.PeriodType;
-import com.PFM.CD.gui.component.style;
+import com.PFM.CD.gui.style;
 import com.PFM.CD.gui.dialog.BudgetCategoryDialog;
 import com.PFM.CD.gui.dialog.BudgetDialog;
 import com.PFM.CD.service.exception.ServiceException;
@@ -108,7 +108,7 @@ public class BudgetsPanel extends JPanel {
         add(topPanelOuter, BorderLayout.NORTH);
 
         // 表格
-        String[] columns = {"序号", "预算名称", "周期", "起始", "结束", "总额", "已分配", "已用", "进度(%)"};
+        String[] columns = {"序号", "预算名称", "周期", "起始", "结束", "总额"};//"已分配", "已用", "进度(%)"};
         tableModel = new DefaultTableModel(columns, 0) {
             public boolean isCellEditable(int row, int col) { return false; }
         };
@@ -130,11 +130,11 @@ public class BudgetsPanel extends JPanel {
                     b.getStartDate(),
                     b.getEndDate(),
                     b.getTotalAmount(),
-
-                    b.getAllocatedTotal(),
-                    b.getSpentTotal(),
-                    String.format("%.2f", b.getUsagePercentage())
+//                    b.getAllocatedTotal(),
+//                    b.getSpentTotal(),
+//                    String.format("%.2f", b.getUsagePercentage())
             });
+
         }
     }
 
@@ -257,6 +257,8 @@ public class BudgetsPanel extends JPanel {
         @Override
         public List<Budget> queryBudgets(int userId) {
             try {
+                // 加载所有预算，包括关联的分类
+
                 return budgetService.getUserBudgets(userId);
             } catch (ServiceException e) {
                 JOptionPane.showMessageDialog(null, "加载预算失败: " + e.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
